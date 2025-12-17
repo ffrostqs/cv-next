@@ -1,0 +1,18 @@
+:root {
+  /* Neutrals */
+  --gray-0: #ffffff;
+  --gray-900: #020617;
+
+  /* Brand */
+  --indigo-500: #6366f1;
+  --indigo-400: #818cf8;
+
+  --orange-500: #f97316;
+  --orange-400: #fb923c;
+
+  --cyan-500: #06b6d4;
+
+  /* Status */
+  --green-500: #22c55e;
+  --red-500: #ef4444;
+}

@@ -1,0 +1,18 @@
+:root {
+  /* Text */
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-500);
+
+  /* Surfaces */
+  --surface-page: var(--gray-0);
+  --surface-section: #f8fafc;
+  --surface-card: var(--gray-0);
+
+  /* Brand roles */
+  --color-primary: var(--indigo-500);
+  --color-accent: var(--orange-500);
+
+  /* Status */
+  --color-success: var(--green-500);
+  --color-danger: var(--red-500);
+}

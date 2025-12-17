@@ -1,0 +1,4 @@
+@theme {
+  --color-danger: var(--color-danger);
+  --color-success: var(--color-success);
+}

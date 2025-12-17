@@ -1,0 +1,15 @@
+@layer components {
+  .ui-text-muted {
+    color: var(--text-secondary);
+  }
+
+  .ui-hero-title {
+    @apply text-4xl sm:text-5xl font-semibold;
+    color: var(--text-primary);
+  }
+
+  .ui-section-title {
+    @apply text-3xl font-semibold;
+    color: var(--text-primary);
+  }
+}

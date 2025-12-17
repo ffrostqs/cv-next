@@ -1,0 +1,7 @@
+:root {
+  --gradient-primary-from: var(--indigo-500);
+  --gradient-primary-to: var(--orange-500);
+
+  --gradient-accent-from: var(--cyan-500);
+  --gradient-accent-to: var(--orange-500);
+}

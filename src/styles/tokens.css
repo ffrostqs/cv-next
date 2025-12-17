@@ -1,0 +1,5 @@
+@import "./colors/palette.css";
+@import "./colors/roles.css";
+@import "./colors/gradients.css";
+@import "./themes/light.css";
+@import "./themes/dark.css";
