@@ -1,6 +1,2 @@
 export { MediaFrame } from "./MediaFrame";
-export type {
-  MediaFrameProps,
-  MediaFrameVariant,
-  MediaFrameAspect,
-} from "./media-frame.types";
+export type { MediaFrameProps } from "./media-frame.types";

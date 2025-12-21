@@ -6,10 +6,7 @@ export const logoWrapperStyles = cva(
 
 export const logoIconStyles = cva(
   `
-  flex h-10 w-10 items-center justify-center rounded-full
-  bg-gradient-to-br from-cyan-500 via-orange-500 to-amber-500
-  text-white shadow-lg shadow-cyan-500/30
-  transition-transform duration-300
+  flex h-10 w-10 items-center justify-center animate-surface-gradient bg-gradient-accent rounded-2xl 
   group-hover:scale-105
 `
 );

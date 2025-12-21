@@ -1,9 +1,8 @@
-import type { ReactNode } from "react";
+import type { VariantProps } from "class-variance-authority";
+import type { mediaFrameWrapperStyles } from "./media-frame.styles";
 
-export type MediaFrameVariant = "default" | "gradient-animated";
-
-export type MediaFrameProps = {
-  children: ReactNode;
-  variant?: MediaFrameVariant;
+export interface MediaFrameProps
+  extends VariantProps<typeof mediaFrameWrapperStyles> {
+  children: React.ReactNode;
   className?: string;
-};
+}

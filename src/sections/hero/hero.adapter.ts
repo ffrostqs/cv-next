@@ -12,6 +12,7 @@ export interface HeroModel {
     available: string;
     remote: string;
   };
+  getInTouch: string;
 }
 
 export function adaptHeroFromI18n(hero: HeroDictionary): HeroModel {
@@ -27,5 +28,6 @@ export function adaptHeroFromI18n(hero: HeroDictionary): HeroModel {
       available: hero.available,
       remote: hero.remote,
     },
+    getInTouch: hero.getInTouch,
   };
 }

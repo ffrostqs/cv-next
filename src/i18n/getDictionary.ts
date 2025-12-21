@@ -1,14 +1,18 @@
-import "server-only";
-import { en } from "./messages/en";
-import { de } from "./messages/de";
-import { uk } from "./messages/uk";
+// src/i18n/getDictionary.ts
 
-const dictionaries = {
+import "server-only";
+
+import type { Dictionary } from "./types";
+import { en } from "./dictionaries/en";
+import { de } from "./dictionaries/de";
+import { uk } from "./dictionaries/uk";
+
+const dictionaries: Record<string, Dictionary> = {
   en,
   de,
   uk,
 };
 
-export async function getDictionary(locale: string) {
-  return dictionaries[locale as keyof typeof dictionaries] ?? dictionaries.en;
+export async function getDictionary(locale: string): Promise<Dictionary> {
+  return dictionaries[locale] ?? dictionaries.en;
 }

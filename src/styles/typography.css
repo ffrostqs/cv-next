@@ -4,12 +4,31 @@
   }
 
   .ui-hero-title {
-    @apply text-4xl sm:text-5xl font-semibold;
+    @apply font-semibold text-5xl md:text-6xl mb-4;
     color: var(--text-primary);
   }
 
   .ui-section-title {
     @apply text-3xl font-semibold;
     color: var(--text-primary);
+  }
+
+  .ui-hero-subtitle {
+    @apply text-2xl mb-4;
+    color: var(--text-primary);
+  }
+
+  .ui-hero-description {
+    @apply text-lg text-slate-600 dark:text-slate-400 mb-6;
+    color: var(--text-secondary);
+  }
+  .ui-gradient-text {
+    @apply mb-4 font-bold;
+    display: inline-block;
+    background: var(--gradient-accent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 }

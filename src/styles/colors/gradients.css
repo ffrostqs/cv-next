@@ -1,7 +1,18 @@
 :root {
   --gradient-primary-from: var(--indigo-500);
   --gradient-primary-to: var(--orange-500);
+  --gradient-primary-via: var(--purple-500);
 
   --gradient-accent-from: var(--cyan-500);
   --gradient-accent-to: var(--orange-500);
+
+  --gradient-accent: linear-gradient(
+    to right,
+    var(--gradient-primary-from),
+    var(--gradient-primary-via),
+    var(--gradient-primary-to)
+  );
+}
+.bg-gradient-accent {
+  background-image: var(--gradient-accent);
 }

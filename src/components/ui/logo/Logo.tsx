@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { Code2 } from "lucide-react";
+
 import { cn } from "@/components/ui/utils";
 import type { LogoProps } from "./logo.types";
 import {
@@ -10,15 +10,11 @@ import {
   logoIconStyles,
   logoTextStyles,
 } from "./logo.styles";
-import type { Locale } from "@/i18n/config";
 
-export function Logo({ className }: LogoProps) {
-  const params = useParams();
-  const locale = params.locale as Locale;
-
+export function Logo({ href, className }: LogoProps) {
   return (
     <Link
-      href={`/${locale}`}
+      href={href}
       className={cn(logoWrapperStyles(), className)}
       aria-label="Go to homepage"
     >

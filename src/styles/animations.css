@@ -11,6 +11,7 @@
 }
 
 .animate-surface-gradient {
-  background-size: 200% 200%;
-  animation: surface-gradient 8s ease infinite;
+  background-size: 300% 300%;
+  background-position: 0% 50%;
+  animation: surface-gradient 10s ease infinite;
 }

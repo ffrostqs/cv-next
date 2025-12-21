@@ -1,2 +1,3 @@
-export * from "./Section";
-export * from "./section.types";
+export { Section } from "./Section";
+export { useSectionIds } from "./useSectionIds";
+export type { SectionProps, SectionVariant } from "./section.types";

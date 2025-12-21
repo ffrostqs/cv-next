@@ -6,8 +6,10 @@ export interface HeroModel {
   contact: string;
   resume: string;
   location: string;
+  getInTouch: string;
   badge: {
     available: string;
     remote: string;
+    status?: "available" | "busy";
   };
 }

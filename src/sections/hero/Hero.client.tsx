@@ -1,15 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { motion as m } from "@/components/ui/motion";
 
-import { Section } from "@/components/ui/section/Section";
+import { Section, useSectionIds } from "@/components/ui/section";
+
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { SocialLinks } from "@/components/ui/social-links/SocialLinks";
 import { HeroBadge } from "@/components/ui/hero-badge/HeroBadge";
 import { MediaFrame } from "@/components/ui/media-frame/MediaFrame";
-import { LocationBadge } from "@/components/ui/location-badge/LocationBadge";
+import { InfoBadge } from "@/components/ui/info-badge/InfoBadge";
 
 import { HERO_SOCIALS } from "./hero.config";
 import type { HeroModel } from "./hero.types";
@@ -19,60 +21,77 @@ interface Props {
 }
 
 export function HeroClient({ hero }: Props) {
+  const { titleId, descriptionId } = useSectionIds("hero");
+
   return (
     <Section
       id="hero"
       variant="hero"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-24"
       containerClassName="grid grid-cols-1 items-center gap-16 lg:grid-cols-2"
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      data-testid="experience-section"
     >
       {/* Media */}
-      <div className="relative mx-auto w-full max-w-sm">
-        <MediaFrame variant="gradient-animated" className="aspect-[3/4]">
-          <Image
-            src="/images/portrait.png"
-            alt={hero.name}
-            fill
-            priority
-            sizes="(max-width: 1024px) 100vw, 420px"
-            className="object-cover object-[50%_20%]"
-          />
-        </MediaFrame>
+      <motion.div {...m("fadeLeft")}>
+        <div className="relative mx-auto w-full max-w-sm">
+          <MediaFrame className="aspect-[3/4]">
+            <Image
+              src="/images/portrait.png"
+              alt={hero.name}
+              fill
+              priority
+              placeholder="empty"
+              sizes="(max-width: 1024px) 100vw, 420px"
+              className="object-cover object-[50%_20%]"
+            />
+          </MediaFrame>
 
-        <div className="absolute bottom-6 right-6">
-          <HeroBadge
-            status="available"
-            title={hero.badge.available}
-            subtitle={hero.badge.remote}
-          />
+          <div className="absolute bottom-6 right-6">
+            <HeroBadge
+              status="available"
+              title={hero.badge.available}
+              subtitle={hero.badge.remote}
+            />
+          </div>
         </div>
-      </div>
-
+      </motion.div>
       {/* Content */}
-      <div className="text-center lg:text-left">
-        <LocationBadge icon={MapPin}>{hero.location}</LocationBadge>
 
-        <h1 className="ui-hero-title">
-          {hero.greeting}
-          <span className="ui-gradient-text block">{hero.name}</span>
-        </h1>
+      <motion.div {...m("fadeRight")}>
+        <div className="text-center lg:text-left">
+          <InfoBadge icon={"location"}>{hero.location}</InfoBadge>
 
-        <h2 className="ui-hero-subtitle">{hero.title}</h2>
+          <h1 className="ui-hero-title" id={titleId}>
+            <span className="block">{hero.greeting}</span>
+            <span className="ui-gradient-text animate-surface-gradient">
+              {hero.name}
+            </span>
+          </h1>
 
-        <p className="ui-hero-description">{hero.description}</p>
+          <h2 className="ui-hero-subtitle">{hero.title}</h2>
 
-        <ButtonGroup className="mt-8 justify-center lg:justify-start">
-          <Button asChild>
-            <a href="#contact">{hero.contact}</a>
-          </Button>
+          <p className="ui-hero-description" id={descriptionId}>
+            {hero.description}
+          </p>
 
-          <Button variant="outline" iconLeft="download">
-            {hero.resume}
-          </Button>
-        </ButtonGroup>
+          <ButtonGroup className="mt-8 justify-center lg:justify-start">
+            <Button asChild>
+              <a href="#contact" aria-label="Scroll to contact section">
+                {hero.getInTouch}
+              </a>
+            </Button>
 
-        <SocialLinks items={HERO_SOCIALS} />
-      </div>
+            <Button variant="outline" iconLeft="download" asChild>
+              <a href="/resume.pdf" download>
+                {hero.resume}
+              </a>
+            </Button>
+          </ButtonGroup>
+
+          <SocialLinks items={HERO_SOCIALS} />
+        </div>
+      </motion.div>
     </Section>
   );
 }

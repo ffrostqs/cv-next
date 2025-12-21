@@ -1,4 +1,4 @@
-export type LogoProps = {
-  href?: string;
+export interface LogoProps {
+  href: string;
   className?: string;
-};
+}
