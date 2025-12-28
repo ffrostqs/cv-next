@@ -1,23 +1,16 @@
-import type { StatCardProps } from "@/components/ui/stat-card";
-import type { IconName } from "@/icons/icon.types";
+import type { ProjectsDictionary } from "@/i18n/types";
 
-export type ProjectsVariant = "summary" | "full";
+/**
+ * 1️⃣ Тип одного проекту — напряму з i18n
+ */
+export type ProjectItem = ProjectsDictionary["items"][number];
 
-export interface ProjectsApproachItem {
-  icon: IconName;
-  title: string;
-  description: string;
-}
-
-export interface ProjectsModel {
-  subtitle: string;
-  title: string;
-  description: string;
-
-  stats?: StatCardProps[];
-
-  approach?: {
-    title: string;
-    items: ProjectsApproachItem[];
-  };
-}
+/**
+ * 2️⃣ UI-модель секції
+ */
+export type ProjectsModel = Pick<
+  ProjectsDictionary,
+  "subtitle" | "title" | "description"
+> & {
+  items: ProjectItem[];
+};

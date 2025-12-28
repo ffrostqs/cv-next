@@ -1,6 +1,8 @@
+"use client";
+
 import { forwardRef } from "react";
-import { cn } from "@/utils/cn";
-import { getIcon } from "@/icons/lucideNew";
+import { cn } from "@/components/ui/utils";
+import { AppIcon } from "@/icons/AppIcon";
 import type { InputProps } from "./input.types";
 import {
   inputWrapperStyles,
@@ -26,23 +28,23 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const state = error ? "error" : "default";
 
-    const LeftIcon = getIcon(iconLeft);
-    const RightIcon = getIcon(iconRight);
-
     return (
       <div className={inputWrapperStyles()}>
+        {/* Label */}
         {label && (
           <label htmlFor={id} className="text-sm font-medium text-foreground">
             {label}
           </label>
         )}
 
+        {/* Field */}
         <div className={cn(inputFieldStyles({ size, state }), className)}>
-          {LeftIcon && (
-            <LeftIcon
+          {iconLeft && (
+            <AppIcon
+              name={iconLeft}
               size={18}
+              decorative
               className="shrink-0 text-muted-foreground"
-              aria-hidden
             />
           )}
 
@@ -55,15 +57,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
 
-          {RightIcon && (
-            <RightIcon
+          {iconRight && (
+            <AppIcon
+              name={iconRight}
               size={18}
+              decorative
               className="shrink-0 text-muted-foreground"
-              aria-hidden
             />
           )}
         </div>
 
+        {/* Helper / Error */}
         {(error || helperText) && (
           <p
             className={cn(

@@ -8,4 +8,7 @@ export type IconName =
   | "skills"
   | "projects"
   | "experience"
-  | "location";
+  | "location"
+  | "category"
+  | "tags"
+  | "demo";

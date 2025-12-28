@@ -8,6 +8,9 @@ import {
   Linkedin,
   Download,
   MapPin,
+  Layers2,
+  Tags,
+  ExternalLink,
 } from "lucide-react";
 
 export const ICONS = {
@@ -21,10 +24,12 @@ export const ICONS = {
   download: Download,
   mail: Mail,
 
+  demo: ExternalLink,
   // social
   github: Github,
   linkedin: Linkedin,
-
   // misc
   location: MapPin,
+  category: Layers2,
+  tags: Tags,
 } as const;

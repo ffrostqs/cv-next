@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes } from "react";
-import type { IconName } from "@/icons/lucideNew";
+import type { IconName } from "@/icons/icon.types";
 
 export type InputSize = "sm" | "md" | "lg";
 

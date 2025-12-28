@@ -1,97 +1,30 @@
-// src/i18n/types.ts
+// src/i18n/types/index.ts
 
-export interface HeroDictionary {
-  greeting: string;
-  name: string;
-  title: string;
-  description: string;
-  location: string;
-  contact: string;
-  resume: string;
-  available: string;
-  remote: string;
-  getInTouch: string;
-}
+export * from "./hero.types";
+export * from "./experience.types";
+export * from "./about.types";
+export * from "./projects.types";
+export * from "./skills.types";
+export * from "./global.types";
+export * from "./nav.types";
 
-export interface ExperienceDictionary {
-  subtitle: string;
-  title: string;
-  description: string;
-  techStack: string;
-  items: {
-    id: string;
-    role: string;
-    company: string;
-    period: string;
-    description: string;
-    achievements: string[];
-    stack: string[];
-    icon: string;
-    color: string;
-    bgColor: string;
-  }[];
-}
-
-export interface AboutDictionary {
-  subtitle: string;
-  title: string;
-  description: string;
-
-  stats?: {
-    id: string;
-    icon: string;
-    value: string;
-    label: string;
-  }[];
-
-  approach?: {
-    title: string;
-    items: {
-      id: string;
-      icon: string;
-      title: string;
-      description: string;
-    }[];
-  };
-}
-
-export interface ProjectsDictionary {
-  subtitle: string;
-  title: string;
-  description: string;
-  items: {
-    id: string;
-    title: string;
-    description: string;
-    problem: string;
-    solution?: string;
-    result?: string;
-    stack: string[];
-    links?: {
-      label: string;
-      url: string;
-    };
-  }[];
-}
+import type { HeroDictionary } from "./hero.types";
+import type { ExperienceDictionary } from "./experience.types";
+import type { ProjectsDictionary } from "./projects.types";
+import type { AboutDictionary } from "./about.types";
+import type { GlobalDictionary } from "./global.types";
+import type { NavDictionary } from "./nav.types";
+import type { SkillsDictionary } from "./skills.types";
 
 export interface Dictionary {
   hero: HeroDictionary;
   experience: ExperienceDictionary;
   projects: ProjectsDictionary;
+  skills: SkillsDictionary;
   about: {
     summary: AboutDictionary;
     full: AboutDictionary;
   };
-
-  global: {
-    name: string;
-  };
-
-  nav: {
-    about: string;
-    skills: string;
-    languages: string;
-    projects: string;
-    experience: string;
-  };
+  global: GlobalDictionary;
+  nav: NavDictionary;
 }

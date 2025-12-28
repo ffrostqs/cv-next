@@ -1,5 +1,7 @@
-import { cn } from "@/utils/cn";
-import { getIcon } from "@/icons/lucideNew";
+"use client";
+
+import { cn } from "@/components/ui/utils";
+import { AppIcon } from "@/icons/AppIcon";
 import type { SocialLinkProps } from "./social-link.types";
 import {
   socialLinkStyles,
@@ -14,8 +16,6 @@ export function SocialLink({
   className,
   ...props
 }: SocialLinkProps) {
-  const Icon = getIcon(icon);
-
   return (
     <a
       {...props}
@@ -23,7 +23,7 @@ export function SocialLink({
       aria-label={label}
     >
       <div className={socialIconBoxStyles({ variant })}>
-        {Icon && <Icon size={variant === "card" ? 24 : 18} aria-hidden />}
+        <AppIcon name={icon} size={variant === "card" ? 24 : 18} decorative />
       </div>
 
       <span className={socialLabelStyles({ variant })}>{label}</span>

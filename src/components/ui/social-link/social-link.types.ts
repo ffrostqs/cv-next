@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes } from "react";
-import type { IconName } from "@/icons/lucideNew";
+import type { IconName } from "@/icons/icon.types";
 
 export type SocialLinkVariant = "inline" | "card";
 

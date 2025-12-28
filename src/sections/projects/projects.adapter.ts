@@ -6,5 +6,6 @@ export function adaptProjects(dict: ProjectsDictionary): ProjectsModel {
     subtitle: dict.subtitle,
     title: dict.title,
     description: dict.description,
+    items: dict.items,
   };
 }

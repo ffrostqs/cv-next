@@ -117,18 +117,78 @@ export const en = {
     title: "Projects",
     description:
       "A selection of projects where I solved real business and technical challenges.",
-    // items: [
-    //   {
-    //     id: "dashboard",
-    //     title: "Analytics Dashboard",
-    //     description: "Internal analytics platform for business teams.",
-    //     problem: "Data was fragmented across multiple tools.",
-    //     solution:
-    //       "Designed a unified dashboard with role-based access and real-time updates.",
-    //     result: "Reduced reporting time by 60%.",
-    //     stack: ["React", "Node.js", "PostgreSQL"],
-    //     links: [{ label: "GitHub", url: "https://github.com/…" }],
-    //   },
-    // ],
+    items: [
+      {
+        id: 1,
+        category: "Web Application",
+        title: "Analytics Dashboard",
+        description: "Internal analytics platform for business teams.",
+        problem: "Data was fragmented across multiple tools.",
+        solution:
+          "Designed a unified dashboard with role-based access and real-time updates.",
+        result: "Reduced reporting time by 60%.",
+        tags: ["Featured", "Web App"],
+        stack: ["React", "Node.js", "PostgreSQL"],
+        links: [{ label: "Code", url: "https://github.com/…", icon: "github" }],
+      },
+      {
+        id: 2,
+        category: "Blog",
+        title: "Analytics",
+        description: "Internal ",
+        problem: "Data ",
+        solution:
+          "Designed a unified dashboard with role-based access and real-time updates.",
+        result: "Reduced reporting time by 60%.",
+        tags: ["Testing", "Analytics"],
+        stack: ["React", "Node.js", "PostgreSQL", "Docker"],
+        links: [
+          { label: "Code", url: "https://github.com/…", icon: "github" },
+          { label: "Live Demo", url: "https://github.com/…", icon: "demo" },
+        ],
+      },
+    ],
+  },
+  skills: {
+    subtitle: "Skills",
+    title: "Core Expertise",
+    description:
+      "Technologies and tools I use to design, build, and scale modern applications.",
+    categories: [
+      {
+        id: "frontend",
+        icon: "frontend",
+        title: "Frontend",
+        description: "Building accessible, scalable, and performant interfaces",
+        skills: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Framer Motion",
+        ],
+      },
+      {
+        id: "backend",
+        icon: "backend",
+        title: "Backend",
+        description: "APIs, data modeling, and business logic",
+        skills: ["Node.js", "REST APIs", "MongoDB", "PostgreSQL"],
+      },
+      {
+        id: "architecture",
+        icon: "architecture",
+        title: "Architecture",
+        description: "Maintainable and scalable system design",
+        skills: ["Clean Architecture", "Modular Design", "SOLID"],
+      },
+      {
+        id: "tooling",
+        icon: "tools",
+        title: "Tooling",
+        description: "Development experience and code quality",
+        skills: ["Git", "ESLint", "Prettier", "Vite", "Webpack"],
+      },
+    ],
   },
 };
