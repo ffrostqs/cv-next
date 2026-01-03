@@ -1,11 +1,9 @@
-// src/i18n/getDictionary.ts
-
 import "server-only";
 
 import type { Dictionary } from "./types";
-import { en } from "./dictionaries/en";
-import { de } from "./dictionaries/de";
-import { uk } from "./dictionaries/uk";
+import { en } from "./dictionaries/en/";
+import { de } from "./dictionaries/de/";
+import { uk } from "./dictionaries/uk/";
 
 const dictionaries: Record<string, Dictionary> = {
   en,
