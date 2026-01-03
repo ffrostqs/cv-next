@@ -5,75 +5,53 @@ import { AppIcon } from "@/icons/AppIcon";
 import { SkillBadge } from "@/components/ui/skill-badge";
 import type { SkillCategory } from "../skills.types";
 import { motion as m } from "@/components/ui/motion";
-
+import { normalizeSkill } from "@/domain/skills/normalize-skill";
 interface Props {
   category: SkillCategory;
   index: number;
+  usage?: Record<string, number>;
 }
 
-export function SkillCategoryCard({ category, index }: Props) {
-  const titleId = `skill-${category.id}`;
-
+export function SkillCategoryCard({ category, index, usage }: Props) {
   return (
-    <motion.article
+    <motion.div
       {...m("fadeUp", { order: index })}
-      aria-labelledby={titleId}
-      tabIndex={0}
       className="
-        group relative
-        rounded-2xl p-6
+        bg-white dark:bg-slate-800/50
         border border-slate-200 dark:border-slate-700
-        bg-white dark:bg-slate-800/60
-        transition-all duration-300
-        hover:-translate-y-1 hover:shadow-xl
-        hover:border-purple-300 dark:hover:border-purple-700
-        focus-visible:ring-2 focus-visible:ring-purple-500/40
+        rounded-2xl p-6
+        hover:shadow-xl hover:border-purple-300
+        dark:hover:border-purple-700
+        transition-all
       "
     >
-      {/* subtle background accent */}
-      <div
-        aria-hidden
-        className="
-          absolute inset-0 rounded-2xl
-          bg-gradient-to-br from-purple-500/5 to-transparent
-          opacity-0 group-hover:opacity-100 transition-opacity
-        "
-      />
-
-      {/* header */}
-      <div className="relative flex items-start gap-4 mb-5">
-        <div
-          className="
-            flex h-11 w-11 shrink-0 items-center justify-center
-            rounded-xl bg-purple-600/10
-            text-purple-600 dark:text-purple-400
-          "
-        >
-          <AppIcon name={category.icon} size={22} decorative />
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 rounded-xl bg-purple-600/10 flex items-center justify-center">
+          <AppIcon name={category.icon} size={20} />
         </div>
 
         <div>
-          <h3
-            id={titleId}
-            className="text-lg font-semibold text-slate-900 dark:text-white"
-          >
+          <h3 className="text-lg text-slate-900 dark:text-white">
             {category.title}
           </h3>
-
           {category.description && (
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400">
               {category.description}
             </p>
           )}
         </div>
       </div>
 
-      {/* skills */}
-      <div className="relative flex flex-wrap gap-2">
-        {category.skills.map((skill) => (
-          <SkillBadge key={skill}>{skill}</SkillBadge>
-        ))}
+      <div className="flex flex-wrap gap-2">
+        {category.skills.map((skill) => {
+          const usedIn = usage?.[normalizeSkill(skill)];
+          return (
+            <SkillBadge key={skill} usedIn={usedIn}>
+              {skill}
+            </SkillBadge>
+          );
+        })}
       </div>
-    </motion.article>
+    </motion.div>
   );
 }

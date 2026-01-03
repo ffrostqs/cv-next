@@ -1,3 +1,4 @@
+// src/sections/skills/Skills.client.tsx
 "use client";
 
 import { Section, useSectionIds } from "@/components/ui/section";
@@ -20,11 +21,12 @@ export function SkillsClient({ skills }: { skills: SkillsModel }) {
       />
 
       <div className="grid md:grid-cols-2 gap-8">
-        {skills.categories.map((category, index) => (
+        {skills.categories.map((cat, i) => (
           <SkillCategoryCard
-            key={category.id}
-            category={category}
-            index={index}
+            key={cat.id}
+            category={cat}
+            index={i}
+            usage={skills.usage}
           />
         ))}
       </div>

@@ -145,7 +145,7 @@ export function ProjectsClient({ projects }: { projects: ProjectsModel }) {
               <div className="flex gap-4">
                 {project.links?.map((link) => (
                   <a
-                    key={link.url}
+                    key={`${project.id}-${link.label}`}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"

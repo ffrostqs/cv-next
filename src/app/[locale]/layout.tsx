@@ -8,6 +8,7 @@ import { locales } from "@/config/locales";
 import { ThemeProvider, type Theme } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/footer/Footer";
 
 import { getDictionary } from "@/i18n";
 
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
           <LanguageProvider locale={locale} dictionary={dictionary}>
             <Header />
             {children}
+            <Footer locale={locale} />
           </LanguageProvider>
         </ThemeProvider>
       </body>

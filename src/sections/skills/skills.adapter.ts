@@ -1,6 +1,4 @@
-// src/sections/skills/skills.adapter.ts
 import type { SkillsDictionary } from "@/i18n/types";
-
 import type { SkillsModel } from "./skills.types";
 
 export function adaptSkills(dict: SkillsDictionary): SkillsModel {

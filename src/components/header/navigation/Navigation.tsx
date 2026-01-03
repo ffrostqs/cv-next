@@ -4,23 +4,28 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeToggle } from "@/components/ui/theme-toggle/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 import { NAV_ITEMS } from "./navigation.config";
 
 export function Navigation() {
   const { t } = useLanguage();
 
+  const sectionIds = NAV_ITEMS.map((item) => item.key);
+  const activeSection = useActiveSection(sectionIds);
+
   return (
-    <div className="hidden md:flex items-center gap-6">
+    <nav className="hidden lg:flex items-center gap-6" aria-label="Main">
       {NAV_ITEMS.map((item) => (
         <button
           key={item.key}
-          className="
-            text-slate-600 dark:text-slate-300
-            hover:text-cyan-600 dark:hover:text-cyan-400
-            transition-colors
-          "
+          onClick={() => {
+            document
+              .getElementById(item.key)
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className="ui-link ui-link--nav"
+          aria-current={activeSection === item.key ? "location" : undefined}
         >
           {t(`nav.${item.key}`)}
         </button>
@@ -29,16 +34,11 @@ export function Navigation() {
       <LanguageSwitcher />
       <ThemeToggle />
 
-      <Button
-        className="
-          bg-gradient-to-r from-cyan-500 to-blue-500
-          hover:shadow-lg hover:shadow-cyan-500/50
-          transition-all
-        "
-      >
-        <Download className="mr-2 h-4 w-4" />
-        {t("hero.resume")}
+      <Button variant="outline" iconLeft="download" asChild>
+        <a href="/resume.pdf" download>
+          {t("hero.resume")}
+        </a>
       </Button>
-    </div>
+    </nav>
   );
 }

@@ -1,8 +1,9 @@
+// src/components/ui/skill-badge/SkillBadge.tsx
 "use client";
 
 import { cn } from "@/components/ui/utils";
-import type { SkillBadgeProps } from "./skill-badge.types";
 import { skillBadgeStyles } from "./skill-badge.styles";
+import type { SkillBadgeProps } from "./skill-badge.types";
 
 export function SkillBadge({
   children,
@@ -12,24 +13,17 @@ export function SkillBadge({
   onClick,
   className,
 }: SkillBadgeProps) {
-  const isInteractive = !!onClick;
+  const interactive = Boolean(onClick);
 
   return (
     <span
-      role={isInteractive ? "button" : undefined}
-      tabIndex={isInteractive ? 0 : undefined}
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (!isInteractive) return;
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onClick?.();
-        }
-      }}
       className={cn(
         skillBadgeStyles({
           level,
-          interactive: isInteractive,
+          interactive,
           highlighted,
         }),
         className
@@ -37,7 +31,6 @@ export function SkillBadge({
       aria-label={usedIn ? `${children}, used in ${usedIn} projects` : children}
     >
       {children}
-
       {typeof usedIn === "number" && (
         <span className="text-[10px] opacity-70">· {usedIn}</span>
       )}

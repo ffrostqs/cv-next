@@ -2,32 +2,37 @@ import { cva } from "class-variance-authority";
 
 export const buttonStyles = cva(
   [
-    // layout
-    "inline-flex items-center justify-center",
-    "gap-2", // ❗ іконка + текст
-    "whitespace-nowrap",
-
-    // base
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap",
     "rounded-lg font-medium transition-colors",
-
-    // focus
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-
-    // disabled
     "disabled:pointer-events-none disabled:opacity-50",
   ].join(" "),
   {
     variants: {
       variant: {
-        primary:
-          "bg-cyan-600 text-white hover:bg-cyan-700 focus-visible:ring-cyan-600",
+        primary: [
+          "bg-primary text-white",
+          "hover:opacity-90",
+          "focus-visible:ring-primary",
+        ].join(" "),
 
-        outline:
-          "border border-slate-300 text-slate-700 hover:bg-slate-100 focus-visible:ring-slate-400 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800",
+        outline: [
+          "border border-slate-300",
+          "text-primary",
+          "hover:bg-slate-100",
+          "focus-visible:ring-primary",
+          "dark:border-slate-700 dark:hover:bg-slate-800",
+        ].join(" "),
 
-        ghost:
-          "bg-transparent text-slate-700 hover:bg-slate-100 focus-visible:ring-slate-400 dark:text-slate-200 dark:hover:bg-slate-800",
+        ghost: [
+          "bg-transparent",
+          "text-primary",
+          "hover:bg-slate-100",
+          "focus-visible:ring-primary",
+          "dark:hover:bg-slate-800",
+        ].join(" "),
       },
+
       size: {
         sm: "h-9 px-3 text-sm",
         md: "h-11 px-4 text-base",

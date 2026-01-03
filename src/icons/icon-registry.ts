@@ -11,7 +11,13 @@ import {
   Layers2,
   Tags,
   ExternalLink,
+  SquareCode,
+  CodeXml,
+  BookType,
+  Wrench,
+  Code2,
 } from "lucide-react";
+import { arch } from "os";
 
 export const ICONS = {
   // sections
@@ -32,4 +38,12 @@ export const ICONS = {
   location: MapPin,
   category: Layers2,
   tags: Tags,
+
+  // tech stack
+  frontend: SquareCode,
+  backend: CodeXml,
+  architecture: BookType,
+  tools: Wrench,
+
+  logo: Code2,
 } as const;

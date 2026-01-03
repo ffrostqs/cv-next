@@ -1,4 +1,3 @@
-// src/i18n/types/skills.types.ts
 import type { IconName } from "@/icons/icon.types";
 
 export interface SkillsDictionary {

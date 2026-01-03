@@ -4,4 +4,5 @@ export interface NavDictionary {
   languages: string;
   projects: string;
   experience: string;
+  resume: string;
 }

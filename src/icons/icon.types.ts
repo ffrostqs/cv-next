@@ -11,4 +11,9 @@ export type IconName =
   | "location"
   | "category"
   | "tags"
-  | "demo";
+  | "demo"
+  | "frontend"
+  | "backend"
+  | "architecture"
+  | "tools"
+  | "logo";

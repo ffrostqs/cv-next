@@ -15,4 +15,21 @@
   /* Status */
   --color-success: var(--green-500);
   --color-danger: var(--red-500);
+
+  /* PRIMARY BUTTON */
+  --button-primary-bg: var(--color-primary);
+  --button-primary-bg-hover: var(--color-primary-hover);
+  --button-primary-text: #ffffff;
+  --button-primary-ring: var(--color-primary);
+
+  /* OUTLINE BUTTON */
+  --button-outline-text: var(--text-primary);
+  --button-outline-border: var(--border-default);
+  --button-outline-bg-hover: var(--surface-hover);
+  --button-outline-ring: var(--color-primary);
+
+  /* GHOST BUTTON */
+  --button-ghost-text: var(--text-primary);
+  --button-ghost-bg-hover: var(--surface-hover);
+  --button-ghost-ring: var(--color-primary);
 }
