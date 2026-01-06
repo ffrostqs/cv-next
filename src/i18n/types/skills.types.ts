@@ -7,17 +7,18 @@ export interface SkillsDictionary {
 
   categories: {
     id: string;
-    icon: IconName;
+    icon: string; // 🔑 тільки string у словнику
     title: string;
     description?: string;
     skills: string[];
   }[];
 
-  tree: {
+  tree?: {
+    // ✅ optional
     title: string;
     groups: {
       id: string;
-      icon: IconName;
+      icon: string; // 🔑 тільки string
       title: string;
       skills: string[];
     }[];

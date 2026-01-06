@@ -1,8 +1,8 @@
 export const nav = {
-  about: "About",
-  skills: "Skills",
-  languages: "Languages",
-  projects: "Projects",
-  experience: "Experience",
-  resume: "Resume",
+  about: "Über mich",
+  skills: "Fähigkeiten",
+  languages: "Sprachen",
+  projects: "Projekte",
+  experience: "Erfahrung",
+  resume: "Lebenslauf",
 };

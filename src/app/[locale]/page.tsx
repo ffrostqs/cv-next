@@ -1,8 +1,12 @@
-import { redirect } from "next/navigation";
-import { HomePage } from "@/sections/home/HomePage";
+// src/app/[locale]/page.tsx
+import { notFound } from "next/navigation";
 import { isLocale, DEFAULT_LOCALE } from "@/config/languages";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 import { getDictionary } from "@/i18n";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+
+import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/footer/Footer";
+import { HomePage } from "@/sections/home/HomePage";
 
 export default async function LocalePage({
   params,
@@ -11,21 +15,17 @@ export default async function LocalePage({
 }) {
   const { locale } = await params;
 
-  // ❌ невалідна локаль
-  if (!isLocale(locale)) {
-    redirect("/");
-  }
-
-  // ❌ ЗАБОРОНЯЄМО default locale в URL
-  if (locale === DEFAULT_LOCALE) {
-    redirect("/");
+  if (!isLocale(locale) || locale === DEFAULT_LOCALE) {
+    notFound();
   }
 
   const dictionary = await getDictionary(locale);
 
   return (
     <LanguageProvider locale={locale} dictionary={dictionary}>
+      <Header />
       <HomePage locale={locale} />
+      <Footer />
     </LanguageProvider>
   );
 }

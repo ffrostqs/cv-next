@@ -27,5 +27,5 @@ export const footer = {
   ],
 
   builtWith: "Built with React & TypeScript",
-  copyright: "© 2025 All rights reserved.",
+  copyright: "© 2019 - 2026 All rights reserved.",
 };

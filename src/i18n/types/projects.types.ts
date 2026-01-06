@@ -1,5 +1,3 @@
-import type { IconName } from "@/icons/icon.types";
-
 export interface ProjectsDictionary {
   subtitle: string;
   title: string;
@@ -19,7 +17,7 @@ export interface ProjectsDictionary {
     links?: {
       label: string;
       url: string;
-      icon: IconName;
+      icon: string;
     }[];
   }[];
 }

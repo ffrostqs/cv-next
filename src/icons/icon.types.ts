@@ -23,4 +23,5 @@ export type IconName =
   | "dark"
   | "languages"
   | "check"
-  | "laptop";
+  | "laptop"
+  | "phone";

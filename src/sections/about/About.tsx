@@ -4,7 +4,7 @@ import { AboutClient } from "./About.client";
 import { getDictionary } from "@/i18n";
 import { adaptAbout } from "./about.adapter";
 import type { AboutVariant } from "./about.types";
-import type { Locale } from "@/config/locales";
+import type { Locale } from "@/config/languages";
 
 export async function About({
   locale,

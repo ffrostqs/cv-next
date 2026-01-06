@@ -1,58 +1,58 @@
 export const about = {
   summary: {
-    subtitle: "Get to know me",
-    title: "About me",
+    subtitle: "Lernen Sie mich kennen",
+    title: "Über mich",
     description:
-      "I am a full-stack developer with 5+ years of experience. I focus on clean architecture and scalable solutions.",
+      "React-fokussierter Full-Stack-Entwickler mit über 5 Jahren Erfahrung in der Entwicklung skalierbarer, benutzerzentrierter Webanwendungen mit sauberer und wartbarer Architektur.",
   },
   full: {
-    subtitle: "Get to know me",
-    title: "About me",
+    subtitle: "Lernen Sie mich kennen",
+    title: "Über mich",
     description:
-      "I am a full-stack developer with more than 5 years of experience. I have worked with React, Node.js, and modern frontend tooling. I enjoy building maintainable and user-focused applications.",
+      "Ich bin ein React-fokussierter Full-Stack-Entwickler mit mehr als 5 Jahren Berufserfahrung. Mein Schwerpunkt liegt auf der Entwicklung komplexer Frontend-Anwendungen mit React und TypeScript, ergänzt durch fundierte praktische Erfahrung mit verschiedenen Backend-Technologien wie Node.js, C#/.NET und PHP. Ich schätze saubere Architekturen, löse reale Produktprobleme und liefere nachhaltige Lösungen, die mit den geschäftlichen Anforderungen skalieren.",
     stats: [
       {
         id: "stat-1",
         icon: "projects",
         value: "30+",
-        label: "Projects Delivered",
+        label: "Abgeschlossene Projekte",
       },
       {
         id: "stat-2",
         icon: "experience",
         value: "5+",
-        label: "Years Experience",
+        label: "Jahre Erfahrung",
       },
       {
         id: "stat-3",
         icon: "location",
         value: "7+",
-        label: "Countries Served",
+        label: "Bediente Länder",
       },
     ],
     approach: {
-      title: "How I Work",
+      title: "Meine Arbeitsweise",
       items: [
         {
           id: "ownership",
           icon: "projects",
-          title: "Ownership mindset",
+          title: "Verantwortungsbewusstsein",
           description:
-            "I take end-to-end responsibility for features and products — from initial idea and technical design to production release and long-term maintenance.",
+            "Ich übernehme die volle Verantwortung für Features und Produkte – von der ersten Analyse und technischen Konzeption bis zum Produktivgang und langfristigen Support.",
         },
         {
           id: "engineering",
           icon: "skills",
-          title: "Engineering-first decisions",
+          title: "Engineering-orientierte Entscheidungen",
           description:
-            "I focus on clean architecture, maintainability, and performance, making decisions that scale well over time instead of short-term hacks.",
+            "Ich priorisiere saubere Architektur, Code-Qualität und Performance und treffe technische Entscheidungen, die auch bei wachsender Produktkomplexität nachhaltig bleiben.",
         },
         {
           id: "collaboration",
           icon: "experience",
-          title: "Clear collaboration",
+          title: "Klare Zusammenarbeit",
           description:
-            "I work closely with product managers, designers, and stakeholders to align technical solutions with real business goals.",
+            "Ich arbeite eng mit Product Managern, Designern und Stakeholdern zusammen, um sicherzustellen, dass technische Lösungen klar auf reale Geschäftsziele ausgerichtet sind.",
         },
       ],
     },

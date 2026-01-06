@@ -3,13 +3,13 @@ export const about = {
     subtitle: "Get to know me",
     title: "About me",
     description:
-      "I am a full-stack developer with 5+ years of experience. I focus on clean architecture and scalable solutions.",
+      "React-focused full stack developer with over 5 years of experience building scalable, user-centric web applications with clean and maintainable architecture.",
   },
   full: {
     subtitle: "Get to know me",
     title: "About me",
     description:
-      "I am a full-stack developer with more than 5 years of experience. I have worked with React, Node.js, and modern frontend tooling. I enjoy building maintainable and user-focused applications.",
+      "I am a React-focused Full Stack Developer with more than 5 years of professional experience. My primary expertise is building complex frontend applications with React and TypeScript, while confidently working with multiple backend technologies such as Node.js, C#/.NET, and PHP. I enjoy designing clean architectures, solving real product problems, and delivering maintainable solutions that scale with business needs.",
     stats: [
       {
         id: "stat-1",
@@ -21,7 +21,7 @@ export const about = {
         id: "stat-2",
         icon: "experience",
         value: "5+",
-        label: "Years Experience",
+        label: "Years of Experience",
       },
       {
         id: "stat-3",
@@ -38,21 +38,21 @@ export const about = {
           icon: "projects",
           title: "Ownership mindset",
           description:
-            "I take end-to-end responsibility for features and products — from initial idea and technical design to production release and long-term maintenance.",
+            "I take full ownership of features and products — from initial discovery and technical design to production release and long-term support.",
         },
         {
           id: "engineering",
           icon: "skills",
           title: "Engineering-first decisions",
           description:
-            "I focus on clean architecture, maintainability, and performance, making decisions that scale well over time instead of short-term hacks.",
+            "I prioritize clean architecture, code quality, and performance, making technical decisions that remain sustainable as products grow.",
         },
         {
           id: "collaboration",
           icon: "experience",
           title: "Clear collaboration",
           description:
-            "I work closely with product managers, designers, and stakeholders to align technical solutions with real business goals.",
+            "I collaborate closely with product managers, designers, and stakeholders to ensure technical solutions align with real business objectives.",
         },
       ],
     },

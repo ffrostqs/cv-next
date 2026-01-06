@@ -3,7 +3,7 @@
 export const LANGUAGE_META = {
   de: { label: "Deutsch", flag: "🇩🇪" },
   en: { label: "English", flag: "🇺🇸" },
-  uk: { label: "Українська", flag: "🇺🇦" },
+  // uk: { label: "Українська", flag: "🇺🇦" },
 } as const;
 
 export type Locale = keyof typeof LANGUAGE_META;

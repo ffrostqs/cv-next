@@ -23,6 +23,7 @@ import {
   Languages,
   Check,
   Laptop,
+  Phone,
 } from "lucide-react";
 
 export const ICONS = {
@@ -44,7 +45,7 @@ export const ICONS = {
   location: MapPin,
   category: Layers2,
   tags: Tags,
-
+  phone: Phone,
   // tech stack
   frontend: SquareCode,
   backend: CodeXml,

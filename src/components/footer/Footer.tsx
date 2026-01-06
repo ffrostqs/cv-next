@@ -1,11 +1,13 @@
-import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/locales";
-import { adaptFooter } from "./footer.adapter";
-import { FooterClient } from "./Footer.client";
+// src/components/footer/Footer.tsx
+"use client";
 
-export async function Footer({ locale }: { locale: Locale }) {
-  const dict = await getDictionary(locale);
-  const footer = adaptFooter(dict.footer);
+import { useLanguage } from "@/contexts/LanguageContext";
+import { FooterClient } from "./Footer.client";
+import { adaptFooter } from "./footer.adapter";
+
+export function Footer() {
+  const { tn } = useLanguage();
+  const footer = adaptFooter(tn("footer"));
 
   return <FooterClient footer={footer} />;
 }

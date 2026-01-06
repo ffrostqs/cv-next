@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { AppIcon } from "@/icons/AppIcon";
 import type { ProjectsModel } from "../projects.types";
@@ -9,33 +10,39 @@ interface Props {
   project: ProjectsModel["items"][number];
 }
 
+const DEFAULT_IMAGE = "/images/default_projects.png";
+
 export function ProjectCard({ project }: Props) {
+  const [imgSrc, setImgSrc] = useState(
+    project.image && project.image.trim() !== "" ? project.image : DEFAULT_IMAGE
+  );
+
   return (
     <article className={s.card.wrapper}>
-      {/* Accent glow */}
-
       {/* Header */}
       <header className={s.card.header}>
         <h3 className={s.card.title}>{project.title}</h3>
-
         {project.meta && <span className={s.card.meta}>{project.meta}</span>}
       </header>
 
       {/* Description */}
       <p className={s.card.description}>{project.description}</p>
 
-      {/* Preview */}
-      {project.image && (
-        <div className={s.card.imageWrapper}>
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(max-width: 1024px) 100vw, 480px"
-            className={s.card.image}
-          />
-        </div>
-      )}
+      {/* Preview (with runtime fallback) */}
+      <div className={s.card.imageWrapper}>
+        <Image
+          src={imgSrc}
+          alt={project.title}
+          fill
+          sizes="(max-width: 1024px) 100vw, 480px"
+          className={s.card.image}
+          onError={() => {
+            if (imgSrc !== DEFAULT_IMAGE) {
+              setImgSrc(DEFAULT_IMAGE);
+            }
+          }}
+        />
+      </div>
 
       {/* Stack */}
       <ul className={s.card.stack} aria-label="Tech stack">

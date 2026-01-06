@@ -1,20 +1,43 @@
-import type { ResumeDictionary } from "@/i18n/types";
+// src/sections/resume/resume.types.ts
 
-/**
- * Частини напряму з i18n
- */
-export type ResumeMain = ResumeDictionary["resumeCard"];
-export type ResumeContact = ResumeDictionary["contactCard"];
-export type ResumeSocials = ResumeDictionary["socialCard"];
+import type { IconName } from "@/icons/icon.types";
 
-/**
- * UI-модель секції (без дублювання)
- */
-export type ResumeModel = Pick<
-  ResumeDictionary,
-  "subtitle" | "title" | "description"
-> & {
-  resume: ResumeMain;
-  contact: ResumeContact;
-  socials: ResumeSocials;
-};
+/* ---------- UI submodels ---------- */
+
+export interface ResumeCardModel {
+  title: string;
+  meta: string;
+  features: string[];
+  downloadLabel: string;
+  fileUrl: string;
+}
+
+export interface ResumeContactModel {
+  title: string;
+  items: {
+    icon: IconName;
+    label: string;
+    value: string;
+  }[];
+}
+
+export interface ResumeSocialsModel {
+  title: string;
+  items: {
+    icon: IconName;
+    label: string;
+    url: string;
+  }[];
+}
+
+/* ---------- UI model ---------- */
+
+export interface ResumeModel {
+  subtitle: string;
+  title: string;
+  description: string;
+
+  resume: ResumeCardModel;
+  contact: ResumeContactModel;
+  socials: ResumeSocialsModel;
+}

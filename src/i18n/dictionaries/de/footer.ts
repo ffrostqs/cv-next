@@ -1,11 +1,11 @@
 export const footer = {
-  tagline: "Full-Stack Developer · React · Node.js",
+  tagline: "Full-Stack-Entwickler · React · Node.js",
 
   navigation: [
-    { label: "About", href: "#about" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
+    { label: "Über mich", href: "#about" },
+    { label: "Erfahrung", href: "#experience" },
+    { label: "Projekte", href: "#projects" },
+    { label: "Fähigkeiten", href: "#skills" },
   ],
 
   socials: [
@@ -20,12 +20,12 @@ export const footer = {
       icon: "linkedin",
     },
     {
-      label: "Email",
+      label: "E-Mail",
       href: "mailto:ffrostqs.de@gmail.com",
       icon: "mail",
     },
   ],
 
-  builtWith: "Built with React & TypeScript",
-  copyright: "© 2025 All rights reserved.",
+  builtWith: "Erstellt mit React & TypeScript",
+  copyright: "© 2019–2026 Alle Rechte vorbehalten.",
 };

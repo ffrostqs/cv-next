@@ -1,4 +1,4 @@
-import type { IconName } from "@/icons/icon.types";
+// src/i18n/types.ts
 
 export interface ResumeDictionary {
   subtitle: string;
@@ -16,8 +16,7 @@ export interface ResumeDictionary {
   contactCard: {
     title: string;
     items: {
-      id: string;
-      icon: IconName;
+      icon: string; // ✅ ТІЛЬКИ string
       label: string;
       value: string;
     }[];
@@ -26,8 +25,7 @@ export interface ResumeDictionary {
   socialCard: {
     title: string;
     items: {
-      id: string;
-      icon: IconName;
+      icon: string; // ✅ ТІЛЬКИ string
       label: string;
       url: string;
     }[];

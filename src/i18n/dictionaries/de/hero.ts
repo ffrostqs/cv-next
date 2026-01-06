@@ -1,13 +1,15 @@
 export const hero = {
-  greeting: "Hello, I'm",
+  greeting: "Hallo, ich bin",
   name: "Yevhenii Slivinskyi",
-  title: "Full Stack Web Developer",
+  title: "React-fokussierter Full-Stack-Entwickler",
   description:
-    "Full-stack developer with 5+ years of experience building scalable and high-quality web applications. Specialized in React and Node.js, with additional hands-on experience in Vue.js, Angular, PHP, and Python. I enjoy learning new technologies and creating clean, user-focused digital products.",
-  location: "Icking, Germany",
-  contact: "Contact",
-  resume: "Download CV",
-  available: "Available",
+    "React-fokussierter Full-Stack-Entwickler mit über 6 Jahren Erfahrung in der Entwicklung skalierbarer Webanwendungen für B2B-, FinTech- und Enterprise-Kunden. Umfassende Expertise in React, TypeScript und moderner Frontend-Architektur, kombiniert mit praktischer Erfahrung in verschiedenen Backend-Technologien wie .NET, Node.js, PHP und Laravel.",
+  location: "Icking, Deutschland",
+  availability: "Offen für neue Möglichkeiten",
+
+  contact: "Kontakt",
+  resume: "Lebenslauf herunterladen",
+  available: "Verfügbar",
   remote: "Remote",
-  getInTouch: "Get in touch",
+  getInTouch: "Kontakt aufnehmen",
 };

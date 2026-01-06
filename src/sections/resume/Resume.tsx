@@ -1,5 +1,5 @@
 import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/locales";
+import type { Locale } from "@/config/languages";
 import { adaptResume } from "./resume.adapter";
 import { ResumeClient } from "./Resume.client";
 

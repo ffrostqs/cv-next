@@ -1,45 +1,45 @@
 export const resume = {
   subtitle: "Download",
-  title: "Resume & CV",
+  title: "Lebenslauf & CV",
   description:
-    "Get my complete professional profile including detailed work history, technical skills, and accomplishments.",
+    "Erhalten Sie mein vollständiges berufliches Profil mit detaillierter Berufserfahrung, technischen Fähigkeiten und Erfolgen.",
 
   resumeCard: {
-    title: "Professional Resume",
-    meta: "PDF Format · 2 pages · Updated Nov 2025",
+    title: "Professioneller Lebenslauf",
+    meta: "PDF-Format · 2 Seiten · Aktualisiert im Nov. 2025",
     features: [
-      "Complete work history with quantifiable achievements",
-      "Comprehensive technical skills and proficiencies",
-      "Education, certifications, and awards",
-      "Portfolio highlights and project links",
+      "Vollständige Berufserfahrung mit messbaren Erfolgen",
+      "Umfassende technische Fähigkeiten und Kompetenzen",
+      "Ausbildung, Zertifizierungen und Auszeichnungen",
+      "Portfolio-Highlights und Projektlinks",
     ],
-    downloadLabel: "Download Resume (PDF)",
+    downloadLabel: "Lebenslauf herunterladen (PDF)",
     fileUrl: "/resume/yevhenii-slivinskyi.pdf",
   },
 
   contactCard: {
-    title: "Quick Contact",
+    title: "Schnellkontakt",
     items: [
       {
         icon: "mail",
-        label: "Email",
+        label: "E-Mail",
         value: "frostqs@gmail.com",
       },
       {
         icon: "phone",
-        label: "Phone",
+        label: "Telefon",
         value: "+49 151 144 811 94",
       },
       {
         icon: "location",
-        label: "Location",
-        value: "Icking, Germany",
+        label: "Standort",
+        value: "Icking, Deutschland",
       },
     ],
   },
 
   socialCard: {
-    title: "Find Me Online",
+    title: "Online finden",
     items: [
       {
         icon: "github",

@@ -1,5 +1,3 @@
-import type { IconName } from "@/icons/icon.types";
-
 export interface FooterDictionary {
   tagline: string;
 
@@ -11,7 +9,7 @@ export interface FooterDictionary {
   socials: {
     label: string;
     href: string;
-    icon: IconName;
+    icon: string;
   }[];
 
   copyright: string;

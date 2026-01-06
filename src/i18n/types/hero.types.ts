@@ -4,6 +4,9 @@ export interface HeroDictionary {
   title: string;
   description: string;
   location: string;
+
+  availability?: string; // ✅ optional
+
   contact: string;
   resume: string;
   available: string;

@@ -1,16 +1,27 @@
-import type { ProjectsDictionary } from "@/i18n/types";
+// src/sections/projects/projects.types.ts
+import type { IconName } from "@/icons/icon.types";
 
-/**
- * 1️⃣ Тип одного проекту — напряму з i18n
- */
-export type ProjectItem = ProjectsDictionary["items"][number];
+export interface ProjectLinkModel {
+  id: string;
+  label: string;
+  url: string;
+  icon: IconName;
+}
 
-/**
- * 2️⃣ UI-модель секції
- */
-export type ProjectsModel = Pick<
-  ProjectsDictionary,
-  "subtitle" | "title" | "description"
-> & {
-  items: ProjectItem[];
-};
+export interface ProjectsListItemModel {
+  id: number;
+  category: string;
+  title: string;
+  meta: string;
+  image: string;
+  description: string;
+  stack: string[];
+  links?: ProjectLinkModel[];
+}
+
+export interface ProjectsModel {
+  subtitle: string;
+  title: string;
+  description: string;
+  items: ProjectsListItemModel[];
+}
