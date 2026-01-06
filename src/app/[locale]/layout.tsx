@@ -43,7 +43,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={theme === "dark" ? "dark" : ""}>
-      <body>
+      <body suppressHydrationWarning>
         <ThemeProvider initialTheme={theme}>
           <LanguageProvider locale={locale} dictionary={dictionary}>
             <Header />

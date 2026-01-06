@@ -40,7 +40,9 @@
   .ui-link:hover {
     color: var(--color-primary);
   }
-
+  .ui-link:active {
+    color: var(--color-primary);
+  }
   /* active section / page / location */
   .ui-link[aria-current] {
     color: var(--color-primary);

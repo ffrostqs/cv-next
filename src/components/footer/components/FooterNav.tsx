@@ -1,15 +1,13 @@
 import type { FooterLink } from "../footer.types";
+import { footerStyles as s } from "../footer.styles";
 
 export function FooterNav({ links }: { links: FooterLink[] }) {
   return (
     <nav aria-label="Footer navigation">
-      <ul className="space-y-2">
+      <ul className={s.navList}>
         {links.map((link) => (
           <li key={link.href}>
-            <a
-              href={link.href}
-              className="text-sm text-slate-400 hover:text-white transition"
-            >
+            <a href={link.href} className={s.navLink}>
               {link.label}
             </a>
           </li>

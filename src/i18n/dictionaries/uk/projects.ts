@@ -1,3 +1,5 @@
+import { image } from "framer-motion/client";
+
 export const projects = {
   subtitle: "Selected work",
   title: "Projects",
@@ -7,6 +9,7 @@ export const projects = {
     {
       id: 1,
       category: "Web Application",
+      image: "/images/projects/project-1.png",
       title: "Analytics Dashboard",
       description: "Internal analytics platform for business teams.",
       problem: "Data was fragmented across multiple tools.",
@@ -20,6 +23,7 @@ export const projects = {
     {
       id: 2,
       category: "Blog",
+      image: "/images/projects/project-2.png",
       title: "Analytics",
       description: "Internal ",
       problem: "Data ",

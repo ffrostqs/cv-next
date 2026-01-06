@@ -1,17 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 
 import { Logo } from "@/components/ui/logo";
 import { Navigation } from "./navigation/Navigation";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { ThemeToggle } from "@/components/ui/theme-toggle/ThemeToggle";
 import { MobileNavigation } from "./navigation/MobileNavigation";
-import { Button } from "@/components/ui/button/Button";
-import { useLocaleFromParams } from "@/hooks/useLocaleFromParams";
-
+import { LanguageSwitcher } from "@/components/ui/language-switcher/LanguageSwitcher";
+import { ThemeToggle } from "@/components/ui/theme-toggle/ThemeToggle";
+import { Button } from "@/components/ui/button";
 import { headerStyles as s } from "./header.styles";
+import { useLocaleFromParams } from "@/hooks/useLocaleFromParams";
+import { AppIcon } from "@/icons";
 
 export function Header() {
   const locale = useLocaleFromParams();
@@ -20,24 +19,27 @@ export function Header() {
   return (
     <header className={s.root}>
       <div className={s.bar}>
-        <div className={s.container}>
-          <div className={s.inner}>
-            <Logo href={`/${locale}`} />
+        <div className={s.inner}>
+          <Logo href={`/${locale}`} />
 
-            <Navigation />
+          <Navigation />
 
-            <div className={s.mobileActions}>
-              <LanguageSwitcher />
-              <ThemeToggle />
+          {/* Mobile actions */}
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSwitcher />
+            <ThemeToggle />
 
-              <Button
-                onClick={() => setOpen((v) => !v)}
-                aria-label="Toggle menu"
-                className={s.mobileButton}
-              >
-                {open ? <X size={22} /> : <Menu size={22} />}
-              </Button>
-            </div>
+            <Button
+              variant="ghost"
+              aria-label="Toggle menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? (
+                <AppIcon name="close" size={22} />
+              ) : (
+                <AppIcon name="menu" size={22} />
+              )}
+            </Button>
           </div>
         </div>
 

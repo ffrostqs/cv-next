@@ -1,0 +1,18 @@
+.ui-surface-default {
+  background-color: var(--surface-default);
+}
+
+.ui-surface-muted {
+  background-color: var(--surface-muted);
+}
+
+.dark .ui-surface-muted {
+  background-color: var(--surface-muted);
+}
+
+.ui-surface-card {
+  background-color: var(--surface-muted);
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-muted);
+  padding: 2rem;
+}

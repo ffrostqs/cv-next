@@ -2,23 +2,52 @@
 import { cva } from "class-variance-authority";
 
 export const skillBadgeStyles = cva(
-  "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium border transition-all",
+  `
+    inline-flex
+    items-center
+    gap-1.5
+    rounded-full
+    px-3
+    py-1
+    text-xs
+    font-medium
+    border
+    ui-surface-soft
+    ui-text-muted
+    transition-colors
+  `,
   {
     variants: {
       level: {
-        core: "bg-purple-600/10 text-purple-700 border-purple-300 dark:bg-purple-500/20 dark:text-purple-300 dark:border-purple-500/40",
-        advanced:
-          "bg-cyan-600/10 text-cyan-700 border-cyan-300 dark:bg-cyan-500/20 dark:text-cyan-300 dark:border-cyan-500/40",
-        familiar:
-          "bg-slate-200 text-slate-700 border-slate-300 dark:bg-slate-700 dark:text-slate-300 dark:border-slate-600",
+        core: `
+          ui-text-strong
+          border-[color:var(--color-primary)]
+        `,
+
+        advanced: `
+          ui-text
+        `,
+
+        familiar: `
+          ui-text-muted
+        `,
       },
+
       interactive: {
-        true: "cursor-pointer hover:-translate-y-0.5 hover:shadow-sm",
+        true: `
+          cursor-pointer
+          hover:border-[color:var(--color-primary)]
+          hover:ui-text-strong
+        `,
       },
+
       highlighted: {
-        true: "ring-1 ring-purple-400/40",
+        true: `
+          border-[color:var(--color-primary)]
+        `,
       },
     },
+
     defaultVariants: {
       level: "core",
     },

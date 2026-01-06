@@ -1,3 +1,4 @@
+import { IconName } from "@/icons/icon.types";
 export interface ExperienceDictionary {
   subtitle: string;
   title: string;
@@ -11,8 +12,6 @@ export interface ExperienceDictionary {
     description: string;
     achievements: string[];
     stack: string[];
-    icon: string;
-    color: string;
-    bgColor: string;
+    icon: IconName;
   }[];
 }

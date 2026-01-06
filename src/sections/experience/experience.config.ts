@@ -1,5 +1,3 @@
-export const EXPERIENCE_ICONS = {
-  work: "briefcase",
-  freelance: "laptop",
-  startup: "rocket",
-} as const;
+// src/sections/experience/experience.config.ts
+
+export const EXPERIENCE_SECTION_ID = "experience";

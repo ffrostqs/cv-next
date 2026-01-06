@@ -1,12 +1,14 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ReactNode, HTMLAttributes } from "react";
 
 export type SectionVariant = "default" | "hero" | "muted";
 
-export interface SectionProps
-  extends Omit<HTMLAttributes<HTMLElement>, "children"> {
-  id?: string;
-  children: ReactNode;
+export interface SectionProps extends HTMLAttributes<HTMLElement> {
+  id: string;
   variant?: SectionVariant;
+  children: ReactNode;
   className?: string;
   containerClassName?: string;
+
+  /** Decorative animated glow */
+  glow?: boolean;
 }

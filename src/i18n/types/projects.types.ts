@@ -7,6 +7,8 @@ export interface ProjectsDictionary {
   items: {
     id: number;
     category: string;
+    meta: string;
+    image: string;
     title: string;
     description: string;
     problem: string;

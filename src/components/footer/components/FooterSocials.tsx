@@ -1,9 +1,10 @@
 import { AppIcon } from "@/icons/AppIcon";
 import type { FooterLink } from "../footer.types";
+import { footerStyles as s } from "../footer.styles";
 
 export function FooterSocials({ links }: { links: FooterLink[] }) {
   return (
-    <div className="flex gap-4">
+    <div className={s.socials}>
       {links.map((link) => (
         <a
           key={link.href}
@@ -11,7 +12,7 @@ export function FooterSocials({ links }: { links: FooterLink[] }) {
           target="_blank"
           rel="noopener noreferrer me"
           aria-label={link.label}
-          className="text-slate-400 hover:text-white transition"
+          className={s.socialLink}
         >
           {link.icon && <AppIcon name={link.icon} size={18} decorative />}
         </a>

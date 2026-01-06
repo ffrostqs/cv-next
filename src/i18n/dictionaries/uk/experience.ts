@@ -19,8 +19,6 @@ export const experience = {
       ],
       stack: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
       icon: "laptop",
-      color: "from-cyan-500 to-orange-500",
-      bgColor: "bg-gradient-to-br from-cyan-500 to-orange-500",
     },
   ],
 };

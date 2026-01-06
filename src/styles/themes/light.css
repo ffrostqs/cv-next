@@ -1,3 +1,5 @@
 :root {
   --gray-500: #475569;
+  --surface-muted: #f8fafc;
+  --border-muted: rgba(15, 23, 42, 0.08);
 }

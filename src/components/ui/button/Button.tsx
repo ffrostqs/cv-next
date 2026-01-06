@@ -5,7 +5,9 @@ import { Slot } from "@radix-ui/react-slot";
 
 import { cn } from "@/components/ui/utils";
 import { AppIcon } from "@/icons/AppIcon";
+
 import { buttonStyles } from "./button.styles";
+import { buttonContentStyles } from "./button-content.styles";
 import type { ButtonProps } from "./button.types";
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -39,8 +41,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-busy={isLoading || undefined}
         {...props}
       >
-        {/* Slot-safe single child */}
-        <span className="inline-flex items-center gap-2">
+        <span className={buttonContentStyles({ variant })}>
           {/* Loader */}
           {isLoading && (
             <span
@@ -49,15 +50,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             />
           )}
 
-          {/* Left icon */}
           {!isLoading && iconLeft && (
             <AppIcon name={iconLeft} size={16} decorative />
           )}
 
-          {/* Label */}
           <span>{children}</span>
 
-          {/* Right icon */}
           {!isLoading && iconRight && (
             <AppIcon name={iconRight} size={16} decorative />
           )}

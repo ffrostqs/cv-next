@@ -1,11 +1,19 @@
 import { cn } from "@/components/ui/utils";
-import { SECTION_LAYOUT, SECTION_BACKGROUND } from "./section.variants";
+import {
+  SECTION_BASE,
+  SECTION_LAYOUT,
+  SECTION_CONTAINER,
+  SECTION_BACKGROUND,
+  SECTION_BACKGROUND_BASE,
+} from "./section.variants";
 import type { SectionProps } from "./section.types";
+import { SectionGlow } from "@/components/ui/section-glow";
 
 export function Section({
   children,
   id,
   variant = "default",
+  glow = false,
   className,
   containerClassName,
   ...rest
@@ -13,24 +21,20 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn(
-        "relative flex items-center justify-center px-4",
-        SECTION_LAYOUT[variant],
-        className
-      )}
+      className={cn(SECTION_BASE, SECTION_LAYOUT[variant], className)}
       {...rest}
     >
-      {/* Background */}
+      {/* Base surface */}
       <div
         aria-hidden
-        className={cn(
-          "absolute inset-0 -z-10 animate-surface-gradient",
-          SECTION_BACKGROUND[variant]
-        )}
+        className={cn(SECTION_BACKGROUND_BASE, SECTION_BACKGROUND[variant])}
       />
 
+      {/* Decorative glow */}
+      {glow && <SectionGlow />}
+
       {/* Content */}
-      <div className={cn("container mx-auto max-w-6xl", containerClassName)}>
+      <div className={cn(SECTION_CONTAINER, containerClassName)}>
         {children}
       </div>
     </section>

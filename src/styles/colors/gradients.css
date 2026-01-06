@@ -16,3 +16,20 @@
 .bg-gradient-accent {
   background-image: var(--gradient-accent);
 }
+
+.ui-surface-hero {
+  background: linear-gradient(
+    135deg,
+    var(--surface-hero-from),
+    var(--surface-hero-via),
+    var(--surface-hero-to)
+  );
+}
+
+.ui-surface-radial {
+  background: radial-gradient(
+    ellipse at top,
+    var(--surface-default),
+    transparent 70%
+  );
+}

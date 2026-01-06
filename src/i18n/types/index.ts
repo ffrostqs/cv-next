@@ -6,6 +6,7 @@ export * from "./skills.types";
 export * from "./global.types";
 export * from "./nav.types";
 export * from "./resume.types";
+export * from "./footer.types";
 
 import type { HeroDictionary } from "./hero.types";
 import type { ExperienceDictionary } from "./experience.types";

@@ -10,13 +10,13 @@ import { Skills } from "@/sections/skills/Skills";
 import { Resume } from "@/sections/resume/Resume";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     locale: Locale;
-  };
+  }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   return (
     <>

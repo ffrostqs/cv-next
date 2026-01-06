@@ -1,3 +1,4 @@
+// src/components/ui/stat-card/StatCard.tsx
 "use client";
 
 import { cn } from "@/components/ui/utils";
@@ -8,6 +9,7 @@ import {
   statCardIcon,
   statCardValue,
   statCardLabel,
+  statCardDescription,
 } from "./stat-card.styles";
 
 export function StatCard({
@@ -27,9 +29,7 @@ export function StatCard({
 
       <div className={statCardLabel}>{label}</div>
 
-      {description && (
-        <p className="mt-2 text-sm text-slate-500">{description}</p>
-      )}
+      {description && <p className={statCardDescription}>{description}</p>}
     </div>
   );
 }

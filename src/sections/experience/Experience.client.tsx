@@ -1,40 +1,34 @@
+// src/sections/experience/Experience.client.tsx
 "use client";
-
-/**
- * Experience section
- * Uses shared SectionHeader and feature-level TimelineItem
- */
 
 import { Section, useSectionIds } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
-import { SectionBackground } from "@/components/ui/section-background";
 
 import type { ExperienceModel } from "./experience.types";
 import { experienceStyles as s } from "./experience.styles";
 import { ExperienceTimelineItem } from "./components/ExperienceTimelineItem";
+import { EXPERIENCE_SECTION_ID } from "./experience.config";
 
 interface Props {
   experience: ExperienceModel;
 }
 
 export function ExperienceClient({ experience }: Props) {
-  const { titleId, descriptionId } = useSectionIds("experience");
+  const { titleId, descriptionId } = useSectionIds(EXPERIENCE_SECTION_ID);
 
   return (
     <Section
-      id="experience"
+      id={EXPERIENCE_SECTION_ID}
       variant="muted"
+      glow
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
-      data-testid="experience-section"
+      className={s.section}
     >
-      {/* Decorative background */}
-      <SectionBackground />
-
-      <div className="relative z-10">
-        {/* Section header */}
+      <div className={s.root}>
+        {/* Header */}
         <SectionHeader
-          icon="experience"
+          icon={EXPERIENCE_SECTION_ID}
           badge={experience.subtitle}
           title={experience.title}
           description={experience.description}
@@ -46,7 +40,7 @@ export function ExperienceClient({ experience }: Props) {
         <div className={s.timeline.wrapper}>
           <div aria-hidden className={s.timeline.line} />
 
-          <ul className={s.timeline.list}>
+          <ul className={s.timeline.list} role="list">
             {experience.items.map((item, index) => (
               <ExperienceTimelineItem
                 key={item.id}

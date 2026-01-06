@@ -1,3 +1,5 @@
+import type { IconName } from "@/icons/icon.types";
+
 export interface ExperienceItem {
   id: string;
   role: string;
@@ -6,14 +8,12 @@ export interface ExperienceItem {
   description: string;
   achievements: string[];
   stack: string[];
-  icon: string;
-  color: string;
-  bgColor: string;
+  icon?: IconName;
 }
 
 export interface ExperienceModel {
-  subtitle: string;
   title: string;
+  subtitle: string;
   description: string;
   techStack: string;
   items: ExperienceItem[];

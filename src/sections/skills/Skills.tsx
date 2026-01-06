@@ -1,4 +1,3 @@
-// src/sections/skills/Skills.tsx
 import { getDictionary } from "@/i18n/getDictionary";
 import type { Locale } from "@/config/locales";
 
@@ -12,15 +11,16 @@ export async function Skills({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale);
 
   const projects = adaptProjects(dict.projects);
-
   const usage = calculateSkillUsage(projects.items);
 
   const skills = adaptSkills(dict.skills);
 
-  const skillsWithUsage = {
-    ...skills,
-    usage,
-  };
-
-  return <SkillsClient skills={skillsWithUsage} />;
+  return (
+    <SkillsClient
+      skills={{
+        ...skills,
+        usage,
+      }}
+    />
+  );
 }

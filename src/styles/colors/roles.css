@@ -9,7 +9,7 @@
   --surface-card: var(--gray-0);
 
   /* Brand roles */
-  --color-primary: var(--indigo-500);
+  --color-primary: #00bbff;
   --color-accent: var(--orange-500);
 
   /* Status */
@@ -32,4 +32,6 @@
   --button-ghost-text: var(--text-primary);
   --button-ghost-bg-hover: var(--surface-hover);
   --button-ghost-ring: var(--color-primary);
+
+  --border-default: #314158;
 }

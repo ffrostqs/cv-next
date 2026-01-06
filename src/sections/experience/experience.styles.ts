@@ -1,29 +1,184 @@
+// src/sections/experience/experience.styles.ts
+
 export const experienceStyles = {
-  timeline: {
-    wrapper: "relative",
-    line:
-      "absolute left-6 md:left-1/2 md:-ml-px top-0 bottom-0 w-0.5 " +
-      "bg-gradient-to-b from-cyan-500 via-orange-500 to-emerald-500",
-    list: "space-y-20",
-    item: "relative",
-    iconBase:
-      "absolute left-6 md:left-1/2 md:-ml-7 w-14 h-14 rounded-2xl " +
-      "flex items-center justify-center z-10 shadow-xl shadow-cyan-500/30",
+  section: "",
+
+  root: "relative",
+
+  /* ---------------- BACKGROUND ---------------- */
+
+  background: {
+    wrapper: "pointer-events-none absolute inset-0 -z-10",
+
+    glowTop: `
+      absolute left-1/2 top-[-10%]
+      h-[220px] w-[220px]
+      -translate-x-1/2
+      rounded-full
+      opacity-20
+      blur-3xl
+      bg-gradient-accent
+
+      md:h-[320px] md:w-[320px]
+      md:opacity-30
+    `,
+
+    glowBottom: `
+      absolute left-1/4 bottom-[-10%]
+      h-[180px] w-[180px]
+      rounded-full
+      opacity-15
+      blur-3xl
+      bg-gradient-accent
+
+      md:h-[260px] md:w-[260px]
+      md:opacity-20
+    `,
   },
 
+  /* ---------------- TIMELINE ---------------- */
+
+  timeline: {
+    wrapper: "relative mt-16 md:mt-24",
+
+    line: `
+      hidden
+      md:block
+      absolute left-1/2 top-0
+      h-full w-px
+      -translate-x-1/2
+      bg-[color:var(--border-muted)]
+    `,
+
+    list: "relative flex flex-col gap-12 md:gap-16",
+
+    item: "relative flex",
+
+    iconBase: `
+      absolute
+      left-0
+      top-0
+      z-10
+      flex
+      h-10 w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-[color:var(--surface-card)]
+      shadow-md
+
+      md:left-1/2
+      md:h-12 md:w-12
+      md:-translate-x-1/2
+    `,
+
+    itemWrapper: `
+      relative
+      w-full
+      pl-14
+      md:pl-0
+    `,
+  },
+
+  /* ---------------- CARD ---------------- */
+
   card: {
-    wrapperBase:
-      "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 " +
-      "rounded-3xl p-6 transition-shadow " +
-      "hover:shadow-2xl hover:shadow-cyan-500/20 " +
-      "focus-within:ring-2 focus-within:ring-cyan-500/40",
-    title: "text-2xl text-slate-900 dark:text-white mb-1",
-    company: "block text-base font-normal text-slate-600 dark:text-slate-400",
-    period: "text-sm text-slate-500 dark:text-slate-400 mb-4",
-    description: "text-slate-600 dark:text-slate-400 mb-4",
-    list: "space-y-2 mb-4",
-    listItem: "flex items-start gap-3 text-slate-600 dark:text-slate-400",
-    bulletBase: "w-2 h-2 rounded-full mt-2 bg-gradient-to-r",
-    stack: "text-sm text-slate-700 dark:text-slate-300",
+    wrapper: `
+      ui-surface-card
+      relative
+      w-full
+      max-w-xl
+      overflow-hidden
+      transition-all
+      duration-300
+
+      md:hover:-translate-y-1
+      md:hover:shadow-xl
+    `,
+
+    /* -------- Header -------- */
+
+    title: `
+      text-lg
+      md:text-xl
+      font-semibold
+      leading-tight
+      text-[color:var(--text-primary)]
+    `,
+
+    company: `
+      ml-2
+      text-sm
+      font-normal
+      text-[color:var(--text-secondary)]
+    `,
+
+    period: `
+      mt-1
+      text-xs
+      uppercase
+      tracking-wide
+      text-[color:var(--text-secondary)]
+    `,
+
+    /* -------- Body -------- */
+
+    description: `
+      mt-4
+      md:mt-5
+      text-sm
+      leading-relaxed
+      text-[color:var(--text-secondary)]
+    `,
+
+    list: "mt-4 space-y-3",
+
+    listItem: `
+      relative
+      pl-5
+      text-sm
+      leading-snug
+      text-[color:var(--text-secondary)]
+    `,
+
+    bullet: `
+      absolute
+      left-0
+      top-[0.45rem]
+      h-1.5
+      w-1.5
+      rounded-full
+      bg-[color:var(--color-primary)]
+    `,
+
+    /* -------- Footer -------- */
+
+    stack: `
+      mt-6
+      pt-4
+      border-t
+      border-[color:var(--border-muted)]
+      text-xs
+      font-medium
+      text-[color:var(--text-secondary)]
+    `,
+  },
+
+  /* ---------------- ALIGN ---------------- */
+
+  timelineAlign: {
+    left: `
+      w-full
+      text-left
+
+      md:pr-[calc(50%+2rem)]
+    `,
+
+    right: `
+      w-full
+      text-left
+
+      md:pl-[calc(50%+2rem)]
+    `,
   },
 };

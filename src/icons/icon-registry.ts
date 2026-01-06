@@ -16,8 +16,14 @@ import {
   BookType,
   Wrench,
   Code2,
+  X,
+  Menu,
+  Sun,
+  Moon,
+  Languages,
+  Check,
+  Laptop,
 } from "lucide-react";
-import { arch } from "os";
 
 export const ICONS = {
   // sections
@@ -25,7 +31,7 @@ export const ICONS = {
   skills: Layers,
   projects: Folder,
   about: User,
-
+  laptop: Laptop,
   // actions
   download: Download,
   mail: Mail,
@@ -46,4 +52,10 @@ export const ICONS = {
   tools: Wrench,
 
   logo: Code2,
+  menu: Menu,
+  close: X,
+  light: Sun,
+  dark: Moon,
+  languages: Languages,
+  check: Check,
 } as const;

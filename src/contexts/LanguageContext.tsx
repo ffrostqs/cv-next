@@ -11,18 +11,20 @@ type LanguageContextValue = {
   t: (key: string) => string;
 
   /** Typed namespace access */
-  tn: <K extends keyof Dictionary>(key: K) => Dictionary[K];
+  tn: <K extends keyof Dictionary>(key: K) => Readonly<Dictionary[K]>;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function getNestedValue(obj: unknown, path: string): string | undefined {
-  return path.split(".").reduce<unknown>((acc, key) => {
+function getNestedString(obj: unknown, path: string): string | undefined {
+  const value = path.split(".").reduce<unknown>((acc, key) => {
     if (typeof acc === "object" && acc !== null) {
       return (acc as Record<string, unknown>)[key];
     }
     return undefined;
-  }, obj) as string | undefined;
+  }, obj);
+
+  return typeof value === "string" ? value : undefined;
 }
 
 export function LanguageProvider({
@@ -34,13 +36,10 @@ export function LanguageProvider({
   dictionary: Dictionary;
   children: React.ReactNode;
 }) {
-  function t(key: string): string {
-    return getNestedValue(dictionary, key) ?? key;
-  }
+  const t = (key: string): string => getNestedString(dictionary, key) ?? key;
 
-  function tn<K extends keyof Dictionary>(key: K): Dictionary[K] {
-    return dictionary[key];
-  }
+  const tn = <K extends keyof Dictionary>(key: K): Readonly<Dictionary[K]> =>
+    dictionary[key];
 
   return (
     <LanguageContext.Provider value={{ locale, t, tn }}>

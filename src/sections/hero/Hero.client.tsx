@@ -27,7 +27,7 @@ export function HeroClient({ hero }: Props) {
     <Section
       id="hero"
       variant="hero"
-      containerClassName="grid grid-cols-1 items-center gap-16 lg:grid-cols-2"
+      containerClassName="grid grid-cols-1 items-center gap-16 lg:my-4 lg:grid-cols-2"
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
       data-testid="experience-section"
@@ -41,7 +41,6 @@ export function HeroClient({ hero }: Props) {
               alt={hero.name}
               fill
               priority
-              placeholder="empty"
               sizes="(max-width: 1024px) 100vw, 420px"
               className="object-cover object-[50%_20%]"
             />

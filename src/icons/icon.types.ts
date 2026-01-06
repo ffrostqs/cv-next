@@ -16,4 +16,11 @@ export type IconName =
   | "backend"
   | "architecture"
   | "tools"
-  | "logo";
+  | "logo"
+  | "menu"
+  | "close"
+  | "light"
+  | "dark"
+  | "languages"
+  | "check"
+  | "laptop";

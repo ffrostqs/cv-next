@@ -2,6 +2,7 @@
 
 import { SocialLink } from "@/components/ui/social-link";
 import type { IconName } from "@/icons/icon.types";
+import { socialCardStyles as s } from "./resume-cards.styles";
 
 interface SocialCardProps {
   data: {
@@ -16,17 +17,10 @@ interface SocialCardProps {
 
 export function SocialCard({ data }: SocialCardProps) {
   return (
-    <div
-      className="
-        rounded-3xl p-6
-        bg-slate-900/40
-        border border-slate-700/40
-        backdrop-blur
-      "
-    >
-      <h3 className="text-lg font-semibold text-white mb-4">{data.title}</h3>
+    <div className={s.wrapper}>
+      <h3 className={s.title}>{data.title}</h3>
 
-      <ul className="grid grid-cols-6 gap-3">
+      <ul className={s.grid}>
         {data.items.map((item) => (
           <li key={item.url}>
             <SocialLink

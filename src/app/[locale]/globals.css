@@ -13,3 +13,9 @@ body {
   background-color: var(--surface-page);
   color: var(--text-primary);
 }
+@media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}

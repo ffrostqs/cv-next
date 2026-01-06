@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Languages, Check } from "lucide-react";
-
+import { Button } from "@/components/ui/button";
 import {
   locales,
   defaultLocale,
@@ -12,6 +12,7 @@ import {
 } from "@/config/locales";
 import { LANGUAGE_META } from "@/config/languages";
 import { cn } from "@/components/ui/utils";
+import { AppIcon } from "@/icons";
 
 export function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
@@ -33,19 +34,15 @@ export function LanguageSwitcher() {
 
   return (
     <div className="relative">
-      <button
+      <Button
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={cn(
-          "flex h-10 w-10 items-center justify-center rounded-lg",
-          "border border-slate-700 bg-slate-900/80",
-          "text-slate-200 hover:bg-slate-800 transition",
-          open && "ring-2 ring-cyan-500"
-        )}
+        size="sm"
+        variant="outline"
       >
-        <Languages size={18} />
-      </button>
+        <AppIcon name="languages" size={18} />
+      </Button>
 
       {open && (
         <div
@@ -64,13 +61,12 @@ export function LanguageSwitcher() {
 
               return (
                 <li key={locale}>
-                  <button
+                  <Button
+                    variant="menu"
                     role="option"
                     aria-selected={isActive}
                     onClick={() => changeLocale(locale)}
                     className={cn(
-                      "flex w-full items-center gap-3 px-4 py-2.5 text-left",
-                      "text-sm transition-colors",
                       isActive
                         ? "bg-slate-800 text-violet-300"
                         : "text-slate-200 hover:bg-slate-800/60"
@@ -79,9 +75,13 @@ export function LanguageSwitcher() {
                     <span className="text-lg">{meta.flag}</span>
                     <span className="flex-1">{meta.label}</span>
                     {isActive && (
-                      <Check size={16} className="text-violet-400" />
+                      <AppIcon
+                        className="absolute right-0 top-[50%] translate-y-[-50%]"
+                        name="check"
+                        size={16}
+                      />
                     )}
-                  </button>
+                  </Button>
                 </li>
               );
             })}

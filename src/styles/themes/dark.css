@@ -4,4 +4,6 @@
 
   --indigo-500: #818cf8;
   --orange-500: #fb923c;
+  --surface-muted: rgba(15, 23, 42, 0.6);
+  --border-muted: rgba(148, 163, 184, 0.25);
 }
