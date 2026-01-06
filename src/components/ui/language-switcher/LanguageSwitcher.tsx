@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Languages, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  locales,
-  defaultLocale,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
   isLocale,
   type Locale,
-} from "@/config/locales";
-import { LANGUAGE_META } from "@/config/languages";
+  LANGUAGE_META,
+} from "@/config/languages";
 import { cn } from "@/components/ui/utils";
 import { AppIcon } from "@/icons";
 
@@ -19,16 +18,25 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const segments = pathname.split("/");
+  const segments = pathname.split("/").filter(Boolean);
 
-  const rawLocale = segments[1];
-  const currentLocale: Locale = isLocale(rawLocale) ? rawLocale : defaultLocale;
+  const rawLocale = segments[0];
+  const currentLocale: Locale = isLocale(rawLocale)
+    ? rawLocale
+    : DEFAULT_LOCALE;
 
   function changeLocale(locale: Locale) {
     const nextSegments = [...segments];
-    nextSegments[1] = locale;
 
-    router.push(nextSegments.join("/"));
+    if (isLocale(nextSegments[0])) {
+      nextSegments.shift();
+    }
+
+    if (locale !== DEFAULT_LOCALE) {
+      nextSegments.unshift(locale);
+    }
+
+    router.push(`/${nextSegments.join("/")}`);
     setOpen(false);
   }
 
@@ -49,13 +57,13 @@ export function LanguageSwitcher() {
           role="listbox"
           className={cn(
             "absolute right-0 mt-3 w-48 overflow-hidden",
-            "rounded-xl border border-slate-700",
-            "bg-gradient-to-b from-slate-900 to-slate-950",
+            "rounded-xl border border-white/10",
+            "bg-[color:var(--surface-card)]",
             "shadow-xl backdrop-blur"
           )}
         >
           <ul className="py-2">
-            {locales.map((locale) => {
+            {SUPPORTED_LOCALES.map((locale) => {
               const meta = LANGUAGE_META[locale];
               const isActive = locale === currentLocale;
 
@@ -67,16 +75,18 @@ export function LanguageSwitcher() {
                     aria-selected={isActive}
                     onClick={() => changeLocale(locale)}
                     className={cn(
+                      "relative w-full justify-start gap-2",
                       isActive
-                        ? "bg-slate-800 text-violet-300"
-                        : "text-slate-200 hover:bg-slate-800/60"
+                        ? "text-[color:var(--color-primary)]"
+                        : "ui-text-muted hover:bg-white/5"
                     )}
                   >
                     <span className="text-lg">{meta.flag}</span>
-                    <span className="flex-1">{meta.label}</span>
+                    <span className="flex-1 text-sm">{meta.label}</span>
+
                     {isActive && (
                       <AppIcon
-                        className="absolute right-0 top-[50%] translate-y-[-50%]"
+                        className="absolute right-3 top-1/2 -translate-y-1/2"
                         name="check"
                         size={16}
                       />

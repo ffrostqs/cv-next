@@ -1,16 +1,22 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { Locale } from "@/config/locales";
+import type { Locale } from "@/config/languages";
 import type { Dictionary } from "@/i18n/types";
 
 type LanguageContextValue = {
   locale: Locale;
 
-  /** String-based (legacy) */
+  /**
+   * Legacy string-based access.
+   * Use only for simple labels.
+   */
   t: (key: string) => string;
 
-  /** Typed namespace access */
+  /**
+   * Typed namespace access.
+   * Prefer this for sections/components.
+   */
   tn: <K extends keyof Dictionary>(key: K) => Readonly<Dictionary[K]>;
 };
 
@@ -33,7 +39,7 @@ export function LanguageProvider({
   children,
 }: {
   locale: Locale;
-  dictionary: Dictionary;
+  dictionary: Readonly<Dictionary>;
   children: React.ReactNode;
 }) {
   const t = (key: string): string => getNestedString(dictionary, key) ?? key;

@@ -1,5 +1,5 @@
 import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/locales";
+import type { Locale } from "@/config/languages";
 
 import { adaptSkills } from "./skills.adapter";
 import { SkillsClient } from "./Skills.client";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { isLocale, defaultLocale, type Locale } from "@/config/locales";
+import { isLocale, DEFAULT_LOCALE, type Locale } from "@/config/languages";
 
 /**
  * Safely resolves locale from Next.js route params.
@@ -14,5 +14,5 @@ export function useLocaleFromParams(): Locale {
     ? params.locale[0]
     : params.locale;
 
-  return isLocale(rawLocale) ? rawLocale : defaultLocale;
+  return isLocale(rawLocale) ? rawLocale : DEFAULT_LOCALE;
 }

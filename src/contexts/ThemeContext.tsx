@@ -13,29 +13,21 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-type ThemeProviderProps = {
+export function ThemeProvider({
+  children,
+  initialTheme,
+}: {
   children: React.ReactNode;
   initialTheme: Theme;
-};
-
-/**
- * ThemeProvider
- * - initialTheme приходить з SSR (cookies / middleware)
- * - client лише синхронізує DOM + cookies
- */
-export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
+}) {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
-  /**
-   * Apply theme:
-   * - update state
-   * - toggle `dark` class
-   * - persist to cookies
-   */
   const applyTheme = useCallback((nextTheme: Theme) => {
     setTheme(nextTheme);
 
-    document.documentElement.classList.toggle("dark", nextTheme === "dark");
+    const root = document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(nextTheme);
 
     document.cookie = `theme=${nextTheme}; path=/; max-age=31536000`;
   }, []);
@@ -53,25 +45,16 @@ export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
   }, [applyTheme]);
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        toggleTheme,
-        setDark,
-        setLight,
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, toggleTheme, setDark, setLight }}>
       {children}
     </ThemeContext.Provider>
   );
 }
 
 export function useTheme(): ThemeContextValue {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) {
     throw new Error("useTheme must be used within ThemeProvider");
   }
-
-  return context;
+  return ctx;
 }

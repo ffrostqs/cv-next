@@ -2,7 +2,7 @@
 import { ProjectsClient } from "./Projects.client";
 import { adaptProjects } from "./projects.adapter";
 import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/locales";
+import type { Locale } from "@/config/languages";
 
 export async function Projects({ locale }: { locale: Locale }) {
   const dict = await getDictionary(locale);
