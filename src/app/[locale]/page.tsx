@@ -1,6 +1,5 @@
 // src/app/[locale]/page.tsx
-import { notFound } from "next/navigation";
-import { isLocale, DEFAULT_LOCALE } from "@/config/languages";
+import { isLocale } from "@/config/languages";
 import { getDictionary } from "@/i18n";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
@@ -8,15 +7,25 @@ import { Header } from "@/components/header/Header";
 import { Footer } from "@/components/footer/Footer";
 import { HomePage } from "@/sections/home/HomePage";
 
+const LOCALES = ["en", "de"] as const;
+
+/**
+ * REQUIRED for `output: "export"`
+ */
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
+
 export default async function LocalePage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
 
-  if (!isLocale(locale) || locale === DEFAULT_LOCALE) {
-    notFound();
+  // safety guard (build-time)
+  if (!isLocale(locale)) {
+    return null;
   }
 
   const dictionary = await getDictionary(locale);

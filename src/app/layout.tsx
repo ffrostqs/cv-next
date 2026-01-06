@@ -1,28 +1,16 @@
 // src/app/layout.tsx
 import "./globals.css";
-import { cookies } from "next/headers";
-import { ThemeProvider, type Theme } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
-function resolveTheme(cookieTheme?: string): Theme {
-  if (cookieTheme === "light" || cookieTheme === "dark") {
-    return cookieTheme;
-  }
-  return "dark";
-}
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const cookieStore = await cookies();
-  const cookieTheme = cookieStore.get("theme")?.value;
-  const theme = resolveTheme(cookieTheme);
-
   return (
-    <html className={theme}>
+    <html className="dark">
       <body suppressHydrationWarning>
-        <ThemeProvider initialTheme={theme}>{children}</ThemeProvider>
+        <ThemeProvider initialTheme="dark">{children}</ThemeProvider>
       </body>
     </html>
   );

@@ -1,7 +1,17 @@
-export default function NotFound() {
+// src/app/_not-found/page.tsx
+export default function NotFoundPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-2xl font-semibold">404 – Page not found</h1>
-    </div>
+    <html>
+      <body
+        style={{
+          fontFamily: "system-ui",
+          padding: "4rem",
+          textAlign: "center",
+        }}
+      >
+        <h1>404</h1>
+        <p>Page not found</p>
+      </body>
+    </html>
   );
 }
