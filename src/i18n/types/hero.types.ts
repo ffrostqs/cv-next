@@ -9,6 +9,7 @@ export interface HeroDictionary {
 
   contact: string;
   resume: string;
+  resumeUrl: string;
   available: string;
   remote: string;
   getInTouch: string;

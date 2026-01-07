@@ -43,7 +43,7 @@ export function ExperienceTimelineItem({
         <div className={s.card.wrapper}>
           <h3 className={s.card.title}>
             {item.role}
-            <span className={s.card.company}>{item.company}</span>
+            <span>{item.company}</span>
           </h3>
 
           <div className={s.card.period}>{item.period}</div>

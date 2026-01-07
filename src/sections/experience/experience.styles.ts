@@ -99,18 +99,13 @@ export const experienceStyles = {
     /* -------- Header -------- */
 
     title: `
+    flex
+    justify-between
       text-lg
       md:text-xl
       font-semibold
       leading-tight
       text-[color:var(--text-primary)]
-    `,
-
-    company: `
-      ml-2
-      text-sm
-      font-normal
-      text-[color:var(--text-secondary)]
     `,
 
     period: `

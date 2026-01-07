@@ -5,6 +5,7 @@ export interface HeroModel {
   description: string;
   contact: string;
   resume: string;
+  resumeUrl: string;
   location: string;
   getInTouch: string;
   badge: {

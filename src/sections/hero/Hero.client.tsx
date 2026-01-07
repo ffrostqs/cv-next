@@ -82,7 +82,7 @@ export function HeroClient({ hero }: Props) {
             </Button>
 
             <Button variant="outline" iconLeft="download" asChild>
-              <a href="/resume/yevhenii-slivinskyi.pdf" download>
+              <a href={hero.resumeUrl} download>
                 {hero.resume}
               </a>
             </Button>

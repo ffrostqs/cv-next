@@ -8,8 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="dark">
-      <body suppressHydrationWarning>
+    <html suppressHydrationWarning>
+      <body>
         <ThemeProvider initialTheme="dark">{children}</ThemeProvider>
       </body>
     </html>

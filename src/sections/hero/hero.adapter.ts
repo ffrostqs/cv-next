@@ -7,6 +7,7 @@ export interface HeroModel {
   description: string;
   contact: string;
   resume: string;
+  resumeUrl: string;
   location: string;
   badge: {
     available: string;
@@ -23,6 +24,8 @@ export function adaptHeroFromI18n(hero: HeroDictionary): HeroModel {
     description: hero.description,
     contact: hero.contact,
     resume: hero.resume,
+    resumeUrl: hero.resumeUrl,
+
     location: hero.location,
     badge: {
       available: hero.available,

@@ -7,7 +7,7 @@ export const experience = {
   items: [
     {
       id: "exp-1",
-      role: "Full-Stack-Entwickler (React-fokussiert)",
+      role: "Full-Stack-Entwickler",
       company: "YouScan",
       period: "Aug. 2022 – Juni 2025",
       description:
