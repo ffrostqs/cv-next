@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy:build": "rm -rf out && next build"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",

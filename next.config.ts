@@ -1,10 +1,10 @@
-// next.config.ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // 👈 генерує index.html
+  output: "export",
+  trailingSlash: true,
   images: {
-    unoptimized: true, // 👈 обовʼязково для static
+    unoptimized: true,
   },
 };
 

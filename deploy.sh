@@ -1,29 +1,50 @@
 #!/bin/bash
 set -e
 
-# 1. Build у main
+echo "▶ Build static site"
+
+# 1. Go to main
 git checkout main
+
+# 2. Clean & build
+rm -rf out
+npm ci
 npm run build
 
-# 2. Тимчасова папка
+# 3. Safety check
+if [ ! -d "out" ]; then
+  echo "❌ out/ folder not found. Build failed."
+  exit 1
+fi
+
+if [ ! -f "out/index.html" ]; then
+  echo "❌ index.html not generated."
+  exit 1
+fi
+
+echo "✔ Build OK"
+
+# 4. Prepare temp
 rm -rf .deploy_tmp
 mkdir .deploy_tmp
-cp -R out/* .deploy_tmp/
+cp -R out/. .deploy_tmp/
 
-# 3. Перехід у deploy
+# 5. Switch to deploy
 git checkout deploy
 
-# 4. Очистити ВСЕ, КРІМ .git
+# 6. Clean branch (keep .git)
 find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
 
-# 5. Скопіювати static
-cp -R .deploy_tmp/* .
+# 7. Copy static
+cp -R .deploy_tmp/. .
 
-# 6. Коміт і push
+# 8. Commit & push
 git add .
-git commit -m "deploy static" || echo "Nothing to commit"
+git commit -m "deploy static $(date '+%Y-%m-%d %H:%M')" || echo "Nothing to commit"
 git push origin deploy
 
-# 7. Cleanup і назад у main
+# 9. Cleanup
 rm -rf .deploy_tmp
 git checkout main
+
+echo "🚀 Deploy finished"
