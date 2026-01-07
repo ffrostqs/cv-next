@@ -13,7 +13,7 @@ export const SOCIAL_LINKS = {
   },
   email: {
     label: "Email",
-    href: "mailto:frostqs@gmail.com",
+    href: "mailto:slivinskyi@yevhenii.v6.rocks",
     icon: "mail",
   },
 };
