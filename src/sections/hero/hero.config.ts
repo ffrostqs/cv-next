@@ -10,7 +10,7 @@ export const HERO_SOCIALS = [
     label: "LinkedIn",
   },
   {
-    href: "mailto:ffrostqs.de@gmail.com",
+    href: "mailto:slivinskyi@yevhenii.v6.rocks",
     icon: "mail",
     label: "Email",
   },

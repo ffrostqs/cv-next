@@ -1,6 +1,6 @@
 export const APP_CONFIG = {
   siteName: "Yevhenii Slivinskyi",
   defaultLocale: "en",
-  contactEmail: "ffrostqs.de@gmail.com",
+  contactEmail: "slivinskyi@yevhenii.v6.rocks",
   availability: "available",
 };

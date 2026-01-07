@@ -21,7 +21,7 @@ export const footer = {
     },
     {
       label: "E-Mail",
-      href: "mailto:ffrostqs.de@gmail.com",
+      href: "mailto:slivinskyi@yevhenii.v6.rocks",
       icon: "mail",
     },
   ],
