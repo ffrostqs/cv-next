@@ -187,11 +187,22 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
       md:pl-[calc(50%+2rem)]
     `}};var o=e.i(46932),a=e.i(19204),l=e.i(65124);e.i(28059);var u=e.i(62368);function c({item:e,index:r,isLeft:i,techStackLabel:n}){return(0,t.jsxs)(o.motion.li,{...(0,u.motion)("fadeUp",{order:r}),className:s.timeline.item,role:"listitem",children:[(0,t.jsx)("div",{"aria-hidden":!0,className:(0,a.cn)(s.timeline.iconBase),children:(0,t.jsx)(l.AppIcon,{name:e.icon??"experience",size:22,decorative:!0})}),(0,t.jsx)("div",{className:(0,a.cn)(s.timeline.itemWrapper,i?s.timelineAlign.left:s.timelineAlign.right),children:(0,t.jsxs)("div",{className:s.card.wrapper,children:[(0,t.jsxs)("h3",{className:s.card.title,children:[e.role,(0,t.jsx)("span",{children:e.company})]}),(0,t.jsx)("div",{className:s.card.period,children:e.period}),(0,t.jsx)("p",{className:s.card.description,children:e.description}),(0,t.jsx)("ul",{className:s.card.list,children:e.achievements.map((e,r)=>(0,t.jsxs)("li",{className:s.card.listItem,children:[(0,t.jsx)("span",{className:(0,a.cn)(s.card.bullet)}),e]},r))}),(0,t.jsxs)("div",{className:s.card.stack,children:[(0,t.jsx)("strong",{children:n})," ",e.stack.join(", ")]})]})})]})}let d="experience";function h({experience:e}){let{titleId:o,descriptionId:a}=(0,i.useSectionIds)(d);return(0,t.jsx)(r.Section,{id:d,variant:"muted",glow:!0,"aria-labelledby":o,"aria-describedby":a,className:s.section,children:(0,t.jsxs)("div",{className:s.root,children:[(0,t.jsx)(n.SectionHeader,{icon:d,badge:e.subtitle,title:e.title,description:e.description,titleId:o,descriptionId:a}),(0,t.jsxs)("div",{className:s.timeline.wrapper,children:[(0,t.jsx)("div",{"aria-hidden":!0,className:s.timeline.line}),(0,t.jsx)("ul",{className:s.timeline.list,role:"list",children:e.items.map((r,i)=>(0,t.jsx)(c,{item:r,index:i,isLeft:i%2==0,techStackLabel:e.techStack},r.id))})]})]})})}e.s(["ExperienceClient",()=>h],15855)},29239,e=>{"use strict";var t=e.i(43476);e.i(98627);var r=e.i(67902),i=e.i(74856);e.i(61464);var n=e.i(13345),s=e.i(71645),o=e.i(19204),a=e.i(65124);let l=(0,e.i(25913).cva)("ui-surface-card flex flex-col items-start");function u({icon:e,value:r,label:i,description:n,className:s}){return(0,t.jsxs)("div",{className:(0,o.cn)(l(),s),children:[(0,t.jsx)("div",{className:"mb-3 text-[color:var(--color-primary)]","aria-hidden":!0,children:(0,t.jsx)(a.AppIcon,{name:e,size:22})}),(0,t.jsx)("div",{className:"text-3xl font-semibold text-[color:var(--text-primary)]",children:r}),(0,t.jsx)("div",{className:"mt-1 text-sm font-medium text-[color:var(--text-secondary)]",children:i}),n&&(0,t.jsx)("p",{className:"mt-2 text-sm text-[color:var(--text-secondary)]",children:n})]})}let c={1:"grid-cols-1",2:"grid-cols-2",3:"grid-cols-3",4:"grid-cols-4"},d={1:"md:grid-cols-1",2:"md:grid-cols-2",3:"md:grid-cols-3",4:"md:grid-cols-4"},h={1:"lg:grid-cols-1",2:"lg:grid-cols-2",3:"lg:grid-cols-3",4:"lg:grid-cols-4"};var p=e.i(46932);e.i(28059);var m=e.i(62368);let f={base:1,md:2,lg:3};function g({items:e,columns:r,className:i}){let n={...f,...r};return(0,t.jsx)("ul",{role:"list",className:(0,o.cn)("grid gap-6",c[n.base],d[n.md],h[n.lg],i),children:e.map((e,r)=>(0,s.createElement)(p.motion.li,{...(0,m.motion)("fadeUp",{order:r}),key:r},(0,t.jsx)(u,{...e})))})}let v="ui-surface-card mt-24",y="ui-section-title mb-8",x="grid gap-6 md:grid-cols-3",b="flex flex-col gap-3",w="flex items-center gap-3",k="font-medium",j="ui-text-muted text-sm leading-relaxed";function P({approach:e}){return(0,t.jsxs)("section",{className:v,children:[(0,t.jsx)("h3",{className:y,children:e.title}),(0,t.jsx)("ul",{className:x,children:e.items.map(e=>(0,t.jsxs)("li",{className:b,children:[(0,t.jsxs)("div",{className:w,children:[(0,t.jsx)(a.AppIcon,{name:e.icon,size:16}),(0,t.jsx)("h4",{className:k,children:e.title})]}),(0,t.jsx)("p",{className:j,children:e.description})]},e.title))})]})}let S="about";function T({about:e}){let{titleId:s,descriptionId:o}=(0,i.useSectionIds)(S);return(0,t.jsx)(r.Section,{id:S,variant:"default","aria-labelledby":s,"aria-describedby":o,children:(0,t.jsxs)("div",{className:"relative",children:[(0,t.jsx)(n.SectionHeader,{icon:S,badge:e.subtitle,title:e.title,description:e.description,titleId:s,descriptionId:o}),e.stats&&(0,t.jsx)(g,{items:e.stats,className:"mt-16"}),e.approach&&(0,t.jsx)(P,{approach:e.approach})]})})}e.s(["AboutClient",()=>T],29239)},16560,e=>{"use strict";var t=e.i(43476),r=e.i(71645),i=e.i(46932);e.i(98627);var n=e.i(67902),s=e.i(74856);e.i(61464);var o=e.i(13345),a=e.i(19204),l=e.i(25913);let u=(0,l.cva)(`
     inline-flex
-    gap-2
+    max-w-full
+    overflow-x-auto
+    overscroll-x-contain
+    gap-1
     rounded-lg
     border border-white/10
     bg-white/[0.03]
-    p-1
+    p-0.5
+
+    sm:gap-2
+    sm:p-1
+
+    /* scrollbar hide */
+    [-ms-overflow-style:none]
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
   `),c=(0,l.cva)(`
     relative
     inline-flex
@@ -199,16 +210,24 @@ Read more: https://nextjs.org/docs/messages/next-image-unconfigured-localpattern
     justify-center
     whitespace-nowrap
     rounded-md
-    px-3
-    py-1.5
-    text-xs
+
+    px-2.5
+    py-1
+    min-h-[32px]
+    text-[11px]
     font-medium
+
     transition-colors
+
     focus-visible:outline-none
     focus-visible:ring-2
     focus-visible:ring-[color:var(--color-primary)]
     focus-visible:ring-offset-2
     focus-visible:ring-offset-background
+
+    sm:px-3
+    sm:py-1.5
+    sm:text-xs
   `,{variants:{active:{true:`
           bg-white/[0.06]
           text-white
