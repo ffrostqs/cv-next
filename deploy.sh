@@ -1,50 +1,89 @@
 #!/bin/bash
 set -e
 
-echo "▶ Build static site"
+# =========================
+# CONFIG
+# =========================
+MAIN_BRANCH="main"
+DEPLOY_BRANCH="deploy"
+TMP_DIR="/tmp/cv-next-deploy"
 
-# 1. Go to main
-git checkout main
+echo "▶ Starting deploy"
 
-# 2. Clean & build
-rm -rf out
+# =========================
+# 1. Ensure clean working tree
+# =========================
+if [ -n "$(git status --porcelain)" ]; then
+  echo "❌ Working tree is not clean."
+  echo "Commit or stash changes first."
+  exit 1
+fi
+
+# =========================
+# 2. Checkout main
+# =========================
+git checkout "$MAIN_BRANCH"
+
+echo "▶ Building static site"
+
+# =========================
+# 3. Clean & build
+# =========================
+rm -rf .next out
 npm ci
 npm run build
 
-# 3. Safety check
+# =========================
+# 4. Safety checks
+# =========================
 if [ ! -d "out" ]; then
-  echo "❌ out/ folder not found. Build failed."
+  echo "❌ out/ directory not found"
   exit 1
 fi
 
 if [ ! -f "out/index.html" ]; then
-  echo "❌ index.html not generated."
+  echo "❌ index.html not found in out/"
   exit 1
 fi
 
 echo "✔ Build OK"
 
-# 4. Prepare temp
-rm -rf .deploy_tmp
-mkdir .deploy_tmp
-cp -R out/. .deploy_tmp/
+# =========================
+# 5. Prepare clean temp dir (outside git)
+# =========================
+rm -rf "$TMP_DIR"
+mkdir -p "$TMP_DIR"
+cp -R out/. "$TMP_DIR/"
 
-# 5. Switch to deploy
-git checkout deploy
+# =========================
+# 6. Checkout deploy (or create orphan)
+# =========================
+if git show-ref --verify --quiet refs/heads/"$DEPLOY_BRANCH"; then
+  git checkout "$DEPLOY_BRANCH"
+else
+  git checkout --orphan "$DEPLOY_BRANCH"
+fi
 
-# 6. Clean branch (keep .git)
-find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
+# =========================
+# 7. Hard clean deploy branch (keep .git)
+# =========================
+rm -rf *
 
-# 7. Copy static
-cp -R .deploy_tmp/. .
+# =========================
+# 8. Copy static files
+# =========================
+cp -R "$TMP_DIR/." .
 
-# 8. Commit & push
+# =========================
+# 9. Commit & push
+# =========================
 git add .
 git commit -m "deploy static $(date '+%Y-%m-%d %H:%M')" || echo "Nothing to commit"
-git push origin deploy
+git push -f origin "$DEPLOY_BRANCH"
 
-# 9. Cleanup
-rm -rf .deploy_tmp
-git checkout main
+# =========================
+# 10. Return to main
+# =========================
+git checkout "$MAIN_BRANCH"
 
-echo "🚀 Deploy finished"
+echo "🚀 Deploy finished successfully"
