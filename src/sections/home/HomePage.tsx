@@ -1,6 +1,5 @@
+// src/sections/home/HomePage.tsx
 export const dynamic = "force-dynamic";
-
-import type { Locale } from "@/config/languages";
 
 import { Hero } from "@/sections/hero/Hero";
 import { Experience } from "@/sections/experience/Experience";
@@ -12,28 +11,17 @@ import { Resume } from "@/sections/resume/Resume";
 /**
  * HomePage
  * Server component.
- * Used by both `/` and `/{locale}` routes.
+ * Locale is resolved via LanguageProvider (context).
  */
-export async function HomePage({ locale }: { locale: Locale }) {
+export async function HomePage() {
   return (
     <>
-      {/* HERO — identity */}
-      <Hero locale={locale} />
-
-      {/* EXPERIENCE — credibility */}
-      <Experience locale={locale} />
-
-      {/* ABOUT — trust */}
-      <About locale={locale} variant="full" />
-
-      {/* PROJECTS — proof */}
-      <Projects locale={locale} />
-
-      {/* SKILLS — confirmation */}
-      <Skills locale={locale} />
-
-      {/* RESUME — call to action */}
-      <Resume locale={locale} />
+      <Hero />
+      <Experience />
+      <About variant="full" />
+      <Projects />
+      <Skills />
+      <Resume />
     </>
   );
 }

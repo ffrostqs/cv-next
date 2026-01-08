@@ -7,6 +7,7 @@ export * from "./global.types";
 export * from "./nav.types";
 export * from "./resume.types";
 export * from "./footer.types";
+export * from "./legal.types";
 
 import type { HeroDictionary } from "./hero.types";
 import type { ExperienceDictionary } from "./experience.types";
@@ -17,6 +18,7 @@ import type { NavDictionary } from "./nav.types";
 import type { SkillsDictionary } from "./skills.types";
 import type { ResumeDictionary } from "./resume.types";
 import type { FooterDictionary } from "./footer.types";
+import type { LegalDictionary } from "./legal.types";
 export interface Dictionary {
   hero: HeroDictionary;
   experience: ExperienceDictionary;
@@ -31,4 +33,6 @@ export interface Dictionary {
   };
   global: GlobalDictionary;
   nav: NavDictionary;
+  terms: LegalDictionary;
+  privacy: LegalDictionary;
 }

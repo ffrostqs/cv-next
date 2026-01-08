@@ -1,15 +1,17 @@
 // src/app/layout.tsx
 import "./globals.css";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ReactNode } from "react";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeScript } from "@/components/theme/ThemeScript";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html suppressHydrationWarning>
-      <body>
+    <html className="dark">
+      <head>
+        <ThemeScript />
+      </head>
+      <body suppressHydrationWarning>
         <ThemeProvider initialTheme="dark">{children}</ThemeProvider>
       </body>
     </html>

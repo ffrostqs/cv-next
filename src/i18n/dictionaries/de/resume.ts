@@ -23,7 +23,7 @@ export const resume = {
       {
         icon: "mail",
         label: "E-Mail",
-        value: "frostqs@gmail.com",
+        value: "slivinskyi@yevhenii.v6.rocks",
       },
       {
         icon: "phone",

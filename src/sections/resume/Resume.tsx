@@ -1,11 +1,13 @@
-import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/languages";
+// src/sections/resume/Resume.tsx
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
 import { adaptResume } from "./resume.adapter";
 import { ResumeClient } from "./Resume.client";
 
-export async function Resume({ locale }: { locale: Locale }) {
-  const dict = await getDictionary(locale);
-  const resume = adaptResume(dict.resume);
+export function Resume() {
+  const { tn } = useLanguage();
+  const resume = adaptResume(tn("resume"));
 
   return <ResumeClient resume={resume} />;
 }

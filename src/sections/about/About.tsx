@@ -1,21 +1,15 @@
 // src/sections/about/About.tsx
+"use client";
 
 import { AboutClient } from "./About.client";
-import { getDictionary } from "@/i18n";
 import { adaptAbout } from "./about.adapter";
 import type { AboutVariant } from "./about.types";
-import type { Locale } from "@/config/languages";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export async function About({
-  locale,
-  variant,
-}: {
-  locale: Locale;
-  variant: AboutVariant;
-}) {
-  const dict = await getDictionary(locale);
-  const aboutData = dict.about?.[variant];
+export function About({ variant }: { variant: AboutVariant }) {
+  const { tn } = useLanguage();
 
+  const aboutData = tn("about")?.[variant];
   if (!aboutData) return null;
 
   const about = adaptAbout(aboutData);

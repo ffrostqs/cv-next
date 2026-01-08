@@ -1,9 +1,6 @@
-import { isLocale, SUPPORTED_LOCALES } from "@/config/languages";
-import { getDictionary } from "@/i18n";
-import { LanguageProvider } from "@/contexts/LanguageContext";
-
-import { Header } from "@/components/header/Header";
-import { Footer } from "@/components/footer/Footer";
+// src/app/[locale]/page.tsx
+import { notFound } from "next/navigation";
+import { isLocale, SUPPORTED_LOCALES, type Locale } from "@/config/languages";
 import { HomePage } from "@/sections/home/HomePage";
 
 export function generateStaticParams() {
@@ -18,16 +15,8 @@ export default async function LocalePage({
   const { locale } = await params;
 
   if (!isLocale(locale)) {
-    return null;
+    notFound();
   }
 
-  const dictionary = await getDictionary(locale);
-
-  return (
-    <LanguageProvider locale={locale} dictionary={dictionary}>
-      <Header />
-      <HomePage locale={locale} />
-      <Footer />
-    </LanguageProvider>
-  );
+  return <HomePage />;
 }

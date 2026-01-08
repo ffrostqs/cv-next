@@ -1,16 +1,13 @@
 // src/sections/experience/Experience.tsx
+"use client";
 
-import { getDictionary } from "@/i18n/getDictionary";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { adaptExperienceFromI18n } from "./experience.adapter";
 import { ExperienceClient } from "./Experience.client";
 
-interface Props {
-  locale: string;
-}
-
-export async function Experience({ locale }: Props) {
-  const dict = await getDictionary(locale);
-  const experience = adaptExperienceFromI18n(dict.experience);
+export function Experience() {
+  const { tn } = useLanguage();
+  const experience = adaptExperienceFromI18n(tn("experience"));
 
   return <ExperienceClient experience={experience} />;
 }

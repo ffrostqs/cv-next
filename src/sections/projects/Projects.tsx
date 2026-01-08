@@ -1,12 +1,13 @@
 // src/sections/projects/Projects.tsx
-import { ProjectsClient } from "./Projects.client";
-import { adaptProjects } from "./projects.adapter";
-import { getDictionary } from "@/i18n/getDictionary";
-import type { Locale } from "@/config/languages";
+"use client";
 
-export async function Projects({ locale }: { locale: Locale }) {
-  const dict = await getDictionary(locale);
-  const projects = adaptProjects(dict.projects);
+import { useLanguage } from "@/contexts/LanguageContext";
+import { adaptProjects } from "./projects.adapter";
+import { ProjectsClient } from "./Projects.client";
+
+export function Projects() {
+  const { tn } = useLanguage();
+  const projects = adaptProjects(tn("projects"));
 
   return <ProjectsClient projects={projects} />;
 }

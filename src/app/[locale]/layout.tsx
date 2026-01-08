@@ -1,7 +1,12 @@
 // src/app/[locale]/layout.tsx
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { isLocale } from "@/config/languages";
+
+import { isLocale, type Locale } from "@/config/languages";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import { Header } from "@/components/header/Header";
+import { Footer } from "@/components/footer/Footer";
+import { getDictionary } from "@/i18n";
 
 export default async function LocaleLayout({
   children,
@@ -16,5 +21,13 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  return children;
+  const dictionary = await getDictionary(locale as Locale);
+
+  return (
+    <LanguageProvider locale={locale as Locale} dictionary={dictionary}>
+      <Header />
+      {children}
+      <Footer />
+    </LanguageProvider>
+  );
 }

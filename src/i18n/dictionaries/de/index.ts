@@ -7,6 +7,7 @@ import { skills } from "./skills";
 import { resume } from "./resume";
 import { global } from "./global";
 import { nav } from "./nav";
+import { terms, privacy } from "./legal";
 
 export const de = {
   hero,
@@ -18,4 +19,6 @@ export const de = {
   resume,
   global,
   nav,
+  terms,
+  privacy,
 };

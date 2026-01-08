@@ -1,10 +1,12 @@
+"use client";
+
 import { HeroClient } from "./Hero.client";
 import { adaptHeroFromI18n } from "./hero.adapter";
-import { getDictionary } from "@/i18n/getDictionary";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-export async function Hero({ locale }: { locale: string }) {
-  const dict = await getDictionary(locale);
-  const hero = adaptHeroFromI18n(dict.hero);
+export function Hero() {
+  const { tn } = useLanguage();
+  const hero = adaptHeroFromI18n(tn("hero"));
 
   return <HeroClient hero={hero} />;
 }
