@@ -1,64 +1,103 @@
 import type { LegalDictionary } from "../../types/legal.types";
 
 export const terms: LegalDictionary = {
-  title: "Terms of Service",
-  updatedAt: "Last updated: January 2026",
+  title: "Nutzungsbedingungen",
+  updatedAt: "Zuletzt aktualisiert: Januar 2026",
 
   sections: [
     {
       id: "acceptance",
-      title: "Acceptance of Terms",
+      title: "Geltungsbereich",
       paragraphs: [
-        "By accessing or using this website, you agree to be bound by these Terms of Service.",
-        "If you do not agree with any part of the terms, you must discontinue use of the website.",
+        "Durch den Zugriff auf diese Website erklären Sie sich mit den nachfolgenden Nutzungsbedingungen einverstanden.",
+        "Sollten Sie mit diesen Bedingungen nicht einverstanden sein, bitten wir Sie, die Nutzung der Website einzustellen.",
       ],
     },
+
     {
-      id: "use",
-      title: "Use of Content",
+      id: "purpose",
+      title: "Zweck der Website",
       paragraphs: [
-        "All content on this website is provided for informational purposes only.",
-        "You may not use any content for commercial purposes without explicit permission.",
+        "Diese Website dient als persönliches Portfolio und zur professionellen Selbstdarstellung.",
+        "Alle Inhalte werden ausschließlich zu Informations- und Demonstrationszwecken bereitgestellt.",
       ],
     },
+
+    {
+      id: "intellectual-property",
+      title: "Urheberrecht",
+      paragraphs: [
+        "Sofern nicht anders angegeben, unterliegen sämtliche Inhalte dieser Website, einschließlich Texte, Designs, Codebeispiele und Grafiken, dem Urheberrecht des Websitebetreibers.",
+        "Eine Vervielfältigung, Verbreitung oder kommerzielle Nutzung der Inhalte ist ohne vorherige schriftliche Zustimmung nicht gestattet.",
+      ],
+    },
+
     {
       id: "liability",
-      title: "Limitation of Liability",
+      title: "Haftungsausschluss",
       paragraphs: [
-        "The website is provided “as is” without warranties of any kind.",
-        "I shall not be liable for any damages arising from the use of this website.",
+        "Die Inhalte dieser Website werden ohne Gewähr für Richtigkeit, Vollständigkeit oder Aktualität bereitgestellt.",
+        "Der Websitebetreiber übernimmt keine Haftung für Schäden, die aus der Nutzung oder Nichtverfügbarkeit der Website entstehen.",
+      ],
+    },
+
+    {
+      id: "changes",
+      title: "Änderungen der Nutzungsbedingungen",
+      paragraphs: [
+        "Der Websitebetreiber behält sich vor, diese Nutzungsbedingungen jederzeit zu ändern.",
+        "Die weitere Nutzung der Website nach einer Änderung gilt als Zustimmung zu den aktualisierten Bedingungen.",
       ],
     },
   ],
 };
-
 export const privacy: LegalDictionary = {
-  title: "Privacy Policy",
-  updatedAt: "Last updated: January 2026",
+  title: "Datenschutzerklärung",
+  updatedAt: "Zuletzt aktualisiert: Januar 2026",
 
   sections: [
     {
-      id: "collection",
-      title: "Information Collection",
+      id: "overview",
+      title: "Allgemeine Hinweise",
       paragraphs: [
-        "This website does not actively collect personal data.",
-        "Any information provided via direct contact is voluntary.",
+        "Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen.",
+        "Diese Website ist so konzipiert, dass möglichst keine personenbezogenen Daten erhoben werden.",
       ],
     },
+
+    {
+      id: "data-collection",
+      title: "Erhebung personenbezogener Daten",
+      paragraphs: [
+        "Diese Website verwendet keine Benutzerkonten oder Registrierungsformulare.",
+        "Personenbezogene Daten werden nur dann verarbeitet, wenn Sie diese freiwillig im Rahmen einer direkten Kontaktaufnahme zur Verfügung stellen.",
+      ],
+    },
+
     {
       id: "cookies",
-      title: "Cookies",
+      title: "Cookies und lokale Speicherung",
       paragraphs: [
-        "Cookies may be used only for essential functionality such as theme preferences.",
-        "No tracking or advertising cookies are used.",
+        "Cookies oder lokale Speichermethoden können ausschließlich für technisch notwendige Funktionen verwendet werden, beispielsweise zur Speicherung der Theme-Einstellung.",
+        "Es werden keine Tracking-, Analyse- oder Werbe-Cookies eingesetzt.",
       ],
     },
+
     {
-      id: "third-party",
-      title: "Third-Party Services",
+      id: "third-parties",
+      title: "Externe Links",
       paragraphs: [
-        "This website may contain links to third-party services.",
-        "I am not responsible for the privacy practices of external websites.",
+        "Diese Website kann Links zu externen Plattformen wie GitHub oder LinkedIn enthalten.",
+        "Für die Inhalte und Datenschutzpraktiken externer Websites wird keine Verantwortung übernommen.",
+      ],
+    },
+
+    {
+      id: "updates",
+      title: "Aktualisierung dieser Datenschutzerklärung",
+      paragraphs: [
+        "Diese Datenschutzerklärung kann bei Bedarf angepasst werden.",
+        "Änderungen werden auf dieser Seite veröffentlicht und mit einem aktualisierten Datum versehen.",
       ],
     },
   ],

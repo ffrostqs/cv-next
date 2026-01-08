@@ -6,6 +6,8 @@ export const footer = {
     { label: "Erfahrung", href: "#experience" },
     { label: "Projekte", href: "#projects" },
     { label: "Fähigkeiten", href: "#skills" },
+    { label: "Terms", href: "/terms" },
+    { label: "Privacy", href: "/privacy" },
   ],
 
   socials: [
