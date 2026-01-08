@@ -14,7 +14,7 @@ export default async function RootPage() {
   return (
     <LanguageProvider locale={locale} dictionary={dictionary}>
       <Header />
-      <HomePage locale={locale} />
+      <HomePage />
       <Footer />
     </LanguageProvider>
   );
