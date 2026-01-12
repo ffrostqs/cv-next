@@ -37,7 +37,7 @@ export function ResumeCard({ data }: ResumeCardProps) {
         ))}
       </ul>
 
-      <Button asChild variant="primary" size="lg" iconLeft="download">
+      <Button asChild variant="primary" size="sm" iconLeft="download">
         <a href={data.fileUrl} download>
           {data.downloadLabel}
         </a>

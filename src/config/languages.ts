@@ -1,4 +1,3 @@
-// src/config/languages.ts
 export const LANGUAGE_META = {
   de: { label: "Deutsch", flag: "🇩🇪" },
   en: { label: "English", flag: "🇺🇸" },
@@ -6,12 +5,15 @@ export const LANGUAGE_META = {
 
 export type Locale = keyof typeof LANGUAGE_META;
 
-export const SUPPORTED_LOCALES = Object.keys(LANGUAGE_META) as Locale[];
+export const SUPPORTED_LOCALES = Object.keys(
+  LANGUAGE_META
+) as readonly Locale[];
 
 export const DEFAULT_LOCALE: Locale = "de";
 
-export function isLocale(value: string | undefined): value is Locale {
+export function isLocale(value?: string): value is Locale {
   return (
-    typeof value === "string" && SUPPORTED_LOCALES.includes(value as Locale)
+    typeof value === "string" &&
+    (SUPPORTED_LOCALES as readonly string[]).includes(value)
   );
 }

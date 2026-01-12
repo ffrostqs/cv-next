@@ -8,7 +8,7 @@ import { resume } from "./resume";
 import { global } from "./global";
 import { nav } from "./nav";
 import { terms, privacy } from "./legal";
-
+import { notFound } from "./notFound";
 export const en = {
   hero,
   footer,
@@ -21,4 +21,5 @@ export const en = {
   nav,
   terms,
   privacy,
+  notFound,
 };

@@ -1,10 +1,13 @@
-// src/app/[locale]/page.tsx
 import { notFound } from "next/navigation";
-import { isLocale, SUPPORTED_LOCALES, type Locale } from "@/config/languages";
+import { isLocale, SUPPORTED_LOCALES } from "@/config/languages";
 import { HomePage } from "@/sections/home/HomePage";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((locale) => ({ locale }));
+  return SUPPORTED_LOCALES.map((locale) => ({
+    locale,
+  }));
 }
 
 export default async function LocalePage({
@@ -12,7 +15,7 @@ export default async function LocalePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = await params; // ✅ ОБОВʼЯЗКОВО await
 
   if (!isLocale(locale)) {
     notFound();

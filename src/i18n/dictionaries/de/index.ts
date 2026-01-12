@@ -8,6 +8,7 @@ import { resume } from "./resume";
 import { global } from "./global";
 import { nav } from "./nav";
 import { terms, privacy } from "./legal";
+import { notFound } from "./notFound";
 
 export const de = {
   hero,
@@ -21,4 +22,5 @@ export const de = {
   nav,
   terms,
   privacy,
+  notFound,
 };
