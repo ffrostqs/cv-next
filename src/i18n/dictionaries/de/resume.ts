@@ -14,7 +14,7 @@ export const resume = {
       "Portfolio-Highlights und Projektlinks",
     ],
     downloadLabel: "Lebenslauf herunterladen (PDF)",
-    fileUrl: "/resume/yevhenii-slivinskyi.pdf",
+    fileUrl: "/resume/Slivinskyi_Yevhenii_Lebenslauf.pdf",
   },
 
   contactCard: {

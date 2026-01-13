@@ -5,4 +5,5 @@ export const NAV_ITEMS: NavItem[] = [
   { key: "about", href: "#about" },
   { key: "projects", href: "#projects" },
   { key: "skills", href: "#skills" },
+  { key: "resume", href: "#resume" },
 ];
