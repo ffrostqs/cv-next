@@ -9,7 +9,7 @@ export const hero = {
 
   contact: "Contact",
   resume: "Download CV",
-  resumeUrl: "/resume/en/yevhenii-slivinskyi.pdf",
+  resumeUrl: "/resume/Slivinskyi_Yevhenii_Lebenslauf.pdf",
   available: "Available",
   remote: "Remote",
   getInTouch: "Get in touch",
