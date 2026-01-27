@@ -9,6 +9,7 @@ export const experience = {
       id: "exp-1",
       role: "Full-Stack-Entwickler",
       company: "YouScan",
+      companyUrl: "https://youscan.io/",
       period: "Aug. 2022 – Juni 2025",
       description:
         "Mitarbeit an einer großskaligen Analyseplattform mit Schwerpunkt auf komplexen React-basierten Benutzeroberflächen und der nahtlosen Integration mit Backend-Services.",
@@ -25,6 +26,7 @@ export const experience = {
       id: "exp-2",
       role: "Full-Stack-Entwickler",
       company: "WizardsDev",
+      companyUrl: "https://wizardsdev.com/",
       period: "Sep. 2021 – Apr. 2022",
       description:
         "Mitarbeit an mehreren stark frequentierten B2B-Plattformen mit der Entwicklung von React-basierten Frontends und der Arbeit mit PHP-/Laravel-Backends.",
@@ -40,6 +42,7 @@ export const experience = {
       id: "exp-3",
       role: "Full-Stack-Entwickler",
       company: "PayOp",
+      companyUrl: "https://payop.com/",
       period: "Apr. 2021 – Sep. 2021",
       description:
         "Entwicklung von Frontend-Funktionalitäten für Zahlungslösungen sowie Integration von React-Oberflächen mit Backend-Services in unterschiedlichen Programmiersprachen.",
@@ -55,6 +58,7 @@ export const experience = {
       id: "exp-4",
       role: "Junior Frontend-Entwickler",
       company: "Ezlogz",
+      companyUrl: "https://ezlogz.com/",
       period: "Sep. 2020 – Apr. 2021",
       description:
         "Einstieg in die professionelle Laufbahn als Frontend-Entwickler mit Fokus auf responsive und barrierefreie Benutzeroberflächen.",

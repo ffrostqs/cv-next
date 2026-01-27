@@ -7,6 +7,7 @@ export interface ExperienceDictionary {
     id: string;
     role: string;
     company: string;
+    companyUrl: string;
     period: string;
     description: string;
     achievements: string[];

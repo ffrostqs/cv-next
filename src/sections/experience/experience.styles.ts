@@ -37,7 +37,15 @@ export const experienceStyles = {
   },
 
   /* ---------------- TIMELINE ---------------- */
+  companyLink: `
+    ml-2
+    font-medium
+    transition-colors
+    duration-200
 
+    hover:text-[color:var(--color-primary)]
+    focus:text-[color:var(--color-primary)]
+  `,
   timeline: {
     wrapper: "relative mt-16 md:mt-24",
 

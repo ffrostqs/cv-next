@@ -4,6 +4,7 @@ export interface ExperienceItem {
   id: string;
   role: string;
   company: string;
+  companyUrl: string;
   period: string;
   description: string;
   achievements: string[];

@@ -17,6 +17,7 @@ export function adaptExperienceFromI18n(
       id: item.id ?? `experience-${index}`, // ✅ гарантований id
       role: item.role,
       company: item.company,
+      companyUrl: item.companyUrl,
       period: item.period,
       description: item.description,
       achievements: item.achievements,
