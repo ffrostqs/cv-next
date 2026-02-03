@@ -8,28 +8,31 @@ export const skillBadgeStyles = cva(
     gap-1.5
     rounded-full
     px-3
-    py-1
-    text-xs
+    py-1.5
+    text-sm
     font-medium
     border
-    ui-surface-soft
-    ui-text-muted
+    bg-[color:var(--surface-muted)]
+    text-[color:var(--text-primary)]
+    border-[color:var(--border-default)]
     transition-colors
   `,
   {
     variants: {
       level: {
         core: `
-          ui-text-strong
           border-[color:var(--color-primary)]
+          text-[color:var(--text-primary)]
         `,
 
         advanced: `
-          ui-text
+          text-[color:var(--text-primary)]
+          opacity-85
         `,
 
         familiar: `
-          ui-text-muted
+          text-[color:var(--text-secondary)]
+          opacity-90
         `,
       },
 
@@ -37,7 +40,9 @@ export const skillBadgeStyles = cva(
         true: `
           cursor-pointer
           hover:border-[color:var(--color-primary)]
-          hover:ui-text-strong
+          hover:text-[color:var(--text-primary)]
+          hover:opacity-100
+          hover:bg-[color:rgba(0,187,255,0.12)]
         `,
       },
 

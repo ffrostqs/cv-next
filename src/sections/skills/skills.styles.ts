@@ -19,9 +19,9 @@ export const skillsStyles = {
       text-[color:var(--color-primary)]
     `,
 
-    title: "text-base font-semibold",
+    title: "text-base font-semibold text-[color:var(--text-primary)]",
 
-    description: "ui-text-muted text-sm",
+    description: "text-sm text-[color:var(--text-primary)] opacity-80",
 
     skills: "flex flex-wrap gap-2",
   },
