@@ -1,10 +1,11 @@
-import { image } from "framer-motion/client";
-
 export const projects = {
   subtitle: "Selected work",
   title: "Projects",
   description:
     "A selection of projects where I solved real business and technical challenges.",
+  filters: {
+    all: "All",
+  },
   items: [
     {
       id: 1,

@@ -4,9 +4,10 @@ import { isLocale, DEFAULT_LOCALE } from "@/config/languages";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale?: string };
+  params: Promise<{ locale?: string }>;
 }): Promise<Metadata> {
-  const locale = isLocale(params.locale) ? params.locale : DEFAULT_LOCALE;
+  const resolved = await params;
+  const locale = isLocale(resolved.locale) ? resolved.locale : DEFAULT_LOCALE;
 
   const base = process.env.NEXT_PUBLIC_SITE_URL;
 
@@ -19,6 +20,12 @@ export async function generateMetadata({
     de: "Persönliches Portfolio eines Full-Stack Entwicklers.",
     en: "Personal portfolio of a full-stack developer.",
   };
+
+  const url = base
+    ? locale === DEFAULT_LOCALE
+      ? base
+      : `${base}/${locale}`
+    : undefined;
 
   return {
     title: titles[locale],
@@ -35,12 +42,14 @@ export async function generateMetadata({
         }
       : undefined,
 
-    openGraph: {
-      title: titles[locale],
-      description: descriptions[locale],
-      url: locale === DEFAULT_LOCALE ? base : `${base}/${locale}`,
-      siteName: titles[locale],
-      type: "website",
-    },
+    openGraph: base
+      ? {
+          title: titles[locale],
+          description: descriptions[locale],
+          url,
+          siteName: titles[locale],
+          type: "website",
+        }
+      : undefined,
   };
 }

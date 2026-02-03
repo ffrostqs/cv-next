@@ -2,6 +2,9 @@ export interface ProjectsDictionary {
   subtitle: string;
   title: string;
   description: string;
+  filters: {
+    all: string;
+  };
   items: {
     id: number;
     category: string;

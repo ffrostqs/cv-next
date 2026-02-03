@@ -1,23 +1,23 @@
 "use client";
 
-import { useLanguage } from "@/contexts/LanguageContext";
 import { navListStyles as s } from "./navigation.styles";
 import type { NavItem } from "./navigation.types";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import type { NavDictionary } from "@/i18n/types";
 
 interface Props {
   items: NavItem[];
+  labels: NavDictionary;
   orientation?: "horizontal" | "vertical";
   onNavigate?: () => void;
 }
 
 export function NavigationList({
   items,
+  labels,
   orientation = "horizontal",
   onNavigate,
 }: Props) {
-  const { t } = useLanguage();
-
   // 🔑 тільки секції з nav
   const sectionIds = items.map((i) => i.href.replace("#", ""));
   const activeId = useActiveSection(sectionIds, { offset: 96 });
@@ -36,7 +36,7 @@ export function NavigationList({
               aria-current={isActive ? "location" : undefined}
               onClick={onNavigate}
             >
-              {t(`nav.${item.key}`)}
+              {labels[item.key as keyof NavDictionary] ?? item.key}
             </a>
           </li>
         );

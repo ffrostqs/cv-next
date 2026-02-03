@@ -1,18 +1,7 @@
-// src/sections/about/About.tsx
-"use client";
-
 import { AboutClient } from "./About.client";
-import { adaptAbout } from "./about.adapter";
-import type { AboutVariant } from "./about.types";
-import { useLanguage } from "@/contexts/LanguageContext";
+import type { AboutModel } from "./about.types";
 
-export function About({ variant }: { variant: AboutVariant }) {
-  const { tn } = useLanguage();
-
-  const aboutData = tn("about")?.[variant];
-  if (!aboutData) return null;
-
-  const about = adaptAbout(aboutData);
-
+export function About({ about }: { about: AboutModel }) {
+  if (!about) return null;
   return <AboutClient about={about} />;
 }

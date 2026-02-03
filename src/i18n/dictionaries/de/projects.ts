@@ -3,6 +3,9 @@ export const projects = {
   title: "Projekte",
   description:
     "Ausgewählte kommerzielle Projekte auf Basis realer Praxiserfahrung mit Fokus auf React-basierte Benutzeroberflächen und Backend-Integration.",
+  filters: {
+    all: "Alle",
+  },
   items: [
     {
       id: 1,

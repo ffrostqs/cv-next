@@ -3,10 +3,9 @@ export function ThemeScript() {
     (function () {
       try {
         var theme = localStorage.getItem('theme');
-        if (theme === 'light' || theme === 'dark') {
-          document.documentElement.classList.remove('light', 'dark');
-          document.documentElement.classList.add(theme);
-        }
+        if (theme !== 'light' && theme !== 'dark') return;
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme);
       } catch (e) {}
     })();
   `;

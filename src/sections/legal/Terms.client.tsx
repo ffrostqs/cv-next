@@ -1,12 +1,7 @@
-"use client";
-
 import { legalStyles as s } from "@/sections/legal/legal.styles";
-import { useLanguage } from "@/contexts/LanguageContext";
+import type { LegalDictionary } from "@/i18n/types";
 
-export function TermsClient() {
-  const { tn } = useLanguage();
-  const dict = tn("terms");
-
+export function TermsClient({ dict }: { dict: LegalDictionary }) {
   return (
     <section className={s.section}>
       <div className={s.container}>

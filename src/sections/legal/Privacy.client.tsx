@@ -1,12 +1,7 @@
-"use client";
-
 import { legalStyles as s } from "@/sections/legal/legal.styles";
-import { useLanguage } from "@/contexts/LanguageContext";
+import type { LegalDictionary } from "@/i18n/types";
 
-export function PrivacyClient() {
-  const { tn } = useLanguage();
-  const dict = tn("privacy");
-
+export function PrivacyClient({ dict }: { dict: LegalDictionary }) {
   return (
     <section className={s.section}>
       <div className={s.container}>

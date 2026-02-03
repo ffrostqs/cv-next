@@ -1,13 +1,6 @@
-// src/sections/resume/Resume.tsx
-"use client";
-
-import { useLanguage } from "@/contexts/LanguageContext";
-import { adaptResume } from "./resume.adapter";
 import { ResumeClient } from "./Resume.client";
+import type { ResumeModel } from "./resume.types";
 
-export function Resume() {
-  const { tn } = useLanguage();
-  const resume = adaptResume(tn("resume"));
-
+export function Resume({ resume }: { resume: ResumeModel }) {
   return <ResumeClient resume={resume} />;
 }

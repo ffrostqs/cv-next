@@ -23,5 +23,8 @@ export interface ProjectsModel {
   subtitle: string;
   title: string;
   description: string;
+  filters: {
+    all: string;
+  };
   items: ProjectsListItemModel[];
 }

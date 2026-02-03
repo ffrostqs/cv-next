@@ -8,6 +8,9 @@ export function adaptProjects(dict: ProjectsDictionary): ProjectsModel {
     subtitle: dict.subtitle,
     title: dict.title,
     description: dict.description,
+    filters: {
+      all: dict.filters?.all ?? "All",
+    },
 
     items: dict.items.map((item, index) => ({
       id: item.id,

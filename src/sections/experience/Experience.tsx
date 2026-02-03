@@ -1,13 +1,6 @@
-// src/sections/experience/Experience.tsx
-"use client";
-
-import { useLanguage } from "@/contexts/LanguageContext";
-import { adaptExperienceFromI18n } from "./experience.adapter";
 import { ExperienceClient } from "./Experience.client";
+import type { ExperienceModel } from "./experience.types";
 
-export function Experience() {
-  const { tn } = useLanguage();
-  const experience = adaptExperienceFromI18n(tn("experience"));
-
+export function Experience({ experience }: { experience: ExperienceModel }) {
   return <ExperienceClient experience={experience} />;
 }

@@ -27,10 +27,10 @@ export function ProjectsClient({ projects }: Props) {
     );
 
     return [
-      { key: "all", label: "All" },
+      { key: "all", label: projects.filters.all },
       ...categories.map((c) => ({ key: c, label: c })),
     ];
-  }, [projects.items]);
+  }, [projects.items, projects.filters.all]);
 
   const filteredItems = useMemo(() => {
     if (activeCategory === "all") return projects.items;

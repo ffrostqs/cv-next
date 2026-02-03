@@ -7,10 +7,12 @@ import clsx from "clsx";
 import { NavigationList } from "./NavigationList";
 import { NAV_ITEMS } from "./navigation.config";
 import { mobileNavStyles as s } from "./navigation.styles";
+import type { NavDictionary } from "@/i18n/types";
 
 interface Props {
   open: boolean;
   onClose: () => void;
+  labels: NavDictionary;
 }
 
 const navMotion = {
@@ -19,7 +21,7 @@ const navMotion = {
   exit: { opacity: 0, y: -8 },
 };
 
-export function MobileNavigation({ open, onClose }: Props) {
+export function MobileNavigation({ open, onClose, labels }: Props) {
   return (
     <AnimatePresence>
       {open && (
@@ -35,6 +37,7 @@ export function MobileNavigation({ open, onClose }: Props) {
         >
           <NavigationList
             items={NAV_ITEMS}
+            labels={labels}
             orientation="vertical"
             onNavigate={onClose}
           />

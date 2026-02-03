@@ -9,20 +9,33 @@ import { LanguageSwitcher } from "@/components/ui/language-switcher/LanguageSwit
 import { ThemeToggle } from "@/components/ui/theme-toggle/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { headerStyles as s } from "./header.styles";
-import { useLocaleFromParams } from "@/hooks/useLocaleFromParams";
 import { AppIcon } from "@/icons";
+import type { Locale } from "@/config/languages";
+import type { NavDictionary } from "@/i18n/types";
+import type { GlobalDictionary } from "@/i18n/types";
 
-export function Header() {
-  const locale = useLocaleFromParams();
+export function Header({
+  locale,
+  navLabels,
+  globalLabels,
+}: {
+  locale: Locale;
+  navLabels: NavDictionary;
+  globalLabels: GlobalDictionary;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className={s.root}>
       <div className={s.bar}>
         <div className={s.inner}>
-          <Logo href={`/${locale}`} />
+          <Logo
+            href={`/${locale}`}
+            label={globalLabels.goHome}
+            name={globalLabels.name}
+          />
 
-          <Navigation />
+          <Navigation labels={navLabels} />
 
           {/* Mobile actions */}
           <div className="flex md:hidden items-center gap-2">
@@ -43,7 +56,11 @@ export function Header() {
           </div>
         </div>
 
-        <MobileNavigation open={open} onClose={() => setOpen(false)} />
+        <MobileNavigation
+          open={open}
+          onClose={() => setOpen(false)}
+          labels={navLabels}
+        />
       </div>
     </header>
   );

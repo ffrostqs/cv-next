@@ -19,18 +19,12 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const THEME_COOKIE = "theme";
+const THEME_STORAGE_KEY = "theme";
 
-function getThemeFromCookie(): Theme | null {
-  if (typeof document === "undefined") return null;
-
-  const match = document.cookie.match(
-    new RegExp(`(^| )${THEME_COOKIE}=([^;]+)`)
-  );
-
-  return match?.[2] === "dark" || match?.[2] === "light"
-    ? (match[2] as Theme)
-    : null;
+function getThemeFromStorage(): Theme | null {
+  if (typeof window === "undefined") return null;
+  const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
+  return stored === "dark" || stored === "light" ? stored : null;
 }
 
 export function ThemeProvider({
@@ -45,7 +39,7 @@ export function ThemeProvider({
       return initialTheme;
     }
 
-    return getThemeFromCookie() ?? initialTheme;
+    return getThemeFromStorage() ?? initialTheme;
   });
 
   // 🔑 sync DOM + cookie on change
@@ -54,7 +48,9 @@ export function ThemeProvider({
     root.classList.remove("light", "dark");
     root.classList.add(theme);
 
-    document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=31536000`;
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch {}
   }, [theme]);
 
   const toggleTheme = useCallback(() => {

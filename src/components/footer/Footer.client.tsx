@@ -1,5 +1,3 @@
-"use client";
-
 import type { FooterModel } from "./footer.types";
 import { footerStyles as s } from "./footer.styles";
 import { FooterNav } from "./components/FooterNav";

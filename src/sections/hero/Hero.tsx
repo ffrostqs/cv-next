@@ -1,12 +1,6 @@
-"use client";
-
 import { HeroClient } from "./Hero.client";
-import { adaptHeroFromI18n } from "./hero.adapter";
-import { useLanguage } from "@/contexts/LanguageContext";
+import type { HeroModel } from "./hero.types";
 
-export function Hero() {
-  const { tn } = useLanguage();
-  const hero = adaptHeroFromI18n(tn("hero"));
-
+export function Hero({ hero }: { hero: HeroModel }) {
   return <HeroClient hero={hero} />;
 }

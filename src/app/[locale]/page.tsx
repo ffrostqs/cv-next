@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { isLocale, SUPPORTED_LOCALES } from "@/config/languages";
+import { isLocale, SUPPORTED_LOCALES, type Locale } from "@/config/languages";
 import { HomePage } from "@/sections/home/HomePage";
+import { getDictionary } from "@/i18n";
 
 export const dynamicParams = false;
 
@@ -15,11 +16,13 @@ export default async function LocalePage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params; // ✅ ОБОВʼЯЗКОВО await
+  const { locale } = await params;
 
   if (!isLocale(locale)) {
     notFound();
   }
 
-  return <HomePage />;
+  const dictionary = await getDictionary(locale as Locale);
+
+  return <HomePage dictionary={dictionary} />;
 }

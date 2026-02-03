@@ -3,6 +3,9 @@ export const projects = {
   title: "Projects",
   description:
     "Selected commercial projects based on real-world experience, focused on React-driven interfaces and backend integration.",
+  filters: {
+    all: "All",
+  },
   items: [
     {
       id: 1,
