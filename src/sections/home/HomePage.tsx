@@ -1,4 +1,5 @@
 import type { Dictionary } from "@/i18n/types";
+import { Suspense } from "react";
 import { Hero } from "@/sections/hero/Hero";
 import { Experience } from "@/sections/experience/Experience";
 import { About } from "@/sections/about/About";
@@ -33,7 +34,9 @@ export function HomePage({ dictionary }: { dictionary: Dictionary }) {
       <Hero hero={hero} />
       <Experience experience={experience} />
       <About about={about} />
-      <Projects projects={projects} />
+      <Suspense fallback={null}>
+        <Projects projects={projects} />
+      </Suspense>
       <Skills skills={skills} />
       <Resume resume={resume} />
     </>
