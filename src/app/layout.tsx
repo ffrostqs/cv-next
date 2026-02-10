@@ -2,12 +2,13 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ThemeScript } from "@/components/theme/ThemeScript";
-import { Space_Grotesk } from "next/font/google";
+import { Manrope } from "next/font/google";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-const spaceGrotesk = Space_Grotesk({
+const bodyFont = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body className={spaceGrotesk.className} suppressHydrationWarning>
+      <body className={bodyFont.variable} suppressHydrationWarning>
         <ThemeProvider initialTheme="dark">{children}</ThemeProvider>
       </body>
     </html>

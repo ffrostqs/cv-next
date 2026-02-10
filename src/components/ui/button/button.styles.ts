@@ -3,9 +3,9 @@ import { cva } from "class-variance-authority";
 export const buttonStyles = cva(
   [
     "inline-flex items-center justify-center whitespace-nowrap",
-    "rounded-lg font-medium",
+    "rounded-xl font-medium",
 
-    "transition-colors",
+    "transition-all",
     "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
     "focus-visible:ring-offset-background",
 
@@ -18,6 +18,7 @@ export const buttonStyles = cva(
           "bg-[color:var(--color-primary)]",
           "text-[color:var(--button-primary-text)]",
           "hover:opacity-90",
+          "hover:-translate-y-0.5",
           "focus-visible:ring-[color:var(--color-primary)]",
         ].join(" "),
 
@@ -30,6 +31,7 @@ export const buttonStyles = cva(
           "hover:border-[color:var(--color-primary)]",
           "hover:text-[color:var(--color-primary)]",
           "hover:bg-[color:var(--surface-muted)]",
+          "hover:-translate-y-0.5",
 
           "focus-visible:ring-[color:var(--color-primary)]",
         ].join(" "),
@@ -38,6 +40,7 @@ export const buttonStyles = cva(
           "bg-transparent",
           "text-[color:var(--color-primary)]",
           "hover:bg-[color:var(--surface-muted)]",
+          "hover:-translate-y-0.5",
           "focus-visible:ring-[color:var(--color-primary)]",
         ].join(" "),
 
