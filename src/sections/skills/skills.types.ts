@@ -12,6 +12,15 @@ export interface SkillsModel {
   subtitle: string;
   title: string;
   description: string;
+  focusAreas?: {
+    title: string;
+    items: {
+      id: string;
+      icon: IconName;
+      title: string;
+      description: string;
+    }[];
+  };
   categories: SkillCategory[];
   usage?: Record<string, number>;
 }

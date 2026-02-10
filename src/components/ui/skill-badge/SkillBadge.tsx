@@ -20,6 +20,13 @@ export function SkillBadge({
       role={interactive ? "button" : undefined}
       tabIndex={interactive ? 0 : undefined}
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (!interactive) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onClick?.();
+        }
+      }}
       className={cn(
         skillBadgeStyles({
           level,

@@ -1,5 +1,10 @@
 :root {
   --gray-500: #475569;
-  --surface-muted: #f8fafc;
-  --border-muted: rgba(15, 23, 42, 0.08);
+  --surface-muted: #f1f5f9;
+  --surface-page: #f6f8fb;
+  --surface-section: #ffffff;
+  --surface-card: #ffffff;
+  --surface-elevated: #ffffff;
+  --text-secondary: #64748b;
+  --border-muted: rgba(15, 23, 42, 0.1);
 }

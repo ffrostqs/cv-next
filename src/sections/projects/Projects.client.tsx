@@ -8,6 +8,8 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { Tabs } from "@/components/ui/tabs";
 import { motion as m } from "@/components/ui/motion";
 import { Button } from "@/components/ui/button";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { normalizeSkill } from "@/domain/skills/normalize-skill";
 
 import type { ProjectsModel } from "./projects.types";
 import { PROJECTS_SECTION_ID } from "./projects.config";
@@ -22,6 +24,9 @@ export function ProjectsClient({ projects }: Props) {
   const { titleId, descriptionId } = useSectionIds(PROJECTS_SECTION_ID);
   const [activeCategory, setActiveCategory] = useState("all");
   const [visibleCount, setVisibleCount] = useState(2);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const tabs = useMemo(() => {
     const categories = Array.from(
@@ -39,13 +44,24 @@ export function ProjectsClient({ projects }: Props) {
     return projects.items.filter((i) => i.category === activeCategory);
   }, [activeCategory, projects.items]);
 
+  const techParam = searchParams.get("tech");
+  const techLabel = techParam ? decodeURIComponent(techParam) : null;
+  const techNormalized = techLabel ? normalizeSkill(techLabel) : null;
+
+  const techFilteredItems = useMemo(() => {
+    if (!techNormalized) return filteredItems;
+    return filteredItems.filter((project) =>
+      project.stack.some((tech) => normalizeSkill(tech) === techNormalized)
+    );
+  }, [filteredItems, techNormalized]);
+
   useEffect(() => {
     setVisibleCount(2);
-  }, [activeCategory]);
+  }, [activeCategory, techNormalized]);
 
   const visibleItems = useMemo(
-    () => filteredItems.slice(0, visibleCount),
-    [filteredItems, visibleCount]
+    () => techFilteredItems.slice(0, visibleCount),
+    [techFilteredItems, visibleCount]
   );
 
   return (
@@ -75,6 +91,20 @@ export function ProjectsClient({ projects }: Props) {
           />
         </div>
 
+        {techLabel && (
+          <div className={s.filterBar}>
+            <span className={s.filterLabel}>{projects.labels.filteredBy}:</span>
+            <span className={s.filterValue}>{techLabel}</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push(`${pathname}#${PROJECTS_SECTION_ID}`)}
+            >
+              {projects.labels.clear}
+            </Button>
+          </div>
+        )}
+
         <ul className={s.grid} role="list">
           {visibleItems.map((project, index) => (
             <motion.li
@@ -82,12 +112,12 @@ export function ProjectsClient({ projects }: Props) {
               {...m("fadeUp", { order: index })}
               role="listitem"
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} labels={projects.labels} />
             </motion.li>
           ))}
         </ul>
 
-        {filteredItems.length > visibleCount && (
+        {techFilteredItems.length > visibleCount && (
           <div className={s.showMore}>
             <Button
               variant="outline"

@@ -3,6 +3,29 @@ export const skills = {
   title: "Core Expertise",
   description:
     "Technologies, patterns, and tools I use to design, build, and maintain high-quality web applications.",
+  focusAreas: {
+    title: "Focus areas",
+    items: [
+      {
+        id: "perf-ui",
+        icon: "frontend",
+        title: "High-performance UI",
+        description: "Fast, accessible interfaces with smooth interactions.",
+      },
+      {
+        id: "architecture",
+        icon: "architecture",
+        title: "Scalable architecture",
+        description: "Modular systems that stay maintainable as they grow.",
+      },
+      {
+        id: "dx",
+        icon: "tools",
+        title: "Developer experience",
+        description: "Tooling and automation that keep teams productive.",
+      },
+    ],
+  },
   categories: [
     {
       id: "frontend",

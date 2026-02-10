@@ -15,6 +15,10 @@ export interface ProjectsListItemModel {
   meta: string;
   image: string;
   description: string;
+  impact?: string[];
+  problem?: string;
+  solution?: string;
+  result?: string;
   stack: string[];
   links?: ProjectLinkModel[];
 }
@@ -26,6 +30,15 @@ export interface ProjectsModel {
   filters: {
     all: string;
     showMore: string;
+  };
+  labels: {
+    filteredBy: string;
+    clear: string;
+    viewCase: string;
+    hideCase: string;
+    problem: string;
+    solution: string;
+    result: string;
   };
   items: ProjectsListItemModel[];
 }

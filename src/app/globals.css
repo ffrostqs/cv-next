@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @import "../styles/tokens.css";
 @import "../styles/themes.css";
 @import "../styles/animations.css";
@@ -11,6 +10,9 @@ html {
 
 body {
   background-color: var(--surface-page);
+  background-image:
+    radial-gradient(1200px 600px at 20% -10%, rgba(76, 198, 255, 0.12), transparent 60%),
+    radial-gradient(1000px 500px at 80% -20%, rgba(251, 146, 60, 0.12), transparent 60%);
   color: var(--text-primary);
 }
 @media (max-width: 640px) {

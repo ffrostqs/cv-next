@@ -1,19 +1,31 @@
 export const projectsStyles = {
   section: "relative",
 
-  root: "space-y-12",
+  root: "space-y-14",
 
   tabsWrapper: "flex justify-center",
 
-  grid: "grid gap-6 sm:grid-cols-2",
-  showMore: "flex justify-center pt-2",
+  grid: "grid gap-8 sm:grid-cols-2",
+  showMore: "flex justify-center pt-4",
+  filterBar: `
+    flex flex-wrap items-center justify-center gap-2
+    text-sm
+    text-[color:var(--text-secondary)]
+  `,
+  filterLabel: "opacity-70",
+  filterValue: `
+    rounded-full
+    px-3 py-1
+    text-[color:var(--text-primary)]
+    bg-[color:rgba(0,187,255,0.12)]
+  `,
 
   card: {
     wrapper: `
       ui-surface-card
       flex h-full flex-col
       rounded-xl
-      p-6
+      p-7
       transition-colors
       hover:border-[color:var(--color-primary)]
     `,
@@ -32,15 +44,25 @@ export const projectsStyles = {
 
     description: `
       ui-text-muted
-      mt-3
+      mt-4
       text-sm
       leading-relaxed
+    `,
+    impact: "mt-4 flex flex-wrap gap-2.5",
+    impactItem: `
+      rounded-full
+      border
+      border-[color:var(--border-muted)]
+      bg-[color:rgba(0,187,255,0.12)]
+      px-3.5 py-1
+      text-xs
+      text-[color:var(--text-primary)]
     `,
 
     imageWrapper: `
       ui-surface-soft
       relative
-      mt-4
+      mt-5
       aspect-video
       overflow-hidden
       rounded-lg
@@ -48,7 +70,7 @@ export const projectsStyles = {
 
     image: "object-cover",
 
-    stack: "mt-4 flex flex-wrap gap-2",
+    stack: "mt-5 flex flex-wrap gap-2.5",
 
     stackItem: `
       rounded-md
@@ -60,7 +82,7 @@ export const projectsStyles = {
       border-[color:var(--border-muted)]
     `,
 
-    links: "mt-6 flex gap-4",
+    links: "mt-6 flex flex-wrap gap-4",
 
     link: `
       inline-flex
@@ -71,5 +93,22 @@ export const projectsStyles = {
       text-[color:var(--color-primary)]
       hover:underline
     `,
+    case: "mt-6",
+    caseToggle: `
+      inline-flex
+      items-center
+      gap-2
+      text-xs
+      font-medium
+      text-[color:var(--color-primary)]
+      hover:underline
+    `,
+    caseBody: `
+      mt-4
+      space-y-4
+      text-sm
+      text-[color:var(--text-primary)]
+    `,
+    caseLabel: "text-xs uppercase tracking-wide opacity-60",
   },
 };

@@ -6,6 +6,15 @@ export interface ProjectsDictionary {
     all: string;
     showMore: string;
   };
+  labels: {
+    filteredBy: string;
+    clear: string;
+    viewCase: string;
+    hideCase: string;
+    problem: string;
+    solution: string;
+    result: string;
+  };
   items: {
     id: number;
     category: string;
@@ -13,6 +22,7 @@ export interface ProjectsDictionary {
     image: string;
     title: string;
     description: string;
+    impact?: string[];
     problem: string;
     solution?: string;
     result?: string;

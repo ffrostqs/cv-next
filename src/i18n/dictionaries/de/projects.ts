@@ -7,15 +7,29 @@ export const projects = {
     all: "Alle",
     showMore: "Mehr anzeigen",
   },
+  labels: {
+    filteredBy: "Gefiltert nach",
+    clear: "Zurücksetzen",
+    viewCase: "Case ansehen",
+    hideCase: "Case ausblenden",
+    problem: "Problem",
+    solution: "Lösung",
+    result: "Ergebnis",
+  },
   items: [
     {
       id: 5,
-      meta: "2024 – 2026",
+      meta: "2026",
       category: "Rechner",
       image: "/images/projects/german-net-salary-calculator.png",
       title: "German Net Salary Calculator (Angular)",
       description:
         "Statischer Offline-Rechner für Nettogehälter mit lokaler Steuerkonfiguration, optionalem Live-API-Modus und Diagrammen.",
+      impact: [
+        "Offline-First",
+        "Wöchentliche Steuer-Updates",
+        "Diagramm-Analyse",
+      ],
       problem:
         "Nutzer brauchten einen schnellen Rechner, der offline funktioniert und mit aktuellen Steuerparametern arbeitet.",
       solution:
@@ -45,6 +59,11 @@ export const projects = {
       title: "Social-Media-Analyseplattform",
       description:
         "Großskalige Analyseplattform, die von Enterprise-Kunden zur Überwachung und Analyse von Social-Media-Daten genutzt wird.",
+      impact: [
+        "Bessere Performance",
+        "Schnellere Ladezeiten",
+        "Skalierbares UI",
+      ],
       problem:
         "Die Plattform erforderte skalierbare, leistungsstarke Benutzeroberflächen zur Verarbeitung großer Datenmengen und komplexer Visualisierungen.",
       solution:
@@ -63,6 +82,7 @@ export const projects = {
       title: "Hochfrequentierte B2B-Webplattformen",
       description:
         "Eine Reihe von B2B-Produkten mit komplexer Geschäftslogik und hohem Nutzeraufkommen.",
+      impact: ["Wiederverwendbare UI", "Schnellere Releases", "Konsistente UX"],
       problem:
         "Mehrere Produkte erforderten konsistente UI-Patterns und eine skalierbare Frontend-Architektur bei gleichzeitig schneller Auslieferung neuer Features.",
       solution:
@@ -81,6 +101,11 @@ export const projects = {
       title: "Payment- und Admin-Dashboards",
       description:
         "Frontend-Dashboards für Zahlungsabwicklung und administrative Werkzeuge.",
+      impact: [
+        "Stabile interne Tools",
+        "Wiederverwendbare Komponenten",
+        "Saubere Integrationen",
+      ],
       problem:
         "Zahlungssysteme erforderten zuverlässige, wiederverwendbare UI-Komponenten sowie eine saubere Integration mit mehreren Backend-Services.",
       solution:
@@ -99,6 +124,7 @@ export const projects = {
       title: "Benutzeroberflächen für Logistikmanagement",
       description:
         "Kundenseitige Weboberflächen für Logistik- und Flottenmanagementsysteme.",
+      impact: ["Bessere Barrierefreiheit", "Responsives UI", "Verbesserte UX"],
       problem:
         "Bestehende Oberflächen waren nicht ausreichend responsiv, barrierefrei und performant auf unterschiedlichen Endgeräten.",
       solution:

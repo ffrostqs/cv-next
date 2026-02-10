@@ -1,9 +1,16 @@
 .dark {
-  --gray-0: #020617;
+  --gray-0: #050816;
   --gray-900: #e5e7eb;
 
   --indigo-500: #818cf8;
   --orange-500: #fb923c;
-  --surface-muted: rgba(15, 23, 42, 0.6);
-  --border-muted: rgba(148, 163, 184, 0.25);
+  --surface-page: #050816;
+  --surface-section: #0b1224;
+  --surface-card: rgba(13, 20, 36, 0.8);
+  --surface-elevated: rgba(15, 23, 42, 0.9);
+  --surface-muted: rgba(15, 23, 42, 0.7);
+  --border-muted: rgba(148, 163, 184, 0.2);
+  --text-secondary: rgba(226, 232, 240, 0.7);
+  --border-default: rgba(148, 163, 184, 0.25);
+  --shadow-card: 0 18px 60px rgba(2, 6, 23, 0.6);
 }

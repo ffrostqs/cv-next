@@ -7,15 +7,25 @@ export const projects = {
     all: "All",
     showMore: "Показати ще",
   },
+  labels: {
+    filteredBy: "Фільтр",
+    clear: "Очистити",
+    viewCase: "Деталі кейсу",
+    hideCase: "Сховати кейс",
+    problem: "Проблема",
+    solution: "Рішення",
+    result: "Результат",
+  },
   items: [
     {
       id: 5,
-      meta: "2024 – 2026",
+      meta: "2026",
       category: "Calculator",
       image: "/images/projects/german-net-salary-calculator.png",
       title: "German Net Salary Calculator (Angular)",
       description:
         "Static, offline-first net salary calculator with local tax config, optional live API mode, and chart breakdowns.",
+      impact: ["Offline-first", "Weekly tax updates", "Chart breakdowns"],
       problem:
         "Users needed a fast, reliable calculator that works offline and stays up to date with tax parameters.",
       solution:
@@ -43,6 +53,7 @@ export const projects = {
       image: "/images/projects/project-1.png",
       title: "Analytics Dashboard",
       description: "Internal analytics platform for business teams.",
+      impact: ["Unified reporting", "Faster insights", "Role-based access"],
       problem: "Data was fragmented across multiple tools.",
       solution:
         "Designed a unified dashboard with role-based access and real-time updates.",
@@ -57,6 +68,7 @@ export const projects = {
       image: "/images/projects/project-2.png",
       title: "Analytics",
       description: "Internal ",
+      impact: ["Improved delivery", "Reusable UI", "Faster reporting"],
       problem: "Data ",
       solution:
         "Designed a unified dashboard with role-based access and real-time updates.",

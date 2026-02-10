@@ -12,6 +12,15 @@ export function adaptProjects(dict: ProjectsDictionary): ProjectsModel {
       all: dict.filters?.all ?? "All",
       showMore: dict.filters?.showMore ?? "Show more",
     },
+    labels: {
+      filteredBy: dict.labels?.filteredBy ?? "Filtered by",
+      clear: dict.labels?.clear ?? "Clear",
+      viewCase: dict.labels?.viewCase ?? "View case",
+      hideCase: dict.labels?.hideCase ?? "Hide case",
+      problem: dict.labels?.problem ?? "Problem",
+      solution: dict.labels?.solution ?? "Solution",
+      result: dict.labels?.result ?? "Result",
+    },
 
     items: dict.items.map((item, index) => ({
       id: item.id,
@@ -20,6 +29,10 @@ export function adaptProjects(dict: ProjectsDictionary): ProjectsModel {
       meta: item.meta,
       image: item.image,
       description: item.description,
+      impact: item.impact,
+      problem: item.problem,
+      solution: item.solution,
+      result: item.result,
       stack: item.stack,
 
       links: item.links?.map((link, i) => ({

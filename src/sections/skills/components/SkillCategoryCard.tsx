@@ -8,6 +8,7 @@ import { SkillBadge } from "@/components/ui/skill-badge";
 import type { SkillCategory } from "../skills.types";
 import { skillsStyles as s } from "../skills.styles";
 import { normalizeSkill } from "@/domain/skills/normalize-skill";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   category: SkillCategory;
@@ -16,6 +17,9 @@ interface Props {
 }
 
 export function SkillCategoryCard({ category, index, usage }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   return (
     <motion.div {...m("fadeUp", { order: index })} className={s.card.wrapper}>
       {/* Header */}
@@ -37,9 +41,16 @@ export function SkillCategoryCard({ category, index, usage }: Props) {
       <div className={s.card.skills}>
         {category.skills.map((skill) => {
           const usedIn = usage?.[normalizeSkill(skill)];
+          const techParam = encodeURIComponent(skill);
 
           return (
-            <SkillBadge key={skill} usedIn={usedIn}>
+            <SkillBadge
+              key={skill}
+              usedIn={usedIn}
+              onClick={() =>
+                router.push(`${pathname}?tech=${techParam}#projects`)
+              }
+            >
               {skill}
             </SkillBadge>
           );

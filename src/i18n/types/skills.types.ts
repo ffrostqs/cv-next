@@ -4,6 +4,15 @@ export interface SkillsDictionary {
   subtitle: string;
   title: string;
   description: string;
+  focusAreas?: {
+    title: string;
+    items: {
+      id: string;
+      icon: string;
+      title: string;
+      description: string;
+    }[];
+  };
 
   categories: {
     id: string;

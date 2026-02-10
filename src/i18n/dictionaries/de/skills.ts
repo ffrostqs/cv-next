@@ -3,6 +3,30 @@ export const skills = {
   title: "Kernkompetenzen",
   description:
     "Technologien, Patterns und Tools, die ich zur Konzeption, Entwicklung und Wartung hochwertiger Webanwendungen einsetze.",
+  focusAreas: {
+    title: "Schwerpunkte",
+    items: [
+      {
+        id: "perf-ui",
+        icon: "frontend",
+        title: "High-Performance UI",
+        description:
+          "Schnelle, barrierefreie Interfaces mit sauberen Interaktionen.",
+      },
+      {
+        id: "architecture",
+        icon: "architecture",
+        title: "Skalierbare Architektur",
+        description: "Modulare Systeme, die langfristig wartbar bleiben.",
+      },
+      {
+        id: "dx",
+        icon: "tools",
+        title: "Developer Experience",
+        description: "Tooling und Automatisierung für produktive Teams.",
+      },
+    ],
+  },
   categories: [
     {
       id: "frontend",

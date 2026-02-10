@@ -2,8 +2,13 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { ThemeScript } from "@/components/theme/ThemeScript";
+import { Space_Grotesk } from "next/font/google";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +32,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
-      <body suppressHydrationWarning>
+      <body className={spaceGrotesk.className} suppressHydrationWarning>
         <ThemeProvider initialTheme="dark">{children}</ThemeProvider>
       </body>
     </html>

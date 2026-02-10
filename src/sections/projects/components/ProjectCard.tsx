@@ -5,17 +5,21 @@ import Image from "next/image";
 import { AppIcon } from "@/icons/AppIcon";
 import type { ProjectsModel } from "../projects.types";
 import { projectsStyles as s } from "../projects.styles";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Props {
   project: ProjectsModel["items"][number];
+  labels: ProjectsModel["labels"];
 }
 
 const DEFAULT_IMAGE = "/images/default_projects.png";
 
-export function ProjectCard({ project }: Props) {
+export function ProjectCard({ project, labels }: Props) {
   const [imgSrc, setImgSrc] = useState(
     project.image && project.image.trim() !== "" ? project.image : DEFAULT_IMAGE
   );
+  const [open, setOpen] = useState(false);
+  const hasCase = Boolean(project.problem || project.solution || project.result);
 
   return (
     <article className={s.card.wrapper}>
@@ -27,6 +31,22 @@ export function ProjectCard({ project }: Props) {
 
       {/* Description */}
       <p className={s.card.description}>{project.description}</p>
+
+      {project.impact && project.impact.length > 0 && (
+        <ul className={s.card.impact} aria-label="Impact highlights">
+          {project.impact.map((item, index) => (
+            <motion.li
+              key={item}
+              className={s.card.impactItem}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, delay: index * 0.04 }}
+            >
+              {item}
+            </motion.li>
+          ))}
+        </ul>
+      )}
 
       {/* Preview (with runtime fallback) */}
       <div className={s.card.imageWrapper}>
@@ -52,6 +72,50 @@ export function ProjectCard({ project }: Props) {
           </li>
         ))}
       </ul>
+
+      {hasCase && (
+        <div className={s.card.case}>
+          <button
+            type="button"
+            className={s.card.caseToggle}
+            onClick={() => setOpen((prev) => !prev)}
+            aria-expanded={open}
+          >
+            {open ? labels.hideCase : labels.viewCase}
+          </button>
+
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.div
+                className={s.card.caseBody}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+              >
+                {project.problem && (
+                  <div>
+                    <div className={s.card.caseLabel}>{labels.problem}</div>
+                    <p>{project.problem}</p>
+                  </div>
+                )}
+                {project.solution && (
+                  <div>
+                    <div className={s.card.caseLabel}>{labels.solution}</div>
+                    <p>{project.solution}</p>
+                  </div>
+                )}
+                {project.result && (
+                  <div>
+                    <div className={s.card.caseLabel}>{labels.result}</div>
+                    <p>{project.result}</p>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
 
       {/* Links */}
       {project.links && (

@@ -7,15 +7,25 @@ export const projects = {
     all: "All",
     showMore: "Show more",
   },
+  labels: {
+    filteredBy: "Filtered by",
+    clear: "Clear",
+    viewCase: "View case",
+    hideCase: "Hide case",
+    problem: "Problem",
+    solution: "Solution",
+    result: "Result",
+  },
   items: [
     {
       id: 5,
-      meta: "2024 – 2026",
+      meta: "2026",
       category: "Calculator",
       image: "/images/projects/german-net-salary-calculator.png",
       title: "German Net Salary Calculator (Angular)",
       description:
         "Static, offline-first net salary calculator with local tax config, optional live API mode, and chart breakdowns.",
+      impact: ["Offline-first", "Weekly tax updates", "Chart breakdowns"],
       problem:
         "Users needed a fast, reliable calculator that works offline and stays up to date with tax parameters.",
       solution:
@@ -45,6 +55,7 @@ export const projects = {
       title: "Social Media Analytics Platform",
       description:
         "Large-scale analytics platform used by enterprise clients to monitor and analyze social media data.",
+      impact: ["Improved UI performance", "Faster page loads", "Scalable UI"],
       problem:
         "The platform required scalable, high-performance user interfaces capable of handling large datasets and complex visualizations.",
       solution:
@@ -63,6 +74,7 @@ export const projects = {
       title: "High-Traffic B2B Web Platforms",
       description:
         "A set of B2B products with complex business logic and high user traffic.",
+      impact: ["Reusable UI system", "Faster delivery", "Consistent UX"],
       problem:
         "Multiple products required consistent UI patterns and scalable frontend architecture while supporting fast delivery.",
       solution:
@@ -81,6 +93,11 @@ export const projects = {
       title: "Payment & Admin Dashboards",
       description:
         "Frontend dashboards for payment processing and administrative tools.",
+      impact: [
+        "Stable internal tools",
+        "Reusable components",
+        "Clean integrations",
+      ],
       problem:
         "Payment systems required reliable, reusable UI components and clean integration with multiple backend services.",
       solution:
@@ -99,6 +116,7 @@ export const projects = {
       title: "Logistics Management Interfaces",
       description:
         "Customer-facing web interfaces for logistics and fleet management systems.",
+      impact: ["Better accessibility", "Responsive UI", "Improved UX"],
       problem:
         "Existing interfaces lacked responsiveness, accessibility, and performance on different devices.",
       solution:
