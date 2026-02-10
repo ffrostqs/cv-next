@@ -6,6 +6,7 @@ export const projectsStyles = {
   tabsWrapper: "flex justify-center",
 
   grid: "grid gap-6 sm:grid-cols-2",
+  showMore: "flex justify-center pt-2",
 
   card: {
     wrapper: `
@@ -50,11 +51,13 @@ export const projectsStyles = {
     stack: "mt-4 flex flex-wrap gap-2",
 
     stackItem: `
-      ui-surface-soft
-      ui-text-muted
       rounded-md
-      px-2 py-0.5
-      text-xs
+      px-2.5 py-1
+      text-sm
+      text-[color:var(--text-primary)]
+      bg-[color:rgba(148,163,184,0.16)]
+      border
+      border-[color:var(--border-muted)]
     `,
 
     links: "mt-6 flex gap-4",

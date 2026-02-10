@@ -5,8 +5,38 @@ export const projects = {
     "A selection of projects where I solved real business and technical challenges.",
   filters: {
     all: "All",
+    showMore: "Показати ще",
   },
   items: [
+    {
+      id: 5,
+      meta: "2024 – 2026",
+      category: "Calculator",
+      image: "/images/projects/german-net-salary-calculator.png",
+      title: "German Net Salary Calculator (Angular)",
+      description:
+        "Static, offline-first net salary calculator with local tax config, optional live API mode, and chart breakdowns.",
+      problem:
+        "Users needed a fast, reliable calculator that works offline and stays up to date with tax parameters.",
+      solution:
+        "Built a static Angular app that caches tax data locally, supports a live API toggle, and visualizes results with charts.",
+      result:
+        "Works offline after first load, supports weekly tax data refresh, and keeps calculations transparent.",
+      tags: ["Calculator", "Offline-First", "Angular"],
+      stack: ["Angular 19", "TypeScript", "RxJS", "Signals", "Chart.js"],
+      links: [
+        {
+          label: "Live Demo",
+          url: "https://ffrostqs.github.io/ffrostqs-German-Net-Salary-Calculator/",
+          icon: "demo",
+        },
+        {
+          label: "GitHub",
+          url: "https://github.com/ffrostqs/ffrostqs-German-Net-Salary-Calculator",
+          icon: "github",
+        },
+      ],
+    },
     {
       id: 1,
       category: "Web Application",

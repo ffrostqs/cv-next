@@ -5,8 +5,38 @@ export const projects = {
     "Ausgewählte kommerzielle Projekte auf Basis realer Praxiserfahrung mit Fokus auf React-basierte Benutzeroberflächen und Backend-Integration.",
   filters: {
     all: "Alle",
+    showMore: "Mehr anzeigen",
   },
   items: [
+    {
+      id: 5,
+      meta: "2024 – 2026",
+      category: "Rechner",
+      image: "/images/projects/german-net-salary-calculator.png",
+      title: "German Net Salary Calculator (Angular)",
+      description:
+        "Statischer Offline-Rechner für Nettogehälter mit lokaler Steuerkonfiguration, optionalem Live-API-Modus und Diagrammen.",
+      problem:
+        "Nutzer brauchten einen schnellen Rechner, der offline funktioniert und mit aktuellen Steuerparametern arbeitet.",
+      solution:
+        "Statische Angular-App mit lokalem Tax-Config-Cache, optionalem Live-API-Modus und Chart-Auswertung.",
+      result:
+        "Funktioniert offline nach dem ersten Laden und aktualisiert Steuerdaten wöchentlich.",
+      tags: ["Rechner", "Offline-First", "Angular"],
+      stack: ["Angular 19", "TypeScript", "RxJS", "Signals", "Chart.js"],
+      links: [
+        {
+          label: "Live Demo",
+          url: "https://ffrostqs.github.io/ffrostqs-German-Net-Salary-Calculator/",
+          icon: "demo",
+        },
+        {
+          label: "GitHub",
+          url: "https://github.com/ffrostqs/ffrostqs-German-Net-Salary-Calculator",
+          icon: "github",
+        },
+      ],
+    },
     {
       id: 1,
       meta: "Aug. 2022 – Juni 2025",

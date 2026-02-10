@@ -10,6 +10,7 @@ export function adaptProjects(dict: ProjectsDictionary): ProjectsModel {
     description: dict.description,
     filters: {
       all: dict.filters?.all ?? "All",
+      showMore: dict.filters?.showMore ?? "Show more",
     },
 
     items: dict.items.map((item, index) => ({

@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 
 import { Section, useSectionIds } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Tabs } from "@/components/ui/tabs";
 import { motion as m } from "@/components/ui/motion";
+import { Button } from "@/components/ui/button";
 
 import type { ProjectsModel } from "./projects.types";
 import { PROJECTS_SECTION_ID } from "./projects.config";
@@ -20,6 +21,7 @@ interface Props {
 export function ProjectsClient({ projects }: Props) {
   const { titleId, descriptionId } = useSectionIds(PROJECTS_SECTION_ID);
   const [activeCategory, setActiveCategory] = useState("all");
+  const [visibleCount, setVisibleCount] = useState(2);
 
   const tabs = useMemo(() => {
     const categories = Array.from(
@@ -36,6 +38,15 @@ export function ProjectsClient({ projects }: Props) {
     if (activeCategory === "all") return projects.items;
     return projects.items.filter((i) => i.category === activeCategory);
   }, [activeCategory, projects.items]);
+
+  useEffect(() => {
+    setVisibleCount(2);
+  }, [activeCategory]);
+
+  const visibleItems = useMemo(
+    () => filteredItems.slice(0, visibleCount),
+    [filteredItems, visibleCount]
+  );
 
   return (
     <Section
@@ -65,7 +76,7 @@ export function ProjectsClient({ projects }: Props) {
         </div>
 
         <ul className={s.grid} role="list">
-          {filteredItems.map((project, index) => (
+          {visibleItems.map((project, index) => (
             <motion.li
               key={project.id}
               {...m("fadeUp", { order: index })}
@@ -75,6 +86,17 @@ export function ProjectsClient({ projects }: Props) {
             </motion.li>
           ))}
         </ul>
+
+        {filteredItems.length > visibleCount && (
+          <div className={s.showMore}>
+            <Button
+              variant="outline"
+              onClick={() => setVisibleCount((prev) => prev + 2)}
+            >
+              {projects.filters.showMore}
+            </Button>
+          </div>
+        )}
       </div>
     </Section>
   );

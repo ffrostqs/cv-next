@@ -25,6 +25,7 @@ export interface ProjectsModel {
   description: string;
   filters: {
     all: string;
+    showMore: string;
   };
   items: ProjectsListItemModel[];
 }

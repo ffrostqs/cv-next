@@ -4,6 +4,7 @@ export interface ProjectsDictionary {
   description: string;
   filters: {
     all: string;
+    showMore: string;
   };
   items: {
     id: number;
