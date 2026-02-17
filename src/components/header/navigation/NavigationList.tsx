@@ -1,20 +1,16 @@
 "use client";
 
 import { navListStyles as s } from "./navigation.styles";
-import type { NavItem } from "./navigation.types";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import type { NavDictionary } from "@/i18n/types";
 
 interface Props {
-  items: NavItem[];
-  labels: NavDictionary;
+  items: { id: string; href: string; label: string }[];
   orientation?: "horizontal" | "vertical";
   onNavigate?: () => void;
 }
 
 export function NavigationList({
   items,
-  labels,
   orientation = "horizontal",
   onNavigate,
 }: Props) {
@@ -29,14 +25,14 @@ export function NavigationList({
         const isActive = activeId === id;
 
         return (
-          <li key={item.key}>
+          <li key={item.id}>
             <a
               href={item.href}
               className={s.item()}
               aria-current={isActive ? "location" : undefined}
               onClick={onNavigate}
             >
-              {labels[item.key as keyof NavDictionary] ?? item.key}
+              {item.label}
             </a>
           </li>
         );

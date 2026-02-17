@@ -1,13 +1,15 @@
 import { notFound } from "next/navigation";
-import { isLocale, SUPPORTED_LOCALES, type Locale } from "@/config/languages";
+import type { Locale } from "@/config/languages";
 import { HomePage } from "@/sections/home/HomePage";
 import { getDictionary } from "@/i18n";
+import { getLocales } from "@/lib/locales";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
-export function generateStaticParams() {
-  return SUPPORTED_LOCALES.map((locale) => ({
-    locale,
+export async function generateStaticParams() {
+  const locales = await getLocales();
+  return locales.map((locale) => ({
+    locale: locale.code,
   }));
 }
 
@@ -18,9 +20,8 @@ export default async function LocalePage({
 }) {
   const { locale } = await params;
 
-  if (!isLocale(locale)) {
-    notFound();
-  }
+  const locales = await getLocales();
+  if (!locales.some((item) => item.code === locale)) notFound();
 
   const dictionary = await getDictionary(locale as Locale);
 

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
-import { DEFAULT_LOCALE } from "@/config/languages";
+import { getDefaultLocale } from "@/lib/locales";
 
-export default function PrivacyRedirect() {
-  redirect(`/${DEFAULT_LOCALE}/privacy`);
+export default async function PrivacyRedirect() {
+  const locale = await getDefaultLocale();
+  redirect(`/${locale?.code ?? "de"}/privacy`);
 }

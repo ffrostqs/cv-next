@@ -1,7 +1,8 @@
 // src/app/terms/page.tsx
 import { redirect } from "next/navigation";
-import { DEFAULT_LOCALE } from "@/config/languages";
+import { getDefaultLocale } from "@/lib/locales";
 
-export default function TermsRedirect() {
-  redirect(`/${DEFAULT_LOCALE}/terms`);
+export default async function TermsRedirect() {
+  const locale = await getDefaultLocale();
+  redirect(`/${locale?.code ?? "de"}/terms`);
 }

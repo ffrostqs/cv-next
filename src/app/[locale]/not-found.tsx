@@ -1,7 +1,7 @@
 // src/app/[locale]/not-found.tsx
 import Link from "next/link";
 import { getDictionary } from "@/i18n/getDictionary";
-import { DEFAULT_LOCALE } from "@/config/languages";
+import { getDefaultLocale } from "@/lib/locales";
 import type { CSSProperties } from "react";
 
 interface Props {
@@ -10,7 +10,8 @@ interface Props {
 
 export default async function NotFoundPage({ params }: Props) {
   const resolved = params ? await params : undefined;
-  const locale = resolved?.locale ?? DEFAULT_LOCALE;
+  const defaultLocale = await getDefaultLocale();
+  const locale = resolved?.locale ?? defaultLocale?.code ?? "de";
 
   const dict = await getDictionary(locale);
   const t = dict.notFound;

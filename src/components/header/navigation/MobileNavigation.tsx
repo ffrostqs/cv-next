@@ -1,18 +1,14 @@
 "use client";
-
-import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 
 import { NavigationList } from "./NavigationList";
-import { NAV_ITEMS } from "./navigation.config";
 import { mobileNavStyles as s } from "./navigation.styles";
-import type { NavDictionary } from "@/i18n/types";
 
 interface Props {
   open: boolean;
   onClose: () => void;
-  labels: NavDictionary;
+  items: { id: string; href: string; label: string }[];
 }
 
 const navMotion = {
@@ -21,7 +17,7 @@ const navMotion = {
   exit: { opacity: 0, y: -8 },
 };
 
-export function MobileNavigation({ open, onClose, labels }: Props) {
+export function MobileNavigation({ open, onClose, items }: Props) {
   return (
     <AnimatePresence>
       {open && (
@@ -36,8 +32,7 @@ export function MobileNavigation({ open, onClose, labels }: Props) {
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <NavigationList
-            items={NAV_ITEMS}
-            labels={labels}
+            items={items}
             orientation="vertical"
             onNavigate={onClose}
           />

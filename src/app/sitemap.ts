@@ -1,20 +1,22 @@
 import type { MetadataRoute } from "next";
-import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from "@/config/languages";
+import { getLocales, getDefaultLocale } from "@/lib/locales";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL;
   if (!base) return [];
 
   const routes = ["", "/terms", "/privacy"];
 
   const entries: MetadataRoute.Sitemap = [];
+  const locales = await getLocales();
+  const defaultLocale = await getDefaultLocale();
 
-  for (const locale of SUPPORTED_LOCALES) {
+  for (const locale of locales) {
     for (const route of routes) {
       const path =
-        locale === DEFAULT_LOCALE ? route || "/" : `/${locale}${route}`;
+        locale.code === defaultLocale?.code ? route || "/" : `/${locale.code}${route}`;
 
       entries.push({
         url: `${base}${path}`,

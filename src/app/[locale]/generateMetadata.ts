@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { isLocale, DEFAULT_LOCALE } from "@/config/languages";
+import { getDefaultLocale, getLocales } from "@/lib/locales";
 
 export async function generateMetadata({
   params,
@@ -7,47 +7,54 @@ export async function generateMetadata({
   params: Promise<{ locale?: string }>;
 }): Promise<Metadata> {
   const resolved = await params;
-  const locale = isLocale(resolved.locale) ? resolved.locale : DEFAULT_LOCALE;
+  const locales = await getLocales();
+  const defaultLocale = await getDefaultLocale();
+  const locale =
+    locales.find((item) => item.code === resolved.locale)?.code ??
+    defaultLocale?.code ??
+    "de";
 
   const base = process.env.NEXT_PUBLIC_SITE_URL;
+  const title =
+    locale === "de"
+      ? "Full-Stack Entwickler – Portfolio"
+      : "Full-Stack Developer – Portfolio";
+  const description =
+    locale === "de"
+      ? "Persönliches Portfolio eines Full-Stack Entwicklers."
+      : "Personal portfolio of a full-stack developer.";
 
-  const titles = {
-    de: "Full-Stack Entwickler – Portfolio",
-    en: "Full-Stack Developer – Portfolio",
-  };
-
-  const descriptions = {
-    de: "Persönliches Portfolio eines Full-Stack Entwicklers.",
-    en: "Personal portfolio of a full-stack developer.",
-  };
-
+  const defaultCode = defaultLocale?.code ?? "de";
   const url = base
-    ? locale === DEFAULT_LOCALE
+    ? locale === defaultCode
       ? base
       : `${base}/${locale}`
     : undefined;
 
+  const languageAlternates = base
+    ? locales.reduce<Record<string, string>>((acc, item) => {
+        acc[item.code] = item.code === defaultCode ? `${base}` : `${base}/${item.code}`;
+        return acc;
+      }, {})
+    : undefined;
+
   return {
-    title: titles[locale],
-    description: descriptions[locale],
+    title,
+    description,
 
     alternates: base
       ? {
-          canonical:
-            locale === DEFAULT_LOCALE ? `${base}` : `${base}/${locale}`,
-          languages: {
-            de: `${base}`,
-            en: `${base}/en`,
-          },
+          canonical: url,
+          languages: languageAlternates,
         }
       : undefined,
 
     openGraph: base
       ? {
-          title: titles[locale],
-          description: descriptions[locale],
+          title,
+          description,
           url,
-          siteName: titles[locale],
+          siteName: title,
           type: "website",
         }
       : undefined,

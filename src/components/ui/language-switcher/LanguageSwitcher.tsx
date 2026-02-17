@@ -3,17 +3,11 @@
 import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  SUPPORTED_LOCALES,
-  DEFAULT_LOCALE,
-  isLocale,
-  type Locale,
-  LANGUAGE_META,
-} from "@/config/languages";
 import { cn } from "@/components/ui/utils";
 import { AppIcon } from "@/icons";
+import type { LocaleItem } from "@/lib/locales";
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ locales }: { locales: LocaleItem[] }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -21,19 +15,19 @@ export function LanguageSwitcher() {
   const segments = pathname.split("/").filter(Boolean);
 
   const rawLocale = segments[0];
-  const currentLocale: Locale = isLocale(rawLocale)
-    ? rawLocale
-    : DEFAULT_LOCALE;
+  const defaultLocale = locales.find((locale) => locale.isDefault) ?? locales[0];
+  const currentLocale =
+    locales.find((locale) => locale.code === rawLocale) ?? defaultLocale;
 
-  function changeLocale(locale: Locale) {
+  function changeLocale(code: string) {
     const nextSegments = [...segments];
 
-    if (isLocale(nextSegments[0])) {
+    if (locales.some((locale) => locale.code === nextSegments[0])) {
       nextSegments.shift();
     }
 
-    if (locale !== DEFAULT_LOCALE) {
-      nextSegments.unshift(locale);
+    if (code !== defaultLocale?.code) {
+      nextSegments.unshift(code);
     }
 
     router.push(`/${nextSegments.join("/")}`);
@@ -41,13 +35,15 @@ export function LanguageSwitcher() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       <Button
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
         size="sm"
         variant="outline"
+        className="h-9 w-9 rounded-xl p-0"
+        aria-label="Change language"
       >
         <AppIcon name="languages" size={18} />
       </Button>
@@ -56,33 +52,32 @@ export function LanguageSwitcher() {
         <div
           role="listbox"
           className={cn(
-            "absolute right-0 mt-3 w-48 overflow-hidden",
-            "rounded-xl border border-white/10",
+            "absolute right-0 mt-3 min-w-[180px] overflow-hidden",
+            "rounded-2xl border border-white/10",
             "bg-[color:var(--surface-card)]",
             "shadow-xl backdrop-blur"
           )}
         >
           <ul className="py-2">
-            {SUPPORTED_LOCALES.map((locale) => {
-              const meta = LANGUAGE_META[locale];
-              const isActive = locale === currentLocale;
+            {locales.map((locale) => {
+              const isActive = locale.code === currentLocale?.code;
 
               return (
-                <li key={locale}>
+                <li key={locale.code}>
                   <Button
                     variant="menu"
                     role="option"
                     aria-selected={isActive}
-                    onClick={() => changeLocale(locale)}
+                    onClick={() => changeLocale(locale.code)}
                     className={cn(
-                      "relative w-full justify-start gap-2",
+                      "relative w-full justify-start gap-3 px-4 py-2",
                       isActive
                         ? "text-[color:var(--color-primary)]"
-                        : "ui-text-muted hover:bg-white/5"
+                        : "text-[color:var(--text-primary)] hover:bg-white/5"
                     )}
                   >
-                    <span className="text-lg">{meta.flag}</span>
-                    <span className="flex-1 text-sm">{meta.label}</span>
+                    <span className="text-lg">{locale.flag ?? "🌐"}</span>
+                    <span className="flex-1 text-sm">{locale.name}</span>
 
                     {isActive && (
                       <AppIcon
