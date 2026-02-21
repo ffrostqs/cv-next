@@ -4,3 +4,4 @@
 @import "./themes/light.css";
 @import "./themes/dark.css";
 @import "./themes/surface.css";
+@import "../../themes/default/tokens.css";

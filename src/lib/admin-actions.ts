@@ -32,6 +32,91 @@ function toJsonArray(value: FormDataEntryValue | null) {
   }
 }
 
+const SECTION_LABELS: Record<string, string> = {
+  hero: "Hero",
+  about_summary: "About summary",
+  about_full: "About full",
+  resume: "Resume",
+  footer: "Footer",
+  terms: "Terms",
+  privacy: "Privacy",
+  notFound: "Not found",
+};
+
+const BUILDER_PATHS: Record<string, string> = {
+  hero: "/admin/builder/hero",
+  about_summary: "/admin/builder/about/summary",
+  about_full: "/admin/builder/about/full",
+  resume: "/admin/builder/resume",
+  footer: "/admin/builder/footer",
+  terms: "/admin/builder/legal",
+  privacy: "/admin/builder/legal",
+  notFound: "/admin/builder/not-found",
+};
+
+async function upsertSectionData({
+  key,
+  localeCode,
+  data,
+}: {
+  key: string;
+  localeCode: string;
+  data: Record<string, unknown>;
+}) {
+  const locale =
+    (await prisma.locale.findUnique({ where: { code: localeCode } })) ??
+    (await prisma.locale.create({
+      data: {
+        code: localeCode,
+        name:
+          LANGUAGE_META[localeCode as keyof typeof LANGUAGE_META]?.label ??
+          localeCode,
+        flag:
+          LANGUAGE_META[localeCode as keyof typeof LANGUAGE_META]?.flag ?? null,
+        isDefault: localeCode === "de",
+        order: 0,
+      },
+    }));
+
+  const section = await prisma.siteSection.upsert({
+    where: { key },
+    update: {},
+    create: {
+      key,
+      order: 0,
+    },
+  });
+
+  const title = SECTION_LABELS[key] ?? key;
+
+  await prisma.siteSectionTranslation.upsert({
+    where: {
+      sectionId_localeId: {
+        sectionId: section.id,
+        localeId: locale.id,
+      },
+    },
+    update: {
+      title,
+      data,
+    },
+    create: {
+      sectionId: section.id,
+      localeId: locale.id,
+      title,
+      data,
+    },
+  });
+
+  revalidatePath("/admin/builder");
+  const builderPath = BUILDER_PATHS[key];
+  if (builderPath) revalidatePath(builderPath);
+  revalidatePath("/");
+  revalidatePath(`/${localeCode}`);
+  revalidatePath(`/${localeCode}/privacy`);
+  revalidatePath(`/${localeCode}/terms`);
+}
+
 export async function createPost(formData: FormData) {
   await requireAdmin();
 
@@ -276,6 +361,35 @@ export async function updatePage(id: string, formData: FormData) {
 export async function deletePage(id: string) {
   await requireAdmin();
   await prisma.page.delete({ where: { id } });
+  revalidatePath("/admin/pages");
+  revalidatePath(`/de`);
+  revalidatePath(`/en`);
+}
+
+export async function setPagePublished(formData: FormData) {
+  await requireAdmin();
+
+  const pageId = String(formData.get("pageId") ?? "").trim();
+  const localeId = String(formData.get("localeId") ?? "").trim();
+  const published = toBoolean(formData.get("published"));
+
+  if (!pageId || !localeId) {
+    throw new Error("Page and locale are required");
+  }
+
+  await prisma.pageTranslation.update({
+    where: {
+      pageId_localeId: {
+        pageId,
+        localeId,
+      },
+    },
+    data: {
+      published,
+      publishedAt: published ? new Date() : null,
+    },
+  });
+
   revalidatePath("/admin/pages");
   revalidatePath(`/de`);
   revalidatePath(`/en`);
@@ -991,4 +1105,248 @@ export async function updateGlobalSection(formData: FormData) {
   revalidatePath(`/de`);
   revalidatePath(`/en`);
   redirect("/admin/header");
+}
+
+export async function updateHeroSection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const greeting = String(formData.get("greeting") ?? "").trim();
+  const name = String(formData.get("name") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const location = String(formData.get("location") ?? "").trim();
+  const availability = String(formData.get("availability") ?? "").trim();
+  const contact = String(formData.get("contact") ?? "").trim();
+  const resume = String(formData.get("resume") ?? "").trim();
+  const resumeUrl = String(formData.get("resumeUrl") ?? "").trim();
+  const available = String(formData.get("available") ?? "").trim();
+  const remote = String(formData.get("remote") ?? "").trim();
+  const getInTouch = String(formData.get("getInTouch") ?? "").trim();
+
+  if (
+    !localeCode ||
+    !greeting ||
+    !name ||
+    !title ||
+    !description ||
+    !location ||
+    !contact ||
+    !resume ||
+    !resumeUrl ||
+    !available ||
+    !remote ||
+    !getInTouch
+  ) {
+    throw new Error("All hero fields are required");
+  }
+
+  const data: Record<string, unknown> = {
+    greeting,
+    name,
+    title,
+    description,
+    location,
+    contact,
+    resume,
+    resumeUrl,
+    available,
+    remote,
+    getInTouch,
+  };
+
+  if (availability) {
+    data.availability = availability;
+  }
+
+  await upsertSectionData({ key: "hero", localeCode, data });
+  redirect(`/admin/builder/hero?locale=${localeCode}`);
+}
+
+export async function updateAboutSummarySection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const subtitle = String(formData.get("subtitle") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+
+  if (!localeCode || !subtitle || !title || !description) {
+    throw new Error("Locale, subtitle, title, and description are required");
+  }
+
+  await upsertSectionData({
+    key: "about_summary",
+    localeCode,
+    data: { subtitle, title, description },
+  });
+  redirect(`/admin/builder/about/summary?locale=${localeCode}`);
+}
+
+export async function updateAboutFullSection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const subtitle = String(formData.get("subtitle") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const stats = toJsonArray(formData.get("stats"));
+  const approachTitle = String(formData.get("approachTitle") ?? "").trim();
+  const approachItems = toJsonArray(formData.get("approachItems"));
+
+  if (!localeCode || !subtitle || !title || !description) {
+    throw new Error("Locale, subtitle, title, and description are required");
+  }
+
+  if (approachItems.length > 0 && !approachTitle) {
+    throw new Error("Approach title is required when items are provided");
+  }
+
+  const data: Record<string, unknown> = { subtitle, title, description };
+
+  if (stats.length) {
+    data.stats = stats;
+  }
+
+  if (approachTitle || approachItems.length) {
+    data.approach = {
+      title: approachTitle,
+      items: approachItems,
+    };
+  }
+
+  await upsertSectionData({ key: "about_full", localeCode, data });
+  redirect(`/admin/builder/about/full?locale=${localeCode}`);
+}
+
+export async function updateResumeSection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const subtitle = String(formData.get("subtitle") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+
+  const resumeCardTitle = String(formData.get("resumeCardTitle") ?? "").trim();
+  const resumeCardMeta = String(formData.get("resumeCardMeta") ?? "").trim();
+  const resumeCardFeatures = toJsonArray(formData.get("resumeCardFeatures"));
+  const resumeCardDownload = String(
+    formData.get("resumeCardDownload") ?? ""
+  ).trim();
+  const resumeCardFile = String(formData.get("resumeCardFile") ?? "").trim();
+
+  const contactTitle = String(formData.get("contactTitle") ?? "").trim();
+  const contactItems = toJsonArray(formData.get("contactItems"));
+  const socialTitle = String(formData.get("socialTitle") ?? "").trim();
+  const socialItems = toJsonArray(formData.get("socialItems"));
+
+  if (
+    !localeCode ||
+    !subtitle ||
+    !title ||
+    !description ||
+    !resumeCardTitle ||
+    !resumeCardMeta ||
+    !resumeCardDownload ||
+    !resumeCardFile ||
+    !contactTitle ||
+    !socialTitle
+  ) {
+    throw new Error("All resume fields are required");
+  }
+
+  const data = {
+    subtitle,
+    title,
+    description,
+    resumeCard: {
+      title: resumeCardTitle,
+      meta: resumeCardMeta,
+      features: resumeCardFeatures,
+      downloadLabel: resumeCardDownload,
+      fileUrl: resumeCardFile,
+    },
+    contactCard: {
+      title: contactTitle,
+      items: contactItems,
+    },
+    socialCard: {
+      title: socialTitle,
+      items: socialItems,
+    },
+  };
+
+  await upsertSectionData({ key: "resume", localeCode, data });
+  redirect(`/admin/builder/resume?locale=${localeCode}`);
+}
+
+export async function updateFooterSection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const tagline = String(formData.get("tagline") ?? "").trim();
+  const navigation = toJsonArray(formData.get("navigation"));
+  const socials = toJsonArray(formData.get("socials"));
+  const builtWith = String(formData.get("builtWith") ?? "").trim();
+  const copyright = String(formData.get("copyright") ?? "").trim();
+
+  if (!localeCode || !tagline || !builtWith || !copyright) {
+    throw new Error("Locale, tagline, builtWith, and copyright are required");
+  }
+
+  await upsertSectionData({
+    key: "footer",
+    localeCode,
+    data: {
+      tagline,
+      navigation,
+      socials,
+      builtWith,
+      copyright,
+    },
+  });
+  redirect(`/admin/builder/footer?locale=${localeCode}`);
+}
+
+export async function updateLegalSection(
+  key: "terms" | "privacy",
+  formData: FormData
+) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const updatedAt = String(formData.get("updatedAt") ?? "").trim();
+  const sections = toJsonArray(formData.get("sections"));
+
+  if (!localeCode || !title || !updatedAt) {
+    throw new Error("Locale, title, and updated date are required");
+  }
+
+  await upsertSectionData({
+    key,
+    localeCode,
+    data: { title, updatedAt, sections },
+  });
+  redirect(`/admin/builder/legal?locale=${localeCode}`);
+}
+
+export async function updateNotFoundSection(formData: FormData) {
+  await requireAdmin();
+
+  const localeCode = String(formData.get("locale") ?? "").trim();
+  const title = String(formData.get("title") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const backToHome = String(formData.get("backToHome") ?? "").trim();
+
+  if (!localeCode || !title || !description || !backToHome) {
+    throw new Error("Locale, title, description, and backToHome are required");
+  }
+
+  await upsertSectionData({
+    key: "notFound",
+    localeCode,
+    data: { title, description, backToHome },
+  });
+  redirect(`/admin/builder/not-found?locale=${localeCode}`);
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createMenuItem } from "@/lib/admin-actions";
 import { getAllLocales } from "@/lib/locales";
 import { prisma } from "@/lib/prisma";
-import { LocaleSwitch } from "../../../LocaleSwitch";
+import { LocaleSwitch } from "@/components/admin/LocaleSwitch";
 
 export default async function NewMenuItem({
   searchParams,

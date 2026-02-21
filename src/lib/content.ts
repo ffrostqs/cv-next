@@ -23,5 +23,12 @@ export async function getPublishedPages(locale: string) {
 export async function getPageBySlug(locale: string, slug: string) {
   return prisma.pageTranslation.findFirst({
     where: { slug, published: true, locale: { code: locale } },
+    include: {
+      page: {
+        select: {
+          content: true,
+        },
+      },
+    },
   });
 }

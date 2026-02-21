@@ -3,23 +3,24 @@ import { prisma } from "@/lib/prisma";
 import { updatePage } from "@/lib/admin-actions";
 import { notFound } from "next/navigation";
 import { getAllLocales } from "@/lib/locales";
-import { LocaleSwitch } from "../../LocaleSwitch";
+import { LocaleSwitch } from "@/components/admin/LocaleSwitch";
 
 export default async function EditPage({
   params,
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams?: { locale?: string };
+  searchParams?: Promise<{ locale?: string }>;
 }) {
   const { id } = await params;
+  const resolvedSearchParams = await searchParams;
   const page = await prisma.page.findUnique({ where: { id } });
   if (!page) notFound();
 
   const locales = await getAllLocales();
   const defaultLocale = locales.find((locale) => locale.isDefault) ?? locales[0];
   const activeLocale =
-    locales.find((locale) => locale.code === searchParams?.locale) ??
+    locales.find((locale) => locale.code === resolvedSearchParams?.locale) ??
     defaultLocale;
 
   const translation = activeLocale
@@ -42,9 +43,14 @@ export default async function EditPage({
           </p>
           <h2 className="text-2xl font-semibold">Edit page</h2>
         </div>
-        <Link className="ui-link" href="/admin/pages">
-          Back
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link className="ui-link" href={`/admin/pages/${page.id}/builder`}>
+            Open builder
+          </Link>
+          <Link className="ui-link" href="/admin/pages">
+            Back
+          </Link>
+        </div>
       </div>
 
       <form

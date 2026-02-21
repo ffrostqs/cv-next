@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { deletePage } from "@/lib/admin-actions";
+import { deletePage, setPagePublished } from "@/lib/admin-actions";
 import { getDefaultLocale } from "@/lib/locales";
+import { ConfirmSubmitButton } from "@/components/ui/ConfirmSubmitButton";
 
 export default async function AdminPages() {
   const defaultLocale = await getDefaultLocale();
@@ -30,6 +31,7 @@ export default async function AdminPages() {
             <tr className="border-b border-[color:var(--border-muted)]">
               <th className="px-5 py-4">Title</th>
               <th className="px-5 py-4">Status</th>
+              <th className="px-5 py-4">Builder</th>
               <th className="px-5 py-4">Updated</th>
               <th className="px-5 py-4"></th>
             </tr>
@@ -47,7 +49,34 @@ export default async function AdminPages() {
                   </div>
                 </td>
                 <td className="px-5 py-4">
-                  {page.published ? "Published" : "Draft"}
+                  <form action={setPagePublished} className="inline-flex">
+                    <input type="hidden" name="pageId" value={page.pageId} />
+                    <input type="hidden" name="localeId" value={page.localeId} />
+                    <input
+                      type="hidden"
+                      name="published"
+                      value={page.published ? "false" : "true"}
+                    />
+                    <button
+                      type="submit"
+                      aria-pressed={page.published}
+                      className={
+                        page.published
+                          ? "rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-xs font-medium text-emerald-200"
+                          : "rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-[color:var(--text-secondary)]"
+                      }
+                    >
+                      {page.published ? "Published" : "Draft"}
+                    </button>
+                  </form>
+                </td>
+                <td className="px-5 py-4">
+                  <Link
+                    className="ui-link"
+                    href={`/admin/pages/${page.pageId}/builder`}
+                  >
+                    Open builder
+                  </Link>
                 </td>
                 <td className="px-5 py-4">
                   {page.updatedAt.toLocaleDateString()}
@@ -57,10 +86,17 @@ export default async function AdminPages() {
                     <Link className="ui-link" href={`/admin/pages/${page.pageId}/edit`}>
                       Edit
                     </Link>
+                    <Link className="ui-link" href={`/admin/pages/${page.pageId}/builder`}>
+                      Builder
+                    </Link>
                     <form action={deletePage.bind(null, page.pageId)}>
-                      <button className="ui-link" type="submit">
+                      <ConfirmSubmitButton
+                        type="submit"
+                        className="ui-link"
+                        confirmMessage="Видалити сторінку? Цю дію не можна скасувати."
+                      >
                         Delete
-                      </button>
+                      </ConfirmSubmitButton>
                     </form>
                   </div>
                 </td>

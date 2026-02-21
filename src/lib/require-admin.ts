@@ -1,10 +1,11 @@
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 export async function requireAdmin() {
-  const cookieStore = await cookies();
-  const session = cookieStore.get("admin_session")?.value;
-  if (session !== "ok") {
-    redirect("/admin/signin");
+  const session = await getServerSession(authOptions);
+  const role = session?.user?.role;
+  if (!role || (role !== "admin" && role !== "editor")) {
+    redirect("/admin/login");
   }
 }

@@ -1,31 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 
 export function SignInPanel() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
     setLoading(true);
     setError("");
 
-    const response = await fetch("/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
+    const callbackUrl = searchParams.get("callbackUrl") ?? "/admin";
+
+    const response = await signIn("credentials", {
+      password,
+      redirect: false,
+      callbackUrl,
     });
 
-    if (response.ok) {
-      window.location.href = "/admin";
+    if (response?.ok) {
+      router.push(response.url ?? callbackUrl);
       return;
     }
 
     setLoading(false);
-    setError("Invalid password");
+    setError("Invalid credentials");
   }
 
   return (

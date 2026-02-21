@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getDictionary } from "@/i18n";
 import { getAllLocales } from "@/lib/locales";
 import { updateGlobalSection } from "@/lib/admin-actions";
-import { LocaleSwitch } from "../LocaleSwitch";
+import { LocaleSwitch } from "@/components/admin/LocaleSwitch";
 import { AdminMenuTable } from "./AdminMenuTable";
 
 export default async function HeaderAdmin({

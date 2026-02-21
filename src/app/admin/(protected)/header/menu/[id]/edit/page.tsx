@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getAllLocales } from "@/lib/locales";
 import { updateMenuItem, deleteMenuItem } from "@/lib/admin-actions";
-import { LocaleSwitch } from "../../../../LocaleSwitch";
+import { LocaleSwitch } from "@/components/admin/LocaleSwitch";
 
 export default async function EditMenuItem({
   params,

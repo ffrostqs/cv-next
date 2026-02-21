@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeSettings } from "@/components/admin/ThemeSettings";
 
 export default function SettingsPage() {
   return (
@@ -26,6 +27,8 @@ export default function SettingsPage() {
           </Link>
         </div>
       </div>
+
+      <ThemeSettings />
     </div>
   );
 }

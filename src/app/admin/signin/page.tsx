@@ -1,9 +1,5 @@
-import { SignInPanel } from "./SignInPanel";
+import { redirect } from "next/navigation";
 
 export default function AdminSignIn() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[color:var(--surface-page)] text-[color:var(--text-primary)] px-6">
-      <SignInPanel />
-    </div>
-  );
+  redirect("/admin/login");
 }

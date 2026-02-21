@@ -29,7 +29,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="dark">
+    <html
+      className="dark"
+      data-theme="default"
+      data-theme-mode="dark"
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
       </head>

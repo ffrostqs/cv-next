@@ -50,4 +50,73 @@
   .ui-link[aria-current] {
     color: var(--color-primary);
   }
+
+  .ui-tiptap {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .ui-tiptap p {
+    margin-top: 0.85rem;
+  }
+
+  .ui-tiptap p:first-child {
+    margin-top: 0;
+  }
+
+  .ui-tiptap h1,
+  .ui-tiptap h2,
+  .ui-tiptap h3 {
+    margin-top: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  .ui-tiptap h1 {
+    font-size: 1.8rem;
+  }
+
+  .ui-tiptap h2 {
+    font-size: 1.5rem;
+  }
+
+  .ui-tiptap h3 {
+    font-size: 1.2rem;
+  }
+
+  .ui-tiptap ul,
+  .ui-tiptap ol {
+    margin-top: 0.75rem;
+    padding-left: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .ui-tiptap ul {
+    list-style: disc;
+  }
+
+  .ui-tiptap ol {
+    list-style: decimal;
+  }
+
+  .ui-tiptap li {
+    margin-top: 0.35rem;
+  }
+
+  .ui-tiptap a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .ui-tiptap .is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: var(--text-secondary);
+    pointer-events: none;
+    height: 0;
+  }
 }

@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 
 export default async function AdminHome() {
   const [posts, pages] = await Promise.all([
@@ -9,7 +9,7 @@ export default async function AdminHome() {
 
   return (
     <div className="space-y-8">
-      <section className="grid gap-6 md:grid-cols-2">
+      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="ui-surface-card p-6 rounded-2xl">
           <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--text-secondary)]">
             Posts
@@ -28,6 +28,18 @@ export default async function AdminHome() {
             Manage pages
           </Link>
         </div>
+        <div className="ui-surface-card p-6 rounded-2xl">
+          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--text-secondary)]">
+            Builder
+          </p>
+          <p className="text-3xl font-semibold mt-2">Site</p>
+          <p className="mt-2 text-sm text-[color:var(--text-secondary)]">
+            Edit hero, about, resume, footer, and legal content.
+          </p>
+          <Link className="ui-link mt-4" href="/admin/builder">
+            Open builder
+          </Link>
+        </div>
       </section>
 
       <section className="ui-surface-card p-6 rounded-2xl">
@@ -38,6 +50,9 @@ export default async function AdminHome() {
           </Link>
           <Link className="ui-link" href="/admin/pages/new">
             New page
+          </Link>
+          <Link className="ui-link" href="/admin/builder">
+            Open builder
           </Link>
         </div>
       </section>

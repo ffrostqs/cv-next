@@ -3,23 +3,24 @@ import { prisma } from "@/lib/prisma";
 import { updateProject } from "@/lib/admin-actions";
 import { notFound } from "next/navigation";
 import { getAllLocales } from "@/lib/locales";
-import { LocaleSwitch } from "../../LocaleSwitch";
+import { LocaleSwitch } from "@/components/admin/LocaleSwitch";
 
 export default async function EditProject({
   params,
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams?: { locale?: string };
+  searchParams?: Promise<{ locale?: string }>;
 }) {
   const { id } = await params;
+  const resolvedSearchParams = await searchParams;
   const project = await prisma.project.findUnique({ where: { id } });
   if (!project) notFound();
 
   const locales = await getAllLocales();
   const defaultLocale = locales.find((locale) => locale.isDefault) ?? locales[0];
   const activeLocale =
-    locales.find((locale) => locale.code === searchParams?.locale) ??
+    locales.find((locale) => locale.code === resolvedSearchParams?.locale) ??
     defaultLocale;
 
   const translation = activeLocale
